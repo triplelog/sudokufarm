@@ -1,5 +1,25 @@
 var selectedButton = 0;
-
+var itemSpends = [0,0,0,0,0,0,0];
+var itemGets = [0,0,0,0,0,0,0];
+function updateSGN() {
+	var el = document.getElementById('changeData');
+	var nets = el.querySelectorAll('td');
+	for (var i=0;i<7;i++) {
+		itemSpends[i]=spendPerPerson[i]*nPeople
+		itemGets[i]=0
+		for (var ii=0;ii<9;ii++) {
+			itemSpends[i]+=existingPlots[ii]*spendPerThing[i][ii]
+			itemGets[i]+=existingPlots[ii]*itemPerThing[i][ii]
+		}
+		if (i>0){
+			nets[i-1].textContent = itemGets[i] - itemSpends[i];
+		}
+		
+	}
+	
+}
+updateSGN();	
+		
 var el = document.getElementById('buttonRow');
 var buttons = el.querySelectorAll('span');
 for (var i=0;i<buttons.length;i++){

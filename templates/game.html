@@ -171,7 +171,7 @@ tr {
 			</tr>
 
 			<tr id="changeData">
-				<td class="pointsBoard1c firstSix">{{ changes[1] }}</td>
+				<td class="pointsBoard1c firstSix"></td>
 				<td class="pointsBoard2c firstSix"></td>
 				<td class="pointsBoard3c firstSix"></td>
 				<td class="pointsBoard4c firstSix"></td>
@@ -194,6 +194,12 @@ tr {
 	</div>
 	<script>
 		var puzzle = {{ puzzle | dump | safe if puzzle else '[]'}};
+		var totals = {{ totals | dump | safe if totals else '[]'}};
+		var nPeople = {{ nPeople | dump | safe if nPeople else '[]'}};
+		var existingPlots = {{ existingPlots | dump | safe if existingPlots else '[]'}};
+		var itemPerThing = {{ itemPerThing | dump | safe if itemPerThing else '[]'}};
+		var spendPerThing = {{ spendPerThing | dump | safe if spendPerThing else '[]'}};
+		var spendPerPerson = {{ spendPerPerson | dump | safe if spendPerPerson else '[]'}};
 	</script>
 	<script src="../js/game.js"></script>
 </body>
