@@ -84,7 +84,7 @@ tr {
 	position: relative;
 	top: 15px;
 	border: 1px solid red;
-	width: calc(9 * var(--width-block) + 19px);
+	width: calc(9 * var(--width-block) + 14px);
 	margin: auto;
 	padding: 0px;
 }
@@ -97,7 +97,8 @@ tr {
 {% endfor %}
 {% for coli in [0,1,2,3,4,5,6,7,8] %}
 	.col{{ coli }} {
-		border: 1px dotted black;
+		border-right: 1px dotted black;
+		border-bottom: 1px dotted black;
 		height: calc(1 * var(--width-block) );
 		width: calc(1 * var(--width-block) );
 		display: inline-block;
@@ -107,7 +108,10 @@ tr {
 	}
 {% endfor %}
 .col0 {
-	border-left: 2px solid black;
+	border-left: 3px solid black;
+}
+.col8 {
+	border-right: 3px solid black;
 }
 
 </style>
