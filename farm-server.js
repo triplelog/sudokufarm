@@ -78,7 +78,7 @@ app.get('/game',
 		res.write(nunjucks.render('templates/game.html',{
 			cells: cells,
 			puzzle: levelJson.puzzle,
-			totals: levelJson.itemTotals,
+			totals: levelJson.initialTotals,
 			changes: levelJson.itemNet
 		}));
 		res.end();
