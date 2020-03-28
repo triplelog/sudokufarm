@@ -66,6 +66,18 @@ tr {
 	height: 25px;
 }
 
+#buttonRow {
+	width: calc(9 * var(--width-block) + 18px);
+	margin: auto;
+	padding: 0px;
+}
+#buttonRow span {
+	border: 1px solid black;
+}
+#buttonRow img {
+	height: var(--width-block);
+}
+
 #sudokuTable {
 	width: calc(9 * var(--width-block) + 22px);
 	margin: auto;
@@ -157,6 +169,9 @@ tr {
 			</tr>
 			
 		</table>
+		<div id="buttonRow">
+			{% for coli in [1,2,3,4,5,6,7,8,9] %}<span class="button{{ coli }}" id="button-{{ coli }}"><img src="../img/{{ coli }}.png" /></span>{% endfor %}
+		</div>
 		<div id="sudokuTable">
 			{% for rowi in [0,1,2,3,4,5,6,7,8] %}
 				<div class="row{{ rowi }}">
