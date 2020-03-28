@@ -1,0 +1,145 @@
+
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Title</title>
+
+<style>
+:root {
+	--width-block: 10px;
+    --shift-cover-puzzle: calc(-40px - var(--width-block)*9); 
+    --left-margin: 0px;
+    --color-bg1: rgba(180,180,180,.75);
+    --color-text1: black;
+    --sudoku-top: 200px;
+    --sudoku-left: 200px;
+}
+@media screen and (min-width: 320px) and (min-height: 320px) {
+	:root {
+    	--width-block: 20px;
+    }
+}
+@media screen and (min-width: 480px) and (min-height: 480px) {
+	:root {
+    	--width-block: 30px;
+    }
+}
+@media screen and (min-width: 720px) and (min-height: 720px) {
+	:root {
+    	--width-block: 40px;
+    }
+}
+@media screen and (min-width: 1080px) and (min-height: 1080px) {
+	:root {
+    	--width-block: 50px;
+    }
+}
+
+
+#dataTable {
+	background-color: rgba(255,255,255,1);
+	top: 15px;
+	left: var(--sudoku-left);
+	position: absolute;
+	width: calc(9 * var(--width-block) + 41px);
+	text-align: center;
+}
+#newData {
+	background-color: rgba(255,255,255,1);
+	position: relative;
+
+	z-index: 100;
+	text-align: center;
+}
+#oldData {
+	background-color: rgba(255,255,255,1);
+	position: absolute;
+	top: 27px;
+	z-index: 99;
+	text-align: center;
+}
+#changeData {
+	background-color: rgba(0,0,0,.25);
+
+	position: relative;
+	text-align: center;
+	
+}
+#emojiData {
+	background-color: rgba(0,0,0,.05);
+	position: relative;
+	text-align: center;
+	
+}
+table {
+	border-collapse:collapse;
+}
+tr {
+	background-color: rgba(0,255,255,1);
+	height: 25px;
+}
+
+
+
+
+
+</style>
+</head>
+<body>
+	<div class="mainDiv">
+
+		<table id="dataTable">
+			<tr id="emojiData">
+				<td class="firstSix">🍕</td>
+				<td class="firstSix">💦</td>
+				<td class="firstSix">🍚</td>
+				<td class="firstSix">💩</td>
+				<td class="firstSix">🔥</td>
+				<td class="firstSix">👕</td>
+				<td class="peopleTD">👤</td>
+			</tr>
+			
+			<tr id="newData">
+				<td class="pointsBoard1 firstSix"></td>
+				<td class="pointsBoard2 firstSix"></td>
+				<td class="pointsBoard3 firstSix"></td>
+				<td class="pointsBoard4 firstSix"></td>
+				<td class="pointsBoard5 firstSix"></td>
+				<td class="pointsBoard6 firstSix"></td>
+				<td class="pointsBoard7 peopleTD"></td>
+			</tr>
+
+			<tr id="changeData">
+				<td class="pointsBoard1c firstSix"></td>
+				<td class="pointsBoard2c firstSix"></td>
+				<td class="pointsBoard3c firstSix"></td>
+				<td class="pointsBoard4c firstSix"></td>
+				<td class="pointsBoard5c firstSix"></td>
+				<td class="pointsBoard6c firstSix"></td>
+				<td class="pointsBoard7c peopleTD"></td>
+			</tr>
+
+			<tr id="oldData">
+				<td class="pointsBoard1o firstSix"></td>
+				<td class="pointsBoard2o firstSix"></td>
+				<td class="pointsBoard3o firstSix"></td>
+				<td class="pointsBoard4o firstSix"></td>
+				<td class="pointsBoard5o firstSix"></td>
+				<td class="pointsBoard6o firstSix"></td>
+				<td class="pointsBoard7o peopleTD"></td>
+			</tr>
+			
+		</table>
+		<div id="sudokuTable">
+			{% for rowi in [0,1,2,3,4,5,6,7,8] %}
+				{% for coli in [0,1,2,3,4,5,6,7,8] %}
+					<span class="row{{ rowi }} col{{ coli }}">{{ cells[rowi][coli] }}</span>
+				{% endfor %}
+			{% endfor %}
+		</div>
+	</div>
+		
+</body>
+</html>
+
