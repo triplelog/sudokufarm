@@ -41,7 +41,7 @@
 	background-color: rgba(255,255,255,1);
 	top: 15px;
 	left: var(--sudoku-left);
-	position: absolute;
+	position: relative;
 	width: calc(9 * var(--width-block) + 41px);
 	text-align: center;
 }
@@ -80,9 +80,21 @@ tr {
 	height: 25px;
 }
 
-
-
-
+#sudokuTable {
+	position: relative;
+	top: 15px;
+	border: 1px solid red;
+}
+{% for rowi in [0,1,2,3,4,5,6,7,8] %}
+	.row{{ rowi }} {
+		display: block;
+	}
+{% endfor %}
+{% for coli in [0,1,2,3,4,5,6,7,8] %}
+	.col{{ coli }} {
+		border: 1px solid black;
+	}
+{% endfor %}
 
 </style>
 </head>
