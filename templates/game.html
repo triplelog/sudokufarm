@@ -145,9 +145,11 @@ tr {
 		</table>
 		<div id="sudokuTable">
 			{% for rowi in [0,1,2,3,4,5,6,7,8] %}
+				<div class="row{{ rowi }}">
 				{% for coli in [0,1,2,3,4,5,6,7,8] %}
-					<span class="row{{ rowi }} col{{ coli }}">{{ cells[rowi][coli] }}</span>
+					<span class="col{{ coli }}" id="cell-{{ rowi }}-{{ coli }}">{{ cells[rowi][coli] }}</span>
 				{% endfor %}
+				</div>
 			{% endfor %}
 		</div>
 	</div>
