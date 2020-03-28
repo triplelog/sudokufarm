@@ -60,7 +60,7 @@ app.get('/game',
 		}
 		res.write(nunjucks.render('templates/game.html',{
 			cells: cells,
-			puzzle: JSON.stringify(levelJson.puzzle),
+			puzzle: levelJson.puzzle,
 		}));
 		res.end();
 	

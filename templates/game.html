@@ -193,7 +193,7 @@ tr {
 		</div>
 	</div>
 	<script>
-		var puzzle = {{ puzzle }};
+		var puzzle = {{ puzzle | dump | safe if puzzle else '[]'}};
 	</script>
 	<script src="../js/game.js"></script>
 </body>
