@@ -24,5 +24,4 @@ function chgButton(evt) {
 			buttons[i].classList.remove('selected');
 		}
 	}
-	alert(selectedButton);
 }
