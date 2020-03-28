@@ -81,8 +81,8 @@ tr {
 	display: inline-block;
 }
 #buttonRow span.selected {
-	border: 1px solid red;
-	background: rgba(255,0,0,.1);
+	border: 1px solid green;
+	background: rgba(0,255,0,.2);
 	height: calc(1 * var(--width-block));
 	display: inline-block;
 }
@@ -192,6 +192,9 @@ tr {
 			{% endfor %}
 		</div>
 	</div>
+	<script>
+		var puzzle = {{ puzzle }};
+	</script>
 	<script src="../js/game.js"></script>
 </body>
 </html>

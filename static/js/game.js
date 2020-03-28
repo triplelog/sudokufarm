@@ -1,9 +1,19 @@
 var selectedButton = 0;
+
 var el = document.getElementById('buttonRow');
 var buttons = el.querySelectorAll('span');
 for (var i=0;i<buttons.length;i++){
 	buttons[i].addEventListener('click',chgButton);
 }
+
+var el = document.getElementById('sudokuTable');
+var cells = el.querySelectorAll('span');
+for (var i=0;i<cells.length;i++){
+	cells[i].addEventListener('click',updateCell);
+}
+
+
+
 function chgButton(evt) {
 	var el = evt.target;
 	while (el && el.tagName && el.tagName != 'SPAN'){
@@ -24,4 +34,16 @@ function chgButton(evt) {
 			buttons[i].classList.remove('selected');
 		}
 	}
+}
+
+function updateCell(evt){
+	var el = evt.target;
+	while (el && el.tagName && el.tagName != 'SPAN'){
+		el = el.parentElement;
+	}
+	//check if has image already
+	var cellId = [parseInt(el.id.split('-')[1]),parseInt(el.id.split('-')[2])];
+	console.log(puzzle[cellId[0]][cellId[1]]);
+	//add image
+	//update puzzle
 }
