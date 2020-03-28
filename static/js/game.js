@@ -6,8 +6,10 @@ for (var i=0;i<buttons.length;i++){
 }
 function chgButton(evt) {
 	var el = evt.target;
+	console.log(el);
 	while (el && el.tagName && el.tagName != 'span'){
 		el = el.parentElement;
+		console.log(el);
 	}
 	selectedButton = parseInt(el.id.split('-')[1]);
 	alert(selectedButton);
