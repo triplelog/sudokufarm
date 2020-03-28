@@ -44,7 +44,7 @@ function updateCell(evt){
 	//check if has image already
 	var cellId = [parseInt(el.id.split('-')[1]),parseInt(el.id.split('-')[2])];
 	var cellValue = parseInt(puzzle[cellId[0]][cellId[1]]);
-	if (cellValue > 0){
+	if (cellValue == 0){
 		var img = document.createElement('img');
 		img.setAttribute('src','../img/'+selectedButton+'.png');
 		el.appendChild(img);
