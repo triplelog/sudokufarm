@@ -10,13 +10,43 @@ function updateSGN() {
 		for (var ii=0;ii<9;ii++) {
 			itemSpends[i]+=existingPlots[ii]*spendPerThing[i][ii]
 			itemGets[i]+=existingPlots[ii]*itemPerThing[i][ii]
+			if (ii+1 == selectedButton){
+				itemSpends[i]+=spendPerThing[i][ii]
+				itemGets[i]+=itemPerThing[i][ii]
+			}
 		}
+		
 		if (i>0){
 			nets[i-1].textContent = itemGets[i] - itemSpends[i];
 		}
 		
 	}
 	
+}
+function chgPop() {
+	if (nYear%3 == 0) {
+		nPeople+=1
+	}
+	nYear+=1
+}
+function updateTotals(save) {
+	var el = document.getElementById('newData');
+	var ts = el.querySelectorAll('td');
+	for (var i=0;i<7;i++) {
+		if (!save){
+			if (i>0){
+				ts[i-1].textContent = totals[i] + itemGets[i] - itemSpends[i];
+			}
+		}
+		else {
+			totals[i] += itemGets[i];
+			totals[i] -= itemSpends[i];
+			if (i>0){
+				ts[i-1].textContent = totals[i];
+			}
+		}
+		
+	}
 }
 updateSGN();	
 		
@@ -54,6 +84,8 @@ function chgButton(evt) {
 			buttons[i].classList.remove('selected');
 		}
 	}
+	updateSGN();
+	updateTotals(false);
 }
 
 function updateCell(evt){
@@ -75,4 +107,6 @@ function updateCell(evt){
 		//Update supplies
 		
 	}
+	updateSGN();
+	updateTotals(true);
 }
