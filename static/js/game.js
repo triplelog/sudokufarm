@@ -21,14 +21,16 @@ function updateSGN() {
 		}
 		
 	}
+	if (nYears%3 == 0){
+		nets[7].textContent = 1;
+	}
+	else {
+		nets[7].textContent = 0;
+	}
+	
 	
 }
-function chgPop() {
-	if (nYear%3 == 0) {
-		nPeople+=1
-	}
-	nYear+=1
-}
+
 function updateTotals(save) {
 	var el = document.getElementById('newData');
 	var ts = el.querySelectorAll('td');
@@ -52,6 +54,7 @@ function updateTotals(save) {
 		}
 		
 	}
+	ts[7].textContent = nPeople;
 }
 updateSGN();	
 		
@@ -111,6 +114,10 @@ function updateCell(evt){
 		puzzle[cellId[0]][cellId[1]] = selectedButton;
 		//Update supplies
 		existingPlots[selectedButton-1]++;
+		if (nYears%3 == 0) {
+			nPeople+=1
+		}
+		nYears+=1
 		updateSGN();
 		updateTotals(true);
 		//updateTotals(false);

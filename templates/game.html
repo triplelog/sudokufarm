@@ -200,6 +200,7 @@ tr {
 		var itemPerThing = {{ itemPerThing | dump | safe if itemPerThing else '[]'}};
 		var spendPerThing = {{ spendPerThing | dump | safe if spendPerThing else '[]'}};
 		var spendPerPerson = {{ spendPerPerson | dump | safe if spendPerPerson else '[]'}};
+		var nYears = 1;
 	</script>
 	<script src="../js/game.js"></script>
 </body>
