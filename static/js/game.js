@@ -117,8 +117,8 @@ function updateCell(evt){
 		
 		updateSGN();
 		updateTotals(true);
-		if (nYears%3 == 0) {
-			nPeople+=1
+		if (nYears%bpy[1] == 0) {
+			nPeople+=bpy[0];
 		}
 		nYears+=1
 		//updateTotals(false);
