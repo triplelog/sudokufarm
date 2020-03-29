@@ -55,6 +55,16 @@ function updateTotals(save) {
 		
 	}
 	ts[6].textContent = nPeople;
+	for (var ii=0;ii<9;ii++) {
+		if (existingPlots[ii] == 9){
+			var el = document.getElementById('buttonRow').querySelectorAll('span')[ii];
+			el.classList.add('finished');
+			el.classList.remove('selected');
+			if (selectedButton == ii+1){
+				selectedButton = 0;
+			}
+		}
+	}
 }
 updateSGN();	
 		
