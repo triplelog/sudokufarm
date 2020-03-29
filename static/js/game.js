@@ -90,7 +90,7 @@ function chgButton(evt) {
 		}
 	}
 	updateSGN();
-	updateTotals(false);
+	//updateTotals(false);
 }
 
 function updateCell(evt){
@@ -114,5 +114,5 @@ function updateCell(evt){
 	}
 	updateSGN();
 	updateTotals(true);
-	updateTotals(false);
+	//updateTotals(false);
 }
