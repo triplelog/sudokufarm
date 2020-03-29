@@ -565,7 +565,14 @@ function runSimulation() {
 							}
 						}
 						if (sumNeededTotals > 699) {
-							console.log(JSON.stringify({"startPeople":savednPeople,"maxTurns":81-savednYear,"puzzle":toCSS(savedcurrentPuzzle),"existingPlots":toCSSep(savedcurrentPuzzle),"maxPlots":toCSSmp(savedcurrentPuzzle),"winpuzzle":toCSS(currentSolution)}))
+							var levelJson = {"startPeople":savednPeople,"puzzle":toCSS(savedcurrentPuzzle)};
+							levelJson.initialTotals = initialTotals.slice();
+							levelJson.itemPerThing = itemPerThing.slice(); //only one level of slice, but doesn't change?
+							levelJson.spendPerThing = spendPerThing.slice();
+							levelJson.spendPerPerson = spendPerPerson.slice();
+							levelJson.bpy = [1,3]; //solver does not use this and nYear might not be 1 mod year
+							
+							console.log(JSON.stringify(levelJson))
 							
 							//console.log(JSON.stringify({'people':savednPeople,'puzzle':savedcurrentPuzzle,'year':savednYear}))
 							

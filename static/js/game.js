@@ -21,8 +21,8 @@ function updateSGN() {
 		}
 		
 	}
-	if (nYears%3 == 0){
-		nets[6].textContent = 1;
+	if (nYears%bpy[1] == 0){
+		nets[6].textContent = bpy[0];
 	}
 	else {
 		nets[6].textContent = 0;
