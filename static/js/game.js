@@ -33,9 +33,14 @@ function updateTotals(save) {
 	var el = document.getElementById('newData');
 	var ts = el.querySelectorAll('td');
 	for (var i=0;i<7;i++) {
-		if (!save){
+		if (!save && selectedButton >0){
 			if (i>0){
 				ts[i-1].textContent = totals[i] + itemGets[i] - itemSpends[i];
+			}
+		}
+		else if (!save){
+			if (i>0){
+				ts[i-1].textContent = totals[i];
 			}
 		}
 		else {
