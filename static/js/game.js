@@ -114,12 +114,13 @@ function updateCell(evt){
 		puzzle[cellId[0]][cellId[1]] = selectedButton;
 		//Update supplies
 		existingPlots[selectedButton-1]++;
+		
+		updateSGN();
+		updateTotals(true);
 		if (nYears%3 == 0) {
 			nPeople+=1
 		}
 		nYears+=1
-		updateSGN();
-		updateTotals(true);
 		//updateTotals(false);
 		
 	}
