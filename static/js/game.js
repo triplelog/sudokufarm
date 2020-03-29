@@ -105,7 +105,9 @@ function chgButton(evt) {
 	updateSGN();
 	//updateTotals(false);
 }
-
+function notPossible(type,id){
+	alert('Already a '+selectedButton+' in that '+type);
+}
 function updateCell(evt){
 	if (selectedButton == 0){return}
 	var el = evt.target;
@@ -116,6 +118,19 @@ function updateCell(evt){
 	var cellId = [parseInt(el.id.split('-')[1]),parseInt(el.id.split('-')[2])];
 	var cellValue = parseInt(puzzle[cellId[0]][cellId[1]]);
 	if (cellValue == 0){ 
+		//check possible
+		for (var i=0;i<puzzle.length;i++){
+			if (puzzle[i][cellId[1]] == selectedButton){
+				notPossible('col',i);
+				return;
+			}
+		}
+		for (var i=0;i<puzzle[cellId[0]].length;i++){
+			if (puzzle[cellId[0]][i] == selectedButton){
+				notPossible('row',i);
+				return;
+			}
+		}
 		//add image
 		el.innerHTML = '';
 		var img = document.createElement('img');
