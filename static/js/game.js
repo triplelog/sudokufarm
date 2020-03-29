@@ -107,6 +107,7 @@ function chgButton(evt) {
 }
 
 function updateCell(evt){
+	if (selectedButton == 0){return}
 	var el = evt.target;
 	while (el && el.tagName && el.tagName != 'SPAN'){
 		el = el.parentElement;
