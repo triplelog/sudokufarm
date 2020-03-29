@@ -110,9 +110,11 @@ function updateCell(evt){
 		//Update puzzle
 		puzzle[cellId[0]][cellId[1]] = selectedButton;
 		//Update supplies
+		existingPlots[selectedButton-1]++;
+		updateSGN();
+		updateTotals(true);
+		//updateTotals(false);
 		
 	}
-	updateSGN();
-	updateTotals(true);
-	//updateTotals(false);
+	
 }
