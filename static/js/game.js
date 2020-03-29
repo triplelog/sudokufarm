@@ -105,7 +105,7 @@ function chgButton(evt) {
 	updateSGN();
 	//updateTotals(false);
 }
-function notPossible(type,id){
+function notPossible(type){
 	alert('Already a '+selectedButton+' in that '+type);
 }
 function updateCell(evt){
@@ -121,14 +121,22 @@ function updateCell(evt){
 		//check possible
 		for (var i=0;i<puzzle.length;i++){
 			if (puzzle[i][cellId[1]] == selectedButton){
-				notPossible('col',i);
+				notPossible('col');
 				return;
 			}
 		}
 		for (var i=0;i<puzzle[cellId[0]].length;i++){
 			if (puzzle[cellId[0]][i] == selectedButton){
-				notPossible('row',i);
+				notPossible('row');
 				return;
+			}
+		}
+		for (var i=Math.floor(cellId[0]/3)*3;i<Math.floor(cellId[0]/3)*3+3;i++){
+			for (var ii=Math.floor(cellId[1]/3)*3;ii<Math.floor(cellId[1]/3)*3+3;ii++){
+				if (puzzle[i][ii] == selectedButton){
+					notPossible('block');
+					return;
+				}
 			}
 		}
 		//add image
