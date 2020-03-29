@@ -114,4 +114,5 @@ function updateCell(evt){
 	}
 	updateSGN();
 	updateTotals(true);
+	updateTotals(false);
 }
