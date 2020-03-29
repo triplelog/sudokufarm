@@ -22,10 +22,10 @@ function updateSGN() {
 		
 	}
 	if (nYears%3 == 0){
-		nets[7].textContent = 1;
+		nets[6].textContent = 1;
 	}
 	else {
-		nets[7].textContent = 0;
+		nets[6].textContent = 0;
 	}
 	
 	
@@ -54,7 +54,7 @@ function updateTotals(save) {
 		}
 		
 	}
-	ts[7].textContent = nPeople;
+	ts[6].textContent = nPeople;
 }
 updateSGN();	
 		
