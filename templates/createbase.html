@@ -173,7 +173,7 @@ body {
 	<tr>
 		<td></td>
 	{% for ii in range(1,10) %}
-		<td><img src="../sfarm/{{ii}}.png" style="width:8%;"></td>
+		<td><img src="../sfarm/{{ii}}.png" style="width:100%;"></td>
 	{% endfor %}
 		<td>P</td>
 	</tr>
@@ -181,7 +181,7 @@ body {
 		<tr>
 			<td>A</td>
 		{% for ii in range(1,11) %}
-			<td>{{ii}}</td>
+			<td><input type="number" value="{{ii}}"></input></td>
 		{% endfor %}
 		</tr>
 	{% endfor %}
