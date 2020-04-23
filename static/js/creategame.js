@@ -1,3 +1,22 @@
+var ws = new WebSocket('wss://soliturn.com:8080');
+ws.onopen = function(evt) {
+	
+	//var jsonmessage = {'operation':'key','message':key};
+	//ws.send(JSON.stringify(jsonmessage));
+	
+	
+}
+ws.onmessage = function(evt){
+	var dm;
+	if (evt.data[0]=='{'){
+		dm = JSON.parse(evt.data);
+	}
+	if (dm.puzzle){
+		console.log(dm.puzzle);
+		document.getElementById("sudoku").value = dm.puzzle;
+		chgSudoku();
+	}
+}
 function chgResource(evt) {
 	var el = evt.target;
 	var id = parseInt(el.id.substr(8,9));
@@ -35,8 +54,8 @@ document.getElementById("item8icon").addEventListener('change',chgItem);
 document.getElementById("item9icon").addEventListener('change',chgItem);
 
 
-function chgSudoku(evt) {
-	var el = evt.target;
+function chgSudoku() {
+	var el = document.getElementById("sudoku");
 	var puzzleRaw = el.value;
 	puzzleRaw = puzzleRaw.replace(/\s/g,'');
 	puzzleRaw = puzzleRaw.replace(/\t/g,'');
@@ -62,4 +81,12 @@ function chgSudoku(evt) {
 	}
 	console.log(puzzles);
 }
+function randomSudoku(evt) {
+	var jsonmessage = {'type':'sudoku','difficulty':'simple'};
+	ws.send(JSON.stringify(jsonmessage));
+	
+}
 document.getElementById("sudoku").addEventListener('change',chgSudoku);
+document.getElementById("randomSimple").addEventListener('click',randomSudoku);
+
+

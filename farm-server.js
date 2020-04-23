@@ -37,7 +37,14 @@ wss.on('connection', function connection(ws) {
   	
   	ws.on('message', function incoming(message) {
 		var dm = JSON.parse(message);
-		
+		if (dm.type == 'sudoku'){
+			if (dm.difficulty == 'simple'){
+				var puzzle = "...39.1.48..74...5.....8....5691.4..18..65.3.9.34.......5..4..1......8......5....";
+				console.log(puzzle);
+				var jsonmessage = {'puzzle':puzzle};
+				ws.send(JSON.stringify(jsonmessage));
+			}
+		}
 		
   	});
 });
