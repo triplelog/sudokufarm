@@ -296,7 +296,7 @@ function goodStrategy(allPlays) {
 		var minNet = itemGets[1]-itemSpends[1]
 		for (var i=1;i<7;i++) {
 			var totalNet = itemTotals[i]*(itemGets[i]-itemSpends[i])
-			if (totalnet <= minNet){
+			if (totalNet <= minNet){
 				minNet = totalNet
 				chooseIndex = i
 			}
