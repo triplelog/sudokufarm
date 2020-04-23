@@ -103,6 +103,31 @@ app.get('/game',
     
 );
 
+app.get('/create',
+	function(req, res){
+		
+		/*var tkey = crypto.randomBytes(100).toString('hex').substr(2, 18);
+		if (req.isAuthenticated()){
+			tempKeys[tkey] = {username:req.user.username};
+		}*/
+		
+		//startPeople as int
+		//bpy as [births,years]
+		//itemPerThing as array of 7 arrays of 9 with first blank
+		//spendPerThing as array of 7 arrays of 9 with first blank
+		//spendPerPerson as array of 7 ints with first blank
+		//initialTotals as array of 7 ints with first blank
+		//puzzle as array of 9 rows of 9
+		//map to image sources -- need to to on both ends
+		
+		res.write(nunjucks.render('templates/createbase.html',{
+			
+		}));
+		res.end();
+	
+    }
+    
+);
 
 
 
