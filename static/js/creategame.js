@@ -43,7 +43,7 @@ function chgSudoku(evt) {
 	puzzleRaw = puzzleRaw.replace(/\n/g,'');
 	puzzleRaw = puzzleRaw.replace(/\|/g,'');
 	puzzleRaw = puzzleRaw.replace(/-/g,'');
-	puzzleRaw = puzzleRaw.replace(/./g,'0');
+	puzzleRaw = puzzleRaw.replace(/\./g,'0');
 	var puzzles = [];
 	var puzzle = [];
 	for (var i=0;i<puzzleRaw.length;i++){
