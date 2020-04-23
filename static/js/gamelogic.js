@@ -109,7 +109,6 @@ function updateCell(evt){
 	//check if has image already
 	var cellId = [parseInt(el.id.split('-')[1]),parseInt(el.id.split('-')[2])];
 	var cellValue = parseInt(puzzle[cellId[0]][cellId[1]]);
-	console.log(el,cellValue,cellId);
 	if (cellValue == 0){ 
 		//check possible
 		for (var i=0;i<puzzle.length;i++){
@@ -178,13 +177,12 @@ function resetGame() {
 	
 	
 	for (var i=0;i<savedMoves.length;i++){
-		console.log(totals);
+		console.log(puzzle);
 		selectedButton = savedMoves[i].selectedButton;
 		updateSGN();
 		selectedR = savedMoves[i].selectedR;
 		selectedC = savedMoves[i].selectedC;
 		updateCell(false);
-		console.log(totals);
 	}
 	
 	
