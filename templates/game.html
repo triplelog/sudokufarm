@@ -187,12 +187,12 @@ tr {
 			
 		</table>
 		<div id="buttonRow">
-			{% for coli in [1,2,3,4,5,6,7,8,9] %}<span class="button{{ coli }}" id="button-{{ coli }}"><img src="../img/{{ coli }}.png" /></span>{% endfor %}
+			{% for coli in [1,2,3,4,5,6,7,8,9] %}<span class="button{{ coli }}" id="button-{{ coli }}"><img src="../sfarm/{{ coli }}.png" /></span>{% endfor %}
 		</div>
 		<div id="sudokuTable">
 			{% for rowi in [0,1,2,3,4,5,6,7,8] %}
 				<div class="row{{ rowi }}">
-				{% for coli in [0,1,2,3,4,5,6,7,8] %}<span class="col{{ coli }}" id="cell-{{ rowi }}-{{ coli }}">{% if cells[rowi][coli] > 0 %}<img src="../img/{{ cells[rowi][coli] }}.png" />{% endif %}</span>{% endfor %}
+				{% for coli in [0,1,2,3,4,5,6,7,8] %}<span class="col{{ coli }}" id="cell-{{ rowi }}-{{ coli }}">{% if cells[rowi][coli] > 0 %}<img src="../sfarm/{{ cells[rowi][coli] }}.png" />{% endif %}</span>{% endfor %}
 				</div>
 			{% endfor %}
 		</div>
