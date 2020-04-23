@@ -93,14 +93,6 @@ body {
 {% endblock %}
 {% block content11 %}
 
-{% for i in range(1,8) %}
-<div>
-	<label for="resource{{ i }}emoji">Resource {{ i }}: </label>
-	<input type="text" id="resource{{ i }}name"></input>
-	<input type="text" id="resource{{ i }}emoji"></input>
-</div>
-{% endfor %}
-
 <table id="dataTable">
 	<tr id="emojiData">
 		<td class="firstSix">🍕</td>
@@ -112,6 +104,16 @@ body {
 		<td class="peopleTD">👤</td>
 	</tr>
 </table>
+
+{% for i in range(1,8) %}
+<div>
+	<label for="resource{{ i }}emoji">Resource {{ i }}: </label>
+	<input type="text" id="resource{{ i }}name"></input>
+	<input type="text" id="resource{{ i }}emoji"></input>
+</div>
+{% endfor %}
+
+
 {% endblock %}	
 
 {% block title13 %}
@@ -121,7 +123,7 @@ body {
 		
 		</span>
 		<span class="titleCenter">
-			<a href="https://gifsaw.com">Crops and Animals</a>
+			<a href="https://gifsaw.com">Crops</a>
 		</span>
 		<span class="titleRight">
 			<label for="radio13-3"><i class="fas fa-expand"></i></label>
@@ -158,7 +160,7 @@ body {
 		
 	</span>
 	<span class="titleCenter">
-		<a href="https://csshole.com">Income and Expenses</a>
+		<a href="https://csshole.com">Changes</a>
 	</span>
 	<span class="titleRight">
 		<label for="radio31-1"><i class="fas fa-compress-alt"></i></label>

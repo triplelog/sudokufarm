@@ -244,13 +244,13 @@ tr {
 {% block content11 %}
 	<table id="dataTable">
 		<tr id="emojiData">
-			<td class="firstSix">🍕</td>
-			<td class="firstSix">💦</td>
-			<td class="firstSix">🍚</td>
-			<td class="firstSix">💩</td>
-			<td class="firstSix">🔥</td>
-			<td class="firstSix">👕</td>
-			<td class="peopleTD">👤</td>
+			<td class="firstSix">{{ emojiList[0] }}</td>
+			<td class="firstSix">{{ emojiList[1] }}</td>
+			<td class="firstSix">{{ emojiList[2] }}</td>
+			<td class="firstSix">{{ emojiList[3] }}</td>
+			<td class="firstSix">{{ emojiList[4] }}</td>
+			<td class="firstSix">{{ emojiList[5] }}</td>
+			<td class="peopleTD">{{ emojiList[6] }}</td>
 		</tr>
 		
 		<tr id="newData">
@@ -345,12 +345,12 @@ Download Sudoku Farm for iOS.
 
 {% block content22 %}
 	<div id="buttonRow">
-		{% for coli in [1,2,3,4,5,6,7,8,9] %}<span class="button{{ coli }}" id="button-{{ coli }}"><img src="../sfarm/{{ coli }}.png" /></span>{% endfor %}
+		{% for coli in [1,2,3,4,5,6,7,8,9] %}<span class="button{{ coli }}" id="button-{{ coli }}"><img src="../sfarm/{{ imgList[coli] }}.png" /></span>{% endfor %}
 	</div>
 	<div id="sudokuTable">
 		{% for rowi in [0,1,2,3,4,5,6,7,8] %}
 			<div class="row{{ rowi }}">
-			{% for coli in [0,1,2,3,4,5,6,7,8] %}<span class="col{{ coli }}" id="cell-{{ rowi }}-{{ coli }}">{% if cells[rowi][coli] > 0 %}<img src="../sfarm/{{ cells[rowi][coli] }}.png" />{% endif %}</span>{% endfor %}
+			{% for coli in [0,1,2,3,4,5,6,7,8] %}<span class="col{{ coli }}" id="cell-{{ rowi }}-{{ coli }}">{% if cells[rowi][coli] > 0 %}<img src="../sfarm/{{ imgList[cells[rowi][coli]] }}.png" />{% endif %}</span>{% endfor %}
 			</div>
 		{% endfor %}
 	</div>

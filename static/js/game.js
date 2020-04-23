@@ -142,7 +142,7 @@ function updateCell(evt){
 		//add image
 		el.innerHTML = '';
 		var img = document.createElement('img');
-		img.setAttribute('src','../sfarm/'+selectedButton+'.png');
+		img.setAttribute('src','../sfarm/'+imgList[selectedButton]+'.png');
 		el.appendChild(img);
 		//Update puzzle
 		puzzle[cellId[0]][cellId[1]] = selectedButton;
