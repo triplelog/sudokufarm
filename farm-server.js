@@ -42,6 +42,18 @@ wss.on('connection', function connection(ws) {
   	});
 });
 
+app.get('/index.html',
+	function(req, res){
+		
+		
+		res.write(nunjucks.render('templates/index.html',{
+			
+		}));
+		res.end();
+	
+    }
+    
+);
 
 
 app.get('/game',
