@@ -202,7 +202,6 @@ var nPeopleReset = nPeople;
 var bpyReset = bpy;
 var existingPlotsReset = existingPlots.slice();
 
-var moves = [];
-moves.push({'selectedButton':6,'selectedR':0,'selectedC':7});
-moves.push({'selectedButton':6,'selectedR':3,'selectedC':5});		
+var moves = [];		
 resetGame();
+document.getElementById("resetGame").addEventListener('click',resetGame);
