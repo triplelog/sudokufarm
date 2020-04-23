@@ -85,9 +85,15 @@ body {
 </div>
 {% endblock %}
 {% block content11 %}
-<label for="resource1emoji">Resource 1: </label>
-<input type="text" id="resource1name"></input>
-<input type="text" id="resource1emoji"></input>
+
+{% for i in range(1,8) %}
+<div>
+	<label for="resource{{ i }}emoji">Resource {{ i }}: </label>
+	<input type="text" id="resource{{ i }}name"></input>
+	<input type="text" id="resource{{ i }}emoji"></input>
+</div>
+{% endfor %}
+
 <table id="dataTable">
 	<tr id="emojiData">
 		<td class="firstSix">🍕</td>
@@ -121,6 +127,19 @@ body {
 </div>
 {% endblock %}
 {% block content13 %}
+
+{% for i in range(1,10) %}
+<div>
+	<label for="item{{ i }}icon">Item {{ i }}: </label>
+	<input type="text" id="item{{ i }}name"></input>
+	<input type="text" id="item{{ i }}icon"></input>
+</div>
+{% endfor %}
+
+<div id="buttonRow">
+	{% for coli in [1,2,3,4,5,6,7,8,9] %}<span class="button{{ coli }}" id="button-{{ coli }}"><img src="../sfarm/{{ coli }}.png" /></span>{% endfor %}
+</div>
+
 
 {% endblock %}	
 
