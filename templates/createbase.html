@@ -228,6 +228,8 @@ body {
 
 
 {% block scripts %}
+var emojiList = {{ emojiList | dump | safe }};
+var imgList = {{ imgList | dump | safe }};
 <script src="../js/creategame.js"></script>
 {% endblock %}
 
