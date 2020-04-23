@@ -182,7 +182,7 @@ function resetGame() {
 		updateSGN();
 		selectedR = savedMoves[i].selectedR;
 		selectedC = savedMoves[i].selectedC;
-		updateCell();
+		updateCell(false);
 		console.log(totals);
 	}
 	
