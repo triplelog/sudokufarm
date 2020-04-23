@@ -12,7 +12,6 @@ ws.onmessage = function(evt){
 		dm = JSON.parse(evt.data);
 	}
 	if (dm.puzzle){
-		console.log(dm.puzzle);
 		document.getElementById("sudoku").value = dm.puzzle;
 		chgSudoku();
 	}

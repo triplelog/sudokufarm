@@ -9,8 +9,8 @@
 {% endblock %}
 	
 {% block centerSize %}
-	--height-center: 150px;
-	--width-center: 200px;
+	--height-center: 70vh;
+	--width-center: calc(9 * var(--width-block) + 22px);
 {% endblock %}
 
 {% block titleCSS %}
@@ -215,7 +215,48 @@ body {
 
 
 {% block content22 %}
-	Sudoku Farm
+	<table id="dataTable">
+		<tr id="emojiData">
+			<td class="firstSix">{{ emojiList[0] }}</td>
+			<td class="firstSix">{{ emojiList[1] }}</td>
+			<td class="firstSix">{{ emojiList[2] }}</td>
+			<td class="firstSix">{{ emojiList[3] }}</td>
+			<td class="firstSix">{{ emojiList[4] }}</td>
+			<td class="firstSix">{{ emojiList[5] }}</td>
+			<td class="peopleTD">{{ emojiList[6] }}</td>
+		</tr>
+		
+		<tr id="newData">
+			<td class="pointsBoard1 firstSix">{{ totals[1] }}</td>
+			<td class="pointsBoard2 firstSix">{{ totals[2] }}</td>
+			<td class="pointsBoard3 firstSix">{{ totals[3] }}</td>
+			<td class="pointsBoard4 firstSix">{{ totals[4] }}</td>
+			<td class="pointsBoard5 firstSix">{{ totals[5] }}</td>
+			<td class="pointsBoard6 firstSix">{{ totals[6] }}</td>
+			<td class="pointsBoard7 peopleTD">{{ nPeople }}</td>
+		</tr>
+
+		<tr id="changeData">
+			<td class="pointsBoard1c firstSix"></td>
+			<td class="pointsBoard2c firstSix"></td>
+			<td class="pointsBoard3c firstSix"></td>
+			<td class="pointsBoard4c firstSix"></td>
+			<td class="pointsBoard5c firstSix"></td>
+			<td class="pointsBoard6c firstSix"></td>
+			<td class="pointsBoard7c peopleTD"></td>
+		</tr>
+		
+	</table>
+	<div id="buttonRow">
+		{% for coli in [1,2,3,4,5,6,7,8,9] %}<span class="button{{ coli }}" id="button-{{ coli }}"><img src="../sfarm/{{ imgList[coli] }}.png" /></span>{% endfor %}
+	</div>
+	<div id="sudokuTable">
+		{% for rowi in [0,1,2,3,4,5,6,7,8] %}
+			<div class="row{{ rowi }}">
+			{% for coli in [0,1,2,3,4,5,6,7,8] %}<span class="col{{ coli }}" id="cell-{{ rowi }}-{{ coli }}">{% if cells[rowi][coli] > 0 %}<img src="../sfarm/{{ imgList[cells[rowi][coli]] }}.png" />{% endif %}</span>{% endfor %}
+			</div>
+		{% endfor %}
+	</div>
 {% endblock %}
 
 
@@ -232,7 +273,29 @@ body {
 <script>
 var emojiList = {{ emojiList | dump | safe }};
 var imgList = {{ imgList | dump | safe }};
+var puzzle = {{ puzzle | dump | safe }};
+			/*totals: levelJson.initialTotals,
+			nPeople: levelJson.startPeople,
+			bpy: levelJson.bpy,
+			itemPerThing: levelJson.itemPerThing,
+			spendPerThing: levelJson.spendPerThing,
+			spendPerPerson: levelJson.spendPerPerson,*/
+			
+	
+			
+//var puzzle = {{ puzzle | dump | safe if puzzle else '[]'}};
+var totals = {{ totals | dump | safe if totals else '[]'}};
+var nPeople = {{ nPeople | dump | safe if nPeople else '[]'}};
+var bpy = {{ bpy | dump | safe if bpy else '[]'}};
+var existingPlots = {{ existingPlots | dump | safe if existingPlots else '[]'}};
+var itemPerThing = {{ itemPerThing | dump | safe if itemPerThing else '[]'}};
+var spendPerThing = {{ spendPerThing | dump | safe if spendPerThing else '[]'}};
+var spendPerPerson = {{ spendPerPerson | dump | safe if spendPerPerson else '[]'}};
+var nYears = 1;
+		
+
 </script>
 <script src="../js/creategame.js"></script>
+<script src="../js/gamelogic.js"></script>
 {% endblock %}
 
