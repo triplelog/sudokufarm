@@ -325,6 +325,7 @@ function goodStrategy(allPlays) {
 }
 
 function runSimulation() {
+	console.log('A',performance.now());
 	resetPuzzle()
 	let savednPeople = nPeople //int
 	var savedcurrentPuzzle = []
@@ -338,6 +339,7 @@ function runSimulation() {
 	let savednYear = nYear //int
 	
 	var easyPuzzle = true
+	console.log('B',performance.now());
 	while (stopSudoku) {
 		var allPlays = []
 		allPlays = allPlays.concat(checkRow( currentPuzzle))
@@ -479,12 +481,14 @@ function runSimulation() {
 			stopSudoku = false
 		}
 	}
+	console.log('C',performance.now());
 	if (easyPuzzle) {
 		var neededTotals = [0,0,0,0,0,0,0]
 		let maxRuns = 5
 		
 		for (var nRuns=1;nRuns<maxRuns+1;nRuns++) {	
 			resetPuzzle()
+			console.log('D',performance.now());
 			while (stopSudoku) {
 				var allPlays = []
 				allPlays = allPlays.concat(checkRow(currentPuzzle))
@@ -1559,12 +1563,10 @@ for (var i=0;i<1000;i++) {
 	initialPuzzle = puzzleArray[i*2]
 	solution = puzzleArray[i*2+1]
 	addedNumbers = [0,0,0,0,0,0,0,0,0,0]
-	console.log(i,performance.now());
 	var x = runSimulation();
-	console.log(i,performance.now());
 	if (x < 2) {
 		addedNumbers = [0,0,0,0,0,0,0,0,0,0]
 		runSimulation()
 	}
-	console.log(i,performance.now());
+	
 }
