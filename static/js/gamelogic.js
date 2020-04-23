@@ -174,28 +174,33 @@ function resetGame() {
 	moves = [];
 	updateSGN();	
 		
-	var el = document.getElementById('buttonRow');
-	var buttons = el.querySelectorAll('span');
-	for (var i=0;i<buttons.length;i++){
-		buttons[i].addEventListener('click',chgButton);
-	}
-
-	var el = document.getElementById('sudokuTable');
-	var cells = el.querySelectorAll('span');
-	for (var i=0;i<cells.length;i++){
-		cells[i].addEventListener('click',updateCell);
-	}
+	
 	
 	for (var i=0;i<savedMoves.length;i++){
+		console.log(totals);
 		selectedButton = savedMoves[i].selectedButton;
 		updateSGN();
 		selectedR = savedMoves[i].selectedR;
 		selectedC = savedMoves[i].selectedC;
 		updateCell();
+		console.log(totals);
 	}
 	
 	
 }
+
+var el = document.getElementById('buttonRow');
+var buttons = el.querySelectorAll('span');
+for (var i=0;i<buttons.length;i++){
+	buttons[i].addEventListener('click',chgButton);
+}
+
+var el = document.getElementById('sudokuTable');
+var cells = el.querySelectorAll('span');
+for (var i=0;i<cells.length;i++){
+	cells[i].addEventListener('click',updateCell);
+}
+	
 var selectedButton = 0;
 var selectedR = 0;
 var selectedC = 0;
