@@ -66,6 +66,13 @@ body {
 	background-size: cover;
 	
 }
+
+#buttonRow {
+	width: 95%;
+}
+#buttonRow img {
+	width: 10%;
+}
 {% endblock %}
 
 
@@ -128,6 +135,10 @@ body {
 {% endblock %}
 {% block content13 %}
 
+<div id="buttonRow">
+	{% for coli in [1,2,3,4,5,6,7,8,9] %}<span class="button{{ coli }}" id="button-{{ coli }}"><img src="../sfarm/{{ coli }}.png" /></span>{% endfor %}
+</div>
+
 {% for i in range(1,10) %}
 <div>
 	<label for="item{{ i }}icon">Item {{ i }}: </label>
@@ -136,9 +147,7 @@ body {
 </div>
 {% endfor %}
 
-<div id="buttonRow">
-	{% for coli in [1,2,3,4,5,6,7,8,9] %}<span class="button{{ coli }}" id="button-{{ coli }}"><img src="../sfarm/{{ coli }}.png" /></span>{% endfor %}
-</div>
+
 
 
 {% endblock %}	
@@ -160,6 +169,15 @@ body {
 {% endblock %}
 {% block content31 %}
 
+<table>
+	{% for i in range(1,8) %}
+		<tr>
+		{% for ii in range(1,12) %}
+			<td>ii</td>
+		{% endfor %}
+		</tr>
+	{% endfor %}
+</table>
 {% endblock %}
 
 {% block title33 %}
