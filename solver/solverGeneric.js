@@ -23,7 +23,8 @@ var minTotals = [0]
 var whereNumbers = [[[0]]]
 var addedNumbers = [0,0,0,0,0,0,0,0,0,0]
 var currentSolution = [[[0]]]
-
+var elapsedTime = 0;
+var coveredRows = {};
 function toCSS(somepuzzle) {
 	var csspuzzle = [[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0]]
 	for (var iiii=0;iiii<9;iiii++) {
@@ -192,6 +193,7 @@ function fitSpot(puzzle, row, col, block, num) {
 }
 
 function checkRow(puzzle){
+	var startTime = performance.now();
 	var allPlays = []
 	for (var num=1;num<10;num++){
 		for (var row=0;row<9;row++) {
@@ -212,6 +214,7 @@ function checkRow(puzzle){
 			}
 		}
 	}
+	elapsedTime += performance.now()-startTime;
 	return allPlays
 }
 
@@ -1542,7 +1545,7 @@ var allPuzzles = `
 allPuzzles = allPuzzles.replace(/\n/g, "")
 let puzzleArray = allPuzzles.split(",")
 for (var i=0;i<1000;i++) {
-	console.log(i,performance.now());
+	//console.log(i,performance.now());
 	initialPuzzle = puzzleArray[i*2]
 	solution = puzzleArray[i*2+1]
 	addedNumbers = [0,0,0,0,0,0,0,0,0,0]
@@ -1551,5 +1554,7 @@ for (var i=0;i<1000;i++) {
 		addedNumbers = [0,0,0,0,0,0,0,0,0,0]
 		runSimulation()
 	}
-	
+	if (i%100==0){
+		console.log(i,elapsedTime);
+	}	
 }
