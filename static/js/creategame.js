@@ -41,8 +41,20 @@ function chgSudoku(evt) {
 	puzzleRaw = puzzleRaw.replace(/\s/g,'');
 	puzzleRaw = puzzleRaw.replace(/\t/g,'');
 	puzzleRaw = puzzleRaw.replace(/\n/g,'');
-	puzzleRaw = puzzleRaw.replace(/|/g,'');
+	puzzleRaw = puzzleRaw.replace(/\|/g,'');
 	puzzleRaw = puzzleRaw.replace(/-/g,'');
-	console.log(puzzleRaw.substring(0,81));
+	puzzleRaw = puzzleRaw.replace(/./g,'0');
+	var puzzles = [];
+	var puzzle = [];
+	for (var i=0;i<puzzleRaw.length;i++){
+		if ('0123456789'.indexOf(puzzleRaw[i])>-1){
+			puzzle.push(puzzleRaw[i]);
+		}
+		if (puzzle.length==81){
+			puzzles.push(puzzle);
+			puzzle = [];
+		}
+	}
+	console.log(puzzles);
 }
 document.getElementById("sudoku").addEventListener('change',chgSudoku);
