@@ -3,9 +3,9 @@ function chgResource(evt) {
 	var id = parseInt(el.id.substr(8,9));
 	var ell = document.getElementById("emojiData");
 	var elll = ell.querySelectorAll("td")[id-1];
-	emojiList[id] = el.value;
+	emojiList[id-1] = el.value;
 	elll.textContent = el.value;
-	console.log(emojiList);
+	
 	document.getElementById("income"+id+"emoji").textContent = el.value;
 }
 
@@ -22,7 +22,7 @@ document.getElementById("resource7emoji").addEventListener('change',chgResource)
 function chgItem(evt) {
 	var el = evt.target;
 	var id = parseInt(el.id.substr(4,5));
-	console.log(id);
+	imgList[id]=el.value;
 }
 document.getElementById("item1icon").addEventListener('change',chgItem);
 document.getElementById("item2icon").addEventListener('change',chgItem);
@@ -33,3 +33,10 @@ document.getElementById("item6icon").addEventListener('change',chgItem);
 document.getElementById("item7icon").addEventListener('change',chgItem);
 document.getElementById("item8icon").addEventListener('change',chgItem);
 document.getElementById("item9icon").addEventListener('change',chgItem);
+
+
+function chgSudoku(evt) {
+	var el = evt.target;
+	console.log(el.value);
+}
+document.getElementById("sudoku").addEventListener('change',chgSudoku);
