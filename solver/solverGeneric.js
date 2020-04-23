@@ -303,66 +303,16 @@ function goodStrategy(allPlays) {
 		}
 	}
 
-	if (chooseIndex == 1) {
+	if (chooseIndex >0 && chooseIndex <= 6) {
 		var arrData = []
 		for (var i=1;i<10;i++){
-			arrData.push([i,itemPerThing[1][i-1]-spendPerThing[1][i-1]]);
+			arrData.push([i,itemPerThing[chooseIndex][i-1]-spendPerThing[chooseIndex][i-1]]);
 		}
-		console.log(arrData);
 		arrData = arrData.sort(function(a,b) {return b[1]-a[1];});
-		console.log(arrData);
 		var arr = [];
 		for (var i=1;i<10;i++){
 			arr.push(arrData[i-1][0]);
 		}
-		console.log(arr);
-		console.log(asdjf);
-		arr.forEach( i => {
-			if (goodNums.includes(i)) {
-				return playIndex[i]
-			}
-		})
-	}
-	else if (chooseIndex == 2) {
-		var arr = [4,5,6,1,2,3]
-		arr.forEach( i => {
-			if (goodNums.includes(i)) {
-				return playIndex[i]
-			}
-		})
-	}
-	else if (chooseIndex == 3) {
-		var arr = [9,8,6,7,4,5,3,2,1]
-		arr.forEach( i => {
-			if (goodNums.includes(i)) {
-				return playIndex[i]
-			}
-		})
-	}
-	else if (chooseIndex == 4) {
-		var arr
-		if (itemSpends[1]-itemGets[1] < itemSpends[6]-itemGets[6]) {
-			arr = [3,1,2,4,5,6]
-		}
-		else {
-			arr = [2,1,3,4,5,6]
-		}
-		arr.forEach( i => {
-			if (goodNums.includes(i)) {
-				return playIndex[i]
-			}
-		})
-	}
-	else if (chooseIndex == 5) {
-		var arr = [5,6]
-		arr.forEach( i => {
-			if (goodNums.includes(i)) {
-				return playIndex[i]
-			}
-		})
-	}
-	else if (chooseIndex == 6) {
-		var arr = [3,1]
 		arr.forEach( i => {
 			if (goodNums.includes(i)) {
 				return playIndex[i]
