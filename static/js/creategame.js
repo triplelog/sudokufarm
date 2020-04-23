@@ -46,11 +46,16 @@ function chgSudoku(evt) {
 	puzzleRaw = puzzleRaw.replace(/\./g,'0');
 	var puzzles = [];
 	var puzzle = [];
+	var row = [];
 	for (var i=0;i<puzzleRaw.length;i++){
 		if ('0123456789'.indexOf(puzzleRaw[i])>-1){
-			puzzle.push(puzzleRaw[i]);
+			row.push(puzzleRaw[i]);
 		}
-		if (puzzle.length==81){
+		if (row.length == 9){
+			puzzle.push(row);
+			row = [];
+		}
+		if (puzzle.length==9){
 			puzzles.push(puzzle);
 			puzzle = [];
 		}
