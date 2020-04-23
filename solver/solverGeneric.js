@@ -24,7 +24,7 @@ var whereNumbers = [[[0]]]
 var addedNumbers = [0,0,0,0,0,0,0,0,0,0]
 var currentSolution = [[[0]]]
 var elapsedTime = 0;
-var coveredRows = {};
+var possibleRows = {};
 function toCSS(somepuzzle) {
 	var csspuzzle = [[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0]]
 	for (var iiii=0;iiii<9;iiii++) {
@@ -74,12 +74,20 @@ function convertPuzzle() {
 	var puzzle = [[[],[],[]],[[],[],[]],[[],[],[]]]
 	var solvedPuzzle = [[[],[],[]],[[],[],[]],[[],[],[]]]
 	whereNumbers = [[],[],[],[],[],[],[],[],[]]
+	possibleRows = {1:[0,1,2,3,4,5,6,7,8],2:[0,1,2,3,4,5,6,7,8],3:[0,1,2,3,4,5,6,7,8],4:[0,1,2,3,4,5,6,7,8],5:[0,1,2,3,4,5,6,7,8],6:[0,1,2,3,4,5,6,7,8],7:[0,1,2,3,4,5,6,7,8],8:[0,1,2,3,4,5,6,7,8],9:[0,1,2,3,4,5,6,7,8]};
 	for (var iiii=0;iiii<3;iiii++) {
 		for (var iii=0;iii<3;iii++) {
 			for (var ii=0;ii<3;ii++) {
 				for (var i=0;i<3;i++) {
 					let index = i+9*ii+3*iii+27*iiii
 					var piece = oldPuzzle[index]
+					if (piece > 0){
+						for( var arri = 0; arri < possibleRows[piece].length; arri++){ 
+							if ( possibleRows[piece][arri] === piece) { 
+								possibleRows[piece].splice(arri, 1); break;
+							}
+						}
+					}
 					puzzle[iiii][iii].push(piece)
 					var blankSpace = false
 					if (piece == 0) {
@@ -196,7 +204,8 @@ function checkRow(puzzle){
 	var startTime = performance.now();
 	var allPlays = []
 	for (var num=1;num<10;num++){
-		for (var row=0;row<9;row++) {
+		for (var rowi in possibleRows[num]) {
+			var row = possibleRows[num][rowi];
 			var numSpots = -1
 			for (var i=0;i<9;i++) {
 				if (fitSpot(puzzle, row, i, Math.floor(i/3)+3*Math.floor(row/3), num)) {
