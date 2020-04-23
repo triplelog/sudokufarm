@@ -377,6 +377,7 @@ Download Sudoku Farm for iOS.
 		var spendPerThing = {{ spendPerThing | dump | safe if spendPerThing else '[]'}};
 		var spendPerPerson = {{ spendPerPerson | dump | safe if spendPerPerson else '[]'}};
 		var nYears = 1;
+		var imgList = {{ imgList | dump | safe }};
 	</script>
 	<script src="../js/game.js"></script>
 {% endblock %}
