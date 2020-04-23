@@ -230,7 +230,17 @@ tr {
 {% endblock %}
 {% block content11 %}
 
-
+<table id="dataTable2">
+	<tr id="emojiData2">
+		<td class="firstSix">{{ emojiList[0] }}</td>
+		<td class="firstSix">{{ emojiList[1] }}</td>
+		<td class="firstSix">{{ emojiList[2] }}</td>
+		<td class="firstSix">{{ emojiList[3] }}</td>
+		<td class="firstSix">{{ emojiList[4] }}</td>
+		<td class="firstSix">{{ emojiList[5] }}</td>
+		<td class="peopleTD">{{ emojiList[6] }}</td>
+	</tr>
+</table>
 
 {% for i in range(1,8) %}
 <div>
@@ -264,7 +274,9 @@ tr {
 {% endblock %}
 {% block content13 %}
 
-
+<div id="buttonRow2">
+	{% for coli in [1,2,3,4,5,6,7,8,9] %}<span class="button{{ coli }}"><img src="../sfarm/{{ imgList[coli] }}.png" /></span>{% endfor %}
+</div>
 
 {% for i in range(1,10) %}
 <div>
