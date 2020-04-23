@@ -44,6 +44,7 @@ function updateTotals(save) {
 			}
 		}
 		else {
+			console.log(totals);
 			totals[i] += itemGets[i];
 			totals[i] -= itemSpends[i];
 			if (i>0){
