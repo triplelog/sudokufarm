@@ -161,10 +161,11 @@ function resetGame() {
 	itemGets = [0,0,0,0,0,0,0];
 	puzzle = puzzleReset.slice();
 	totals = totalsReset.slice();
-	console.log(totals);
+	
 	nPeople = nPeopleReset;
 	bpy = bpyReset;
 	existingPlots = existingPlotsReset.slice();
+	console.log(existingPlots);
 	nYears = 1;
 	var savedMoves = moves;
 	moves = [];
