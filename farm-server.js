@@ -10,8 +10,8 @@ const https = require('https');
 var nunjucks = require('nunjucks');
 
 const options = {
-  key: fs.readFileSync('/etc/letsencrypt/live/matherrors.com/privkey.pem'),
-  cert: fs.readFileSync('/etc/letsencrypt/live/matherrors.com/fullchain.pem')
+  key: fs.readFileSync('/etc/letsencrypt/live/soliturn.com/privkey.pem'),
+  cert: fs.readFileSync('/etc/letsencrypt/live/soliturn.com/fullchain.pem')
 };
 
 
