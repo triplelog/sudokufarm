@@ -44,7 +44,6 @@ function updateTotals(save) {
 			}
 		}
 		else {
-			console.log(totals);
 			totals[i] += itemGets[i];
 			totals[i] -= itemSpends[i];
 			if (i>0){
@@ -110,6 +109,7 @@ function updateCell(evt){
 	//check if has image already
 	var cellId = [parseInt(el.id.split('-')[1]),parseInt(el.id.split('-')[2])];
 	var cellValue = parseInt(puzzle[cellId[0]][cellId[1]]);
+	console.log(el,cellValue,cellId);
 	if (cellValue == 0){ 
 		//check possible
 		for (var i=0;i<puzzle.length;i++){
