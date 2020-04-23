@@ -37,6 +37,12 @@ document.getElementById("item9icon").addEventListener('change',chgItem);
 
 function chgSudoku(evt) {
 	var el = evt.target;
-	console.log(el.value);
+	var puzzleRaw = el.value;
+	puzzleRaw = puzzleRaw.replace(/\s/g,'');
+	puzzleRaw = puzzleRaw.replace(/\t/g,'');
+	puzzleRaw = puzzleRaw.replace(/\n/g,'');
+	puzzleRaw = puzzleRaw.replace(/|/g,'');
+	puzzleRaw = puzzleRaw.replace(/-/g,'');
+	console.log(puzzleRaw.substring(0,81));
 }
 document.getElementById("sudoku").addEventListener('change',chgSudoku);
