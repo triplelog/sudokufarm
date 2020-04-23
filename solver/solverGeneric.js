@@ -362,7 +362,6 @@ function runSimulation() {
 			}
 
 			updatePop()
-			console.log('E',performance.now());
 		}
 		else {
 			var neededTotals = [0,0,0,0,0,0,0]
