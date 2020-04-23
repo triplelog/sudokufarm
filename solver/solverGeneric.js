@@ -1,4 +1,5 @@
 'use strict';
+const { PerformanceObserver, performance } = require('perf_hooks');
 //let initialPuzzle = "....15.9...3...4...893.461.39..6..87.2.....3....4.3...4..1.7..9..1...8..7..5.83.1"
 //let solution = "246815793173926458589374612394261587625789134817453926458137269931642875762598341"
 var initialPuzzle = "...25..8...8.7.1...6.....9....8139..8.24.9..5.1.........4...7...317.2.4.5.7...836"
@@ -1554,12 +1555,16 @@ var allPuzzles = `
 allPuzzles = allPuzzles.replace(/\n/g, "")
 let puzzleArray = allPuzzles.split(",")
 for (var i=0;i<1000;i++) {
+	console.log(i,performance.now());
 	initialPuzzle = puzzleArray[i*2]
 	solution = puzzleArray[i*2+1]
 	addedNumbers = [0,0,0,0,0,0,0,0,0,0]
+	console.log(i,performance.now());
 	var x = runSimulation();
+	console.log(i,performance.now());
 	if (x < 2) {
 		addedNumbers = [0,0,0,0,0,0,0,0,0,0]
 		runSimulation()
 	}
+	console.log(i,performance.now());
 }
