@@ -149,8 +149,9 @@ function updateCell(evt){
 		//Update supplies
 		existingPlots[selectedButton-1]++;
 		
-		updateSGN();
 		updateTotals(true);
+		updateSGN();
+		
 		if (nYears%bpy[1] == 0) {
 			nPeople+=bpy[0];
 		}
