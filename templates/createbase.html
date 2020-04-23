@@ -67,11 +67,148 @@ body {
 	
 }
 
+:root {
+	--width-block: 10px;
+    --shift-cover-puzzle: calc(-40px - var(--width-block)*9); 
+    --left-margin: 0px;
+    --color-bg1: rgba(180,180,180,.75);
+    --color-text1: black;
+    --sudoku-top: 200px;
+    --sudoku-left: 200px;
+}
+@media screen and (min-width: 320px) and (min-height: 320px) {
+	:root {
+    	--width-block: 20px;
+    }
+}
+@media screen and (min-width: 480px) and (min-height: 480px) {
+	:root {
+    	--width-block: 30px;
+    }
+}
+@media screen and (min-width: 720px) and (min-height: 720px) {
+	:root {
+    	--width-block: 40px;
+    }
+}
+@media screen and (min-width: 1080px) and (min-height: 1080px) {
+	:root {
+    	--width-block: 50px;
+    }
+}
+
+
+#dataTable {
+	background-color: rgba(255,255,255,1);
+	top: 15px;
+	text-align: center;
+	width: calc(9 * var(--width-block) + 22px);
+	margin: auto;
+}
+#newData {
+	background-color: rgba(255,255,255,1);
+	text-align: center;
+}
+#changeData {
+	background-color: rgba(0,0,0,.25);
+	text-align: center;
+	
+}
+#emojiData {
+	background-color: rgba(0,0,0,.05);
+	text-align: center;
+	
+}
+table {
+	border-collapse:collapse;
+}
+tr {
+	background-color: rgba(0,255,255,1);
+	height: 25px;
+}
+
 #buttonRow {
-	width: 95%;
+	width: calc(9 * var(--width-block) + 18px);
+	height: calc(1 * var(--width-block) + 2px);
+	border: 1px solid black;
+	margin: auto;
+	padding: 0px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+#buttonRow span {
+	border: 1px solid black;
+	height: calc(1 * var(--width-block));
+	display: inline-block;
+}
+#buttonRow span.finished {
+	border: 1px solid gray;
+	background: rgba(0,0,0,.2);
+	pointer-events: none;
+}
+#buttonRow span.selected {
+	border: 1px solid green;
+	background: rgba(0,255,0,.2);
+	height: calc(1 * var(--width-block));
+	display: inline-block;
 }
 #buttonRow img {
-	width: 10%;
+	height: var(--width-block);
+}
+
+#sudokuTable {
+	width: calc(9 * var(--width-block) + 22px);
+	margin: auto;
+	padding: 0px;
+}
+#sudokuTable img {
+	height: var(--width-block);
+}
+{% for rowi in [0,1,2,3,4,5,6,7,8] %}
+	.row{{ rowi }} {
+		display: block;
+		margin: 0px;
+		padding: 0px;
+		border-bottom: 1px solid black;
+		height: calc(1 * var(--width-block) );
+	}
+{% endfor %}
+{% for coli in [0,1,2,3,4,5,6,7,8] %}
+	.col{{ coli }} {
+		border-right: 1px solid black;
+		
+		height: calc(1 * var(--width-block) );
+		width: calc(1 * var(--width-block) );
+		display: inline-block;
+		line-height: calc(1 * var(--width-block) );
+		text-align: center;
+		margin: 0px;
+	}
+{% endfor %}
+.col0 {
+	border-left: 5px solid black;
+}
+.col2 {
+	border-right: 3px solid black;
+}
+.col5 {
+	border-right: 3px solid black;
+}
+.col8 {
+	border-right: 5px solid black;
+}
+
+.row0 {
+	border-top: 5px solid black;
+}
+.row2 {
+	border-bottom: 3px solid black;
+}
+.row5 {
+	border-bottom: 3px solid black;
+}
+.row8 {
+	border-bottom: 5px solid black;
 }
 {% endblock %}
 
