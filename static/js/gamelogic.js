@@ -159,6 +159,12 @@ function resetGame() {
 	selectedButton = 0;
 	itemSpends = [0,0,0,0,0,0,0];
 	itemGets = [0,0,0,0,0,0,0];
+	puzzle = puzzleReset.slice();
+	totals = totalsReset.slice();
+	nPeople = nPeopleReset;
+	bpy = bpyReset;
+	existingPlots = existingPlotsReset.slice();
+	nYears = 1;
 	var savedMoves = moves;
 	moves = [];
 	updateSGN();	
@@ -189,6 +195,12 @@ var selectedR = 0;
 var selectedC = 0;
 var itemSpends = [0,0,0,0,0,0,0];
 var itemGets = [0,0,0,0,0,0,0];
+var puzzleReset = puzzle.slice();
+var totalsReset = totals.slice();
+var nPeopleReset = nPeople;
+var bpyReset = bpy;
+var existingPlotsReset = existingPlots.slice();
+
 var moves = [];
 moves.push({'selectedButton':6,'selectedR':0,'selectedC':7});
 moves.push({'selectedButton':6,'selectedR':3,'selectedC':5});		
