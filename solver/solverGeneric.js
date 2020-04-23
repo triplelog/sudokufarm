@@ -83,7 +83,7 @@ function convertPuzzle() {
 					var piece = oldPuzzle[index]
 					if (piece > 0){
 						for( var arri = 0; arri < possibleRows[piece].length; arri++){ 
-							if ( possibleRows[piece][arri] === piece) { 
+							if ( possibleRows[piece][arri] === iiii) { 
 								possibleRows[piece].splice(arri, 1); break;
 							}
 						}
@@ -362,7 +362,15 @@ function runSimulation() {
 			updateSG()
 			let chooseIndex = goodStrategy(allPlays)
 			currentPuzzle[allPlays[chooseIndex][1]][allPlays[chooseIndex][2]][allPlays[chooseIndex][3]]=allPlays[chooseIndex][0]
-
+			
+			
+			for( var arri = 0; arri < possibleRows[allPlays[chooseIndex][0]].length; arri++){ 
+				if ( possibleRows[piece][arri] === allPlays[chooseIndex][1]) { 
+					possibleRows[piece].splice(arri, 1); break;
+				}
+			}
+			
+			
 			updateBN()
 			updateSG()
 			for (var i=0;i<7;i++) {
