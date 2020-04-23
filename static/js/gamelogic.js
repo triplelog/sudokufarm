@@ -183,6 +183,7 @@ function resetGame() {
 	
 	for (var i=0;i<savedMoves.length;i++){
 		selectedButton = savedMoves[i].selectedButton;
+		updateSGN();
 		selectedR = savedMoves[i].selectedR;
 		selectedC = savedMoves[i].selectedC;
 		updateCell();
