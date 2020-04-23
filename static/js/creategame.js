@@ -19,9 +19,13 @@ ws.onmessage = function(evt){
 function chgResource(evt) {
 	var el = evt.target;
 	var id = parseInt(el.id.substr(8,9));
-	var ell = document.getElementById("emojiData2");
+	var ell = document.getElementById("emojiData");
 	var elll = ell.querySelectorAll("td")[id-1];
 	emojiList[id-1] = el.value;
+	elll.textContent = el.value;
+	
+	ell = document.getElementById("emojiData2");
+	elll = ell.querySelectorAll("td")[id-1];
 	elll.textContent = el.value;
 	
 	document.getElementById("income"+id+"emoji").textContent = el.value;
