@@ -472,7 +472,6 @@ function runSimulation() {
 		
 		for (var nRuns=1;nRuns<maxRuns+1;nRuns++) {	
 			resetPuzzle()
-			console.log('D',performance.now());
 			while (stopSudoku) {
 				var allPlays = []
 				allPlays = allPlays.concat(checkRow(currentPuzzle))
