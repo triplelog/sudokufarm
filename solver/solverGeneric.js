@@ -350,7 +350,9 @@ function runSimulation() {
 		if (allPlays.length>0) {
 			updateBN()
 			updateSG()
+			console.log('C',performance.now());
 			let chooseIndex = goodStrategy(allPlays)
+			console.log('D',performance.now());
 			currentPuzzle[allPlays[chooseIndex][1]][allPlays[chooseIndex][2]][allPlays[chooseIndex][3]]=allPlays[chooseIndex][0]
 
 			updateBN()
@@ -364,7 +366,7 @@ function runSimulation() {
 			}
 
 			updatePop()
-			console.log('C',performance.now());
+			console.log('E',performance.now());
 		}
 		else {
 			var neededTotals = [0,0,0,0,0,0,0]
@@ -395,7 +397,7 @@ function runSimulation() {
 			if (nYear != 81) {
 				easyPuzzle = false
 			}
-			console.log('D',performance.now());
+			
 			if (easyPuzzle) {
 				
 				
