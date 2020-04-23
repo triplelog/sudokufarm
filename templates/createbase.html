@@ -85,7 +85,20 @@ body {
 </div>
 {% endblock %}
 {% block content11 %}
-
+<label for="resource1emoji">Resource 1: </label>
+<input type="text" id="resource1name"></input>
+<input type="text" id="resource1emoji"></input>
+<table id="dataTable">
+	<tr id="emojiData">
+		<td class="firstSix">🍕</td>
+		<td class="firstSix">💦</td>
+		<td class="firstSix">🍚</td>
+		<td class="firstSix">💩</td>
+		<td class="firstSix">🔥</td>
+		<td class="firstSix">👕</td>
+		<td class="peopleTD">👤</td>
+	</tr>
+</table>
 {% endblock %}	
 
 {% block title13 %}
@@ -167,6 +180,6 @@ body {
 
 
 {% block scripts %}
-
+<script src="../js/creategame.js"></script>
 {% endblock %}
 
