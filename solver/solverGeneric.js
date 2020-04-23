@@ -421,27 +421,24 @@ function runSimulation() {
 					}
 					var addNow = false;
 					arr.forEach( i => {
-						if (addedNumbers[i]==0) {
+						if (!addedNow && addedNumbers[i]==0) {
 							addedNumbers[i]+=1;
 							addedNow = true;
-							break;
 						}
 					})
 					if (!addedNow){
 						arr.forEach( i => {
-							if (addedNumbers[i]==1) {
+							if (!addedNow && addedNumbers[i]==1) {
 								addedNumbers[i]+=1;
 								addedNow = true;
-								break;
 							}
 						})
 					}
 					if (!addedNow){
 						arr.forEach( i => {
-							if (addedNumbers[i]==2) {
+							if (!addedNow && addedNumbers[i]==2) {
 								addedNumbers[i]+=1;
 								addedNow = true;
-								break;
 							}
 						})
 					}
