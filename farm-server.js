@@ -85,7 +85,7 @@ app.get('/game',
 				}
 			}
 		}
-		res.write(nunjucks.render('templates/game.html',{
+		res.write(nunjucks.render('templates/gamebase.html',{
 			cells: levelJson.cells,
 			puzzle: levelJson.puzzle,
 			totals: levelJson.initialTotals,

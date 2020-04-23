@@ -1,0 +1,370 @@
+{% extends "templates/base.html" %}
+
+{% block borderRadius %}
+	--border-radius: 1.25rem;
+{% endblock %}
+
+{% block content22CSS %}
+	/*border: 1px solid black;*/
+{% endblock %}
+	
+{% block centerSize %}
+	--height-center: 150px;
+	--width-center: 200px;
+{% endblock %}
+
+{% block titleCSS %}
+.title {
+	line-height: 2.5rem;
+	text-align: center;
+	font-size: 1rem;
+	border: 2px solid black;
+  	border-radius: var(--border-radius);
+  	position: relative;
+  	top:-2px;
+  	left:-2px;
+  	width: calc(100% + 0px);
+  	background: red;
+  	background-image: url("../img/farmbg2-40.png");
+  	background-size: 100% 100%;
+  	background-repeat: no-repeat;
+  	background-position: 0px 0px;
+  	color: white;
+  	text-shadow: 0px 0px 10px black;
+}
+.titleBG {
+	background-image: url("../img/ftractor-40.png");
+  	background-size: auto 100%;
+  	background-repeat: no-repeat;
+  	background-position: 0px 0px;
+  	transition: background-position 1s linear;
+}
+.titleBG:hover {
+  	background-position: 350px 0px;
+  	transition: all 2s linear;
+}
+
+{% endblock %}
+
+
+{% block moreCSS %}
+.title a {
+	text-decoration: none;
+	color: white;
+	font-size: 1.5rem;
+}
+.title a:hover {
+	text-decoration: underline;
+	text-shadow: 0px 0px 10px black 0px 0px 10px black;
+}
+.title label:hover {
+	cursor: pointer;
+	text-shadow: 0px 0px 10px black 0px 0px 10px black;
+}
+body {
+	background-image: url("../img/lightbg.png");
+	background-size: cover;
+	
+}
+
+:root {
+	--width-block: 10px;
+    --shift-cover-puzzle: calc(-40px - var(--width-block)*9); 
+    --left-margin: 0px;
+    --color-bg1: rgba(180,180,180,.75);
+    --color-text1: black;
+    --sudoku-top: 200px;
+    --sudoku-left: 200px;
+}
+@media screen and (min-width: 320px) and (min-height: 320px) {
+	:root {
+    	--width-block: 20px;
+    }
+}
+@media screen and (min-width: 480px) and (min-height: 480px) {
+	:root {
+    	--width-block: 30px;
+    }
+}
+@media screen and (min-width: 720px) and (min-height: 720px) {
+	:root {
+    	--width-block: 40px;
+    }
+}
+@media screen and (min-width: 1080px) and (min-height: 1080px) {
+	:root {
+    	--width-block: 50px;
+    }
+}
+
+
+#dataTable {
+	background-color: rgba(255,255,255,1);
+	top: 15px;
+	text-align: center;
+	width: calc(9 * var(--width-block) + 22px);
+	margin: auto;
+}
+#newData {
+	background-color: rgba(255,255,255,1);
+	text-align: center;
+}
+#changeData {
+	background-color: rgba(0,0,0,.25);
+	text-align: center;
+	
+}
+#emojiData {
+	background-color: rgba(0,0,0,.05);
+	text-align: center;
+	
+}
+table {
+	border-collapse:collapse;
+}
+tr {
+	background-color: rgba(0,255,255,1);
+	height: 25px;
+}
+
+#buttonRow {
+	width: calc(9 * var(--width-block) + 18px);
+	height: calc(1 * var(--width-block) + 2px);
+	border: 1px solid black;
+	margin: auto;
+	padding: 0px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+#buttonRow span {
+	border: 1px solid black;
+	height: calc(1 * var(--width-block));
+	display: inline-block;
+}
+#buttonRow span.finished {
+	border: 1px solid gray;
+	background: rgba(0,0,0,.2);
+	pointer-events: none;
+}
+#buttonRow span.selected {
+	border: 1px solid green;
+	background: rgba(0,255,0,.2);
+	height: calc(1 * var(--width-block));
+	display: inline-block;
+}
+#buttonRow img {
+	height: var(--width-block);
+}
+
+#sudokuTable {
+	width: calc(9 * var(--width-block) + 22px);
+	margin: auto;
+	padding: 0px;
+}
+#sudokuTable img {
+	height: var(--width-block);
+}
+{% for rowi in [0,1,2,3,4,5,6,7,8] %}
+	.row{{ rowi }} {
+		display: block;
+		margin: 0px;
+		padding: 0px;
+		border-bottom: 1px solid black;
+	}
+{% endfor %}
+{% for coli in [0,1,2,3,4,5,6,7,8] %}
+	.col{{ coli }} {
+		border-right: 1px solid black;
+		
+		height: calc(1 * var(--width-block) );
+		width: calc(1 * var(--width-block) );
+		display: inline-block;
+		line-height: calc(1 * var(--width-block) );
+		text-align: center;
+		margin: 0px;
+	}
+{% endfor %}
+.col0 {
+	border-left: 5px solid black;
+}
+.col2 {
+	border-right: 3px solid black;
+}
+.col5 {
+	border-right: 3px solid black;
+}
+.col8 {
+	border-right: 5px solid black;
+}
+
+.row0 {
+	border-top: 5px solid black;
+}
+.row2 {
+	border-bottom: 3px solid black;
+}
+.row5 {
+	border-bottom: 3px solid black;
+}
+.row8 {
+	border-bottom: 5px solid black;
+}
+
+{% endblock %}
+
+
+{% block title11 %}
+<div class="title">
+	<span class="titleLeft">
+		
+	</span>
+	<span class="titleCenter">
+		<a href="https://sudokufarm.com">Play</a>
+	</span>
+	<span class="titleRight">
+		<label for="radio11-1"><i class="fas fa-compress-alt"></i></label>
+		<label for="radio11-2"><i class="fas fa-expand-alt"></i></label>
+		<label for="radio11-3"><i class="fas fa-expand"></i></label>
+	</span>
+</div>
+{% endblock %}
+{% block content11 %}
+	<table id="dataTable">
+		<tr id="emojiData">
+			<td class="firstSix">🍕</td>
+			<td class="firstSix">💦</td>
+			<td class="firstSix">🍚</td>
+			<td class="firstSix">💩</td>
+			<td class="firstSix">🔥</td>
+			<td class="firstSix">👕</td>
+			<td class="peopleTD">👤</td>
+		</tr>
+		
+		<tr id="newData">
+			<td class="pointsBoard1 firstSix">{{ totals[1] }}</td>
+			<td class="pointsBoard2 firstSix">{{ totals[2] }}</td>
+			<td class="pointsBoard3 firstSix">{{ totals[3] }}</td>
+			<td class="pointsBoard4 firstSix">{{ totals[4] }}</td>
+			<td class="pointsBoard5 firstSix">{{ totals[5] }}</td>
+			<td class="pointsBoard6 firstSix">{{ totals[6] }}</td>
+			<td class="pointsBoard7 peopleTD">{{ nPeople }}</td>
+		</tr>
+
+		<tr id="changeData">
+			<td class="pointsBoard1c firstSix"></td>
+			<td class="pointsBoard2c firstSix"></td>
+			<td class="pointsBoard3c firstSix"></td>
+			<td class="pointsBoard4c firstSix"></td>
+			<td class="pointsBoard5c firstSix"></td>
+			<td class="pointsBoard6c firstSix"></td>
+			<td class="pointsBoard7c peopleTD"></td>
+		</tr>
+		
+	</table>
+{% endblock %}	
+
+{% block title13 %}
+<div class="title">
+	<div class="titleBG">
+		<span class="titleLeft">
+		
+		</span>
+		<span class="titleCenter">
+			<a href="https://gifsaw.com">How To Play</a>
+		</span>
+		<span class="titleRight">
+			<label for="radio13-3"><i class="fas fa-expand"></i></label>
+			<label for="radio13-2"><i class="fas fa-expand-alt"></i></label>
+			<label for="radio13-1"><i class="fas fa-compress-alt"></i></label>
+		
+		
+		</span>
+	</div>
+</div>
+{% endblock %}
+{% block content13 %}
+Complete a standard Sudoku puzzle without running out of any resource.
+Each crop and animal produces and consumes resources each turn.
+{% endblock %}	
+
+{% block title31 %}
+<div class="title">
+	<span class="titleLeft">
+		
+	</span>
+	<span class="titleCenter">
+		<a href="https://csshole.com">Level Creator</a>
+	</span>
+	<span class="titleRight">
+		<label for="radio31-1"><i class="fas fa-compress-alt"></i></label>
+		<label for="radio31-2"><i class="fas fa-expand-alt"></i></label>
+		<label for="radio31-3"><i class="fas fa-expand"></i></label>
+	</span>
+</div>
+{% endblock %}
+{% block content31 %}
+Create your own level. Choose your crops, animals, and resources.
+Determine how many resources they produce and consume each turn.
+Then pick a Sudoku puzzle and you have your own game!
+{% endblock %}
+
+{% block title33 %}
+<div class="title">
+	<span class="titleLeft">
+		
+	</span>
+	<span class="titleCenter">
+		<a href="https://qblur.com">Download</a>
+	</span>
+	<span class="titleRight">
+		<label for="radio33-1"><i class="fas fa-compress-alt"></i></label>
+		<label for="radio33-2"><i class="fas fa-expand-alt"></i></label>
+		<label for="radio33-3"><i class="fas fa-expand"></i></label>
+	</span>
+</div>
+{% endblock %}
+{% block content33 %}
+Download Sudoku Farm for iOS.
+{% endblock %}
+
+
+
+
+{% block content22 %}
+	<div id="buttonRow">
+		{% for coli in [1,2,3,4,5,6,7,8,9] %}<span class="button{{ coli }}" id="button-{{ coli }}"><img src="../sfarm/{{ coli }}.png" /></span>{% endfor %}
+	</div>
+	<div id="sudokuTable">
+		{% for rowi in [0,1,2,3,4,5,6,7,8] %}
+			<div class="row{{ rowi }}">
+			{% for coli in [0,1,2,3,4,5,6,7,8] %}<span class="col{{ coli }}" id="cell-{{ rowi }}-{{ coli }}">{% if cells[rowi][coli] > 0 %}<img src="../sfarm/{{ cells[rowi][coli] }}.png" />{% endif %}</span>{% endfor %}
+			</div>
+		{% endfor %}
+	</div>
+{% endblock %}
+
+
+
+
+
+
+{% block bodyStart %}
+
+{% endblock %}
+
+
+{% block scripts %}
+	<script>
+		var puzzle = {{ puzzle | dump | safe if puzzle else '[]'}};
+		var totals = {{ totals | dump | safe if totals else '[]'}};
+		var nPeople = {{ nPeople | dump | safe if nPeople else '[]'}};
+		var bpy = {{ bpy | dump | safe if bpy else '[]'}};
+		var existingPlots = {{ existingPlots | dump | safe if existingPlots else '[]'}};
+		var itemPerThing = {{ itemPerThing | dump | safe if itemPerThing else '[]'}};
+		var spendPerThing = {{ spendPerThing | dump | safe if spendPerThing else '[]'}};
+		var spendPerPerson = {{ spendPerPerson | dump | safe if spendPerPerson else '[]'}};
+		var nYears = 1;
+	</script>
+	<script src="../js/game.js"></script>
+{% endblock %}
+
