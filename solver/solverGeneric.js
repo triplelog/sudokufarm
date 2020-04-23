@@ -419,7 +419,7 @@ function runSimulation() {
 						}
 						
 					}
-					var addNow = false;
+					var addedNow = false;
 					arr.forEach( i => {
 						if (!addedNow && addedNumbers[i]==0) {
 							addedNumbers[i]+=1;
