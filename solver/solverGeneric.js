@@ -325,7 +325,7 @@ function goodStrategy(allPlays) {
 }
 
 function runSimulation() {
-	console.log('A',performance.now());
+
 	resetPuzzle()
 	let savednPeople = nPeople //int
 	var savedcurrentPuzzle = []
@@ -339,13 +339,14 @@ function runSimulation() {
 	let savednYear = nYear //int
 	
 	var easyPuzzle = true
-	console.log('B',performance.now());
+	
 	while (stopSudoku) {
+		console.log('A',performance.now());
 		var allPlays = []
 		allPlays = allPlays.concat(checkRow( currentPuzzle))
 		allPlays = allPlays.concat(checkColumn( currentPuzzle))
 		allPlays = allPlays.concat(checkBlock( currentPuzzle))
-
+		console.log('B',performance.now());
 		if (allPlays.length>0) {
 			updateBN()
 			updateSG()
@@ -363,7 +364,7 @@ function runSimulation() {
 			}
 
 			updatePop()
-		
+			console.log('C',performance.now());
 		}
 		else {
 			var neededTotals = [0,0,0,0,0,0,0]
@@ -394,6 +395,7 @@ function runSimulation() {
 			if (nYear != 81) {
 				easyPuzzle = false
 			}
+			console.log('D',performance.now());
 			if (easyPuzzle) {
 				
 				
@@ -481,7 +483,7 @@ function runSimulation() {
 			stopSudoku = false
 		}
 	}
-	console.log('C',performance.now());
+	
 	if (easyPuzzle) {
 		var neededTotals = [0,0,0,0,0,0,0]
 		let maxRuns = 5
