@@ -309,7 +309,7 @@ function goodStrategy(allPlays) {
 			arrData.push([i,itemPerThing[1][i-1]-spendPerThing[1][i-1]]);
 		}
 		console.log(arrData);
-		arrData = arrData.sort(function(a,b) {return a[1]-b[1];});
+		arrData = arrData.sort(function(a,b) {return b[1]-a[1];});
 		console.log(arrData);
 		var arr = [];
 		for (var i=1;i<10;i++){
