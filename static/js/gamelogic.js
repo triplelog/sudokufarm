@@ -190,6 +190,6 @@ var selectedC = 0;
 var itemSpends = [0,0,0,0,0,0,0];
 var itemGets = [0,0,0,0,0,0,0];
 var moves = [];
-moves.push({'selectedButton':6,'selectedR':0,'selectedC':1});
+moves.push({'selectedButton':6,'selectedR':0,'selectedC':7});
 moves.push({'selectedButton':6,'selectedR':3,'selectedC':5});		
 resetGame();
