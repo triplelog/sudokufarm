@@ -341,18 +341,14 @@ function runSimulation() {
 	var easyPuzzle = true
 	
 	while (stopSudoku) {
-		console.log('A',performance.now());
 		var allPlays = []
 		allPlays = allPlays.concat(checkRow( currentPuzzle))
 		allPlays = allPlays.concat(checkColumn( currentPuzzle))
 		allPlays = allPlays.concat(checkBlock( currentPuzzle))
-		console.log('B',performance.now());
 		if (allPlays.length>0) {
 			updateBN()
 			updateSG()
-			console.log('C',performance.now());
 			let chooseIndex = goodStrategy(allPlays)
-			console.log('D',performance.now());
 			currentPuzzle[allPlays[chooseIndex][1]][allPlays[chooseIndex][2]][allPlays[chooseIndex][3]]=allPlays[chooseIndex][0]
 
 			updateBN()
@@ -403,70 +399,58 @@ function runSimulation() {
 				
 			}
 			else if (nYear == 81) {
-				if (neededTotals[3] > maxUsed && addedNumbers[9] == 0) {
-					addedNumbers[9]+=1
-				}
-				else if (neededTotals[4] > maxUsed && addedNumbers[1] == 0 && addedNumbers[2] == 0 && addedNumbers[3] == 0) {
-					let randIndex = Math.floor(Math.random() * 3)
-					addedNumbers[randIndex+1]+=1
-				}
-				else if (neededTotals[1] > maxUsed && addedNumbers[7] == 0){
-					addedNumbers[7]+=1
-				}
-				else if (neededTotals[2] > maxUsed && addedNumbers[4] == 0){
-					addedNumbers[4]+=1
-				}
-				else if (neededTotals[5] > maxUsed && addedNumbers[5] == 0){
-					addedNumbers[5]+=1
-				}
-				else if (neededTotals[6] > maxUsed && addedNumbers[3] == 0){
-					addedNumbers[3]+=1
-				}
-				else {
-					if (neededTotals[3] > maxUsed && addedNumbers[9] <= 1) {
-						addedNumbers[9]+=1
-					}
-					else if (neededTotals[4] > maxUsed && addedNumbers[1] + addedNumbers[2] + addedNumbers[3] <= 1){
-						let randIndex = Math.floor(Math.random() * 3)
-						addedNumbers[randIndex+1]+=1
-					}
-					else if (neededTotals[1] > maxUsed && addedNumbers[7] <= 1){
-						addedNumbers[7]+=1
-					}
-					else if (neededTotals[2] > maxUsed && addedNumbers[4] <= 1){
-						addedNumbers[4]+=1
-					}
-					else if (neededTotals[5] > maxUsed && addedNumbers[5] <= 1){
-						addedNumbers[5]+=1
-					}
-					else if (neededTotals[6] > maxUsed && addedNumbers[3] <= 1){
-						addedNumbers[3]+=1
-					}
-					else {
-						if (neededTotals[3] > maxUsed) {
-							addedNumbers[9]+=1
-						}
-						else if (neededTotals[4] > maxUsed){
-							let randIndex = Math.floor(Math.random() * 3)
-							addedNumbers[randIndex+1]+=1
-						}
-						else if (neededTotals[1] > maxUsed){
-							addedNumbers[7]+=1
-						}
-						else if (neededTotals[2] > maxUsed){
-							addedNumbers[4]+=1
-						}
-						else if (neededTotals[5] > maxUsed){
-							addedNumbers[5]+=1
-						}
-						else if (neededTotals[6] > maxUsed){
-							addedNumbers[3]+=1
-						}
-						else {
-							stopSudoku = false
-						}
+				//Add generic logic to add a number
+				var neededTotalsIndex = -1;
+				for (var ii=1;ii<7;ii++){
+					if (neededTotals[ii] > maxUsed){
+						neededTotalsIndex = ii;
 					}
 				}
+				if (neededTotalsIndex > -1){
+					var arrData = []
+					for (var i=1;i<10;i++){
+						arrData.push([i,itemPerThing[neededTotalsIndex][i-1]-spendPerThing[neededTotalsIndex][i-1]]);
+					}
+					arrData = arrData.sort(function(a,b) {return b[1]-a[1];});
+					var arr = [];
+					for (var i=1;i<10;i++){
+						if (arrData[i-1][1]>0){
+							arr.push(arrData[i-1][0]);
+						}
+						
+					}
+					var addNow = false;
+					arr.forEach( i => {
+						if (addedNumbers[i]==0) {
+							addedNumbers[i]+=1;
+							addedNow = true;
+							break;
+						}
+					})
+					if (!addedNow){
+						arr.forEach( i => {
+							if (addedNumbers[i]==1) {
+								addedNumbers[i]+=1;
+								addedNow = true;
+								break;
+							}
+						})
+					}
+					if (!addedNow){
+						arr.forEach( i => {
+							if (addedNumbers[i]==2) {
+								addedNumbers[i]+=1;
+								addedNow = true;
+								break;
+							}
+						})
+					}
+					if (!addedNow){
+						stopSudoku = false;
+					}
+				}
+				
+				
 				var sumAdded = 0
 				for (var i=1;i<10;i++) {
 					sumAdded += addedNumbers[i]
