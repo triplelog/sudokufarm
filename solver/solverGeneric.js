@@ -365,8 +365,8 @@ function runSimulation() {
 			
 			
 			for( var arri = 0; arri < possibleRows[allPlays[chooseIndex][0]].length; arri++){ 
-				if ( possibleRows[piece][arri] === allPlays[chooseIndex][1]) { 
-					possibleRows[piece].splice(arri, 1); break;
+				if ( possibleRows[allPlays[chooseIndex][0]][arri] === allPlays[chooseIndex][1]) { 
+					possibleRows[allPlays[chooseIndex][0]].splice(arri, 1); break;
 				}
 			}
 			
