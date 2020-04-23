@@ -96,9 +96,15 @@ function notPossible(type){
 }
 function updateCell(evt){
 	if (selectedButton == 0){return}
-	var el = evt.target;
-	while (el && el.tagName && el.tagName != 'SPAN'){
-		el = el.parentElement;
+	var el;
+	if (evt){
+		var el = evt.target;
+		while (el && el.tagName && el.tagName != 'SPAN'){
+			el = el.parentElement;
+		}
+	}
+	else {
+		el = document.getElementById("cell-"+selectedR+"-"+selectedC);
 	}
 	//check if has image already
 	var cellId = [parseInt(el.id.split('-')[1]),parseInt(el.id.split('-')[2])];
@@ -125,6 +131,7 @@ function updateCell(evt){
 				}
 			}
 		}
+		moves.push({'selectedButton':selectedButton,'selectedR':parseInt(el.id.split('-')[1]),'selectedC':parseInt(el.id.split('-')[2])});
 		//add image
 		el.innerHTML = '';
 		var img = document.createElement('img');
@@ -152,6 +159,8 @@ function resetGame() {
 	selectedButton = 0;
 	itemSpends = [0,0,0,0,0,0,0];
 	itemGets = [0,0,0,0,0,0,0];
+	var savedMoves = moves;
+	moves = [];
 	updateSGN();	
 		
 	var el = document.getElementById('buttonRow');
@@ -165,9 +174,22 @@ function resetGame() {
 	for (var i=0;i<cells.length;i++){
 		cells[i].addEventListener('click',updateCell);
 	}
+	
+	for (var i=0;i<savedMoves.length;i++){
+		selectedButton = savedMoves[i].selectedButton;
+		selectedR = savedMoves[i].selectedR;
+		selectedC = savedMoves[i].selectedC;
+		updateCell();
+	}
+	
+	
 }
 var selectedButton = 0;
+var selectedR = 0;
+var selectedC = 0;
 var itemSpends = [0,0,0,0,0,0,0];
 var itemGets = [0,0,0,0,0,0,0];
-
+var moves = [];
+moves.push({'selectedButton':6,'selectedR':0,'selectedC':1});
+moves.push({'selectedButton':6,'selectedR':3,'selectedC':5});		
 resetGame();
