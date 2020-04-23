@@ -119,9 +119,12 @@ app.get('/create',
 		//initialTotals as array of 7 ints with first blank
 		//puzzle as array of 9 rows of 9
 		//map to image sources -- need to to on both ends
+		var levelJson = {"startPeople":10,"puzzle":[["0","0","3","1","0","5","0","0","0"],["6","0","0","0","0","4","0","0","0"],["0","0","9","6","0","0","8","0","3"],["2","0","1","0","0","0","0","3","0"],["0","8","0",4,"0",3,"0","1","7"],["5","0","4",7,"0","0","0","9","0"],["0","0","5","2","0","0","3","0","6"],["3","0","0",9,"0","8","0","0","0"],["0","0","2","5","0","7","0","0",9]],"initialTotals":[0,200,200,200,200,200,200],"itemPerThing":[[0,0,0,0,0,0,0,0,0],[21,16,3,0,0,10,30,15,6],[0,0,0,30,0,0,0,0,0],[0,0,0,0,0,3,0,15,24],[10,10,10,0,0,0,0,0,0],[0,0,0,0,15,2,0,0,0],[5,0,13,0,0,0,0,0,0]],"spendPerThing":[[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[1,1,1,0,0,0,5,5,5],[20,10,10,0,0,0,0,0,0],[0,0,0,0,0,0,10,10,10],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0]],"spendPerPerson":[0,30,3,0,0,5,5],"bpy":[1,3]};
 		
 		res.write(nunjucks.render('templates/createbase.html',{
-			
+			itemPerThing: levelJson.itemPerThing,
+			spendPerThing: levelJson.spendPerThing,
+			spendPerPerson: levelJson.spendPerPerson,
 		}));
 		res.end();
 	

@@ -6,6 +6,8 @@ function chgResource(evt) {
 	var elll = ell.querySelectorAll("td")[id-1];
 	console.log(elll);
 	elll.textContent = el.value;
+	
+	document.getElementById("income"+id+"emoji").textContent = el.value;
 }
 
 
