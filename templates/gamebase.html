@@ -9,8 +9,8 @@
 {% endblock %}
 	
 {% block centerSize %}
-	--height-center: 150px;
-	--width-center: 200px;
+	--height-center: 50vh;
+	--width-center: calc(9 * var(--width-block) + 22px);
 {% endblock %}
 
 {% block titleCSS %}
@@ -48,6 +48,18 @@
 
 
 {% block moreCSS %}
+.content-22 {
+	overflow: visible;
+}
+.content-31 {
+	display: none;
+}
+.content-33 {
+	display: none;
+}
+.container {
+	grid-template-rows: calc((var(--height-container) - var(--height-center))) var(--height-center) 0px;
+}
 .title a {
 	text-decoration: none;
 	color: white;
@@ -219,7 +231,7 @@ tr {
 		
 	</span>
 	<span class="titleCenter">
-		<a href="https://sudokufarm.com">Play</a>
+		<a href="https://sudokufarm.com">Resources</a>
 	</span>
 	<span class="titleRight">
 		<label for="radio11-1"><i class="fas fa-compress-alt"></i></label>
