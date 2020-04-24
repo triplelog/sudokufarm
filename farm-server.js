@@ -59,7 +59,6 @@ wss.on('connection', function connection(ws) {
 			}
 		}
 		else if (dm.type == 'save'){
-			console.log(dm,gameid,username);
 			dm.game.id = gameid;
 			SudokufarmUser.findOne({username:username},function(err,result){
 				var foundMatch = false;
@@ -75,8 +74,7 @@ wss.on('connection', function connection(ws) {
 				}
 				result.markModified('games');
 				result.save(function(err2,result2){
-					console.log(err2);
-					console.log(result2);
+				
 				});
 			})
 		}
