@@ -139,6 +139,8 @@ document.getElementById("item7icon").addEventListener('input',chgItem);
 document.getElementById("item8icon").addEventListener('input',chgItem);
 document.getElementById("item9icon").addEventListener('input',chgItem);
 
+
+document.getElementById("item1icon").addEventListener('awesomplete-selectcomplete',chgItem);
 function chgSudoku() {
 	var el = document.getElementById("sudoku");
 	var puzzleRaw = el.value;
