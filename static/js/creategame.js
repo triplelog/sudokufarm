@@ -122,6 +122,12 @@ function chgItem(evt) {
 	var img = document.createElement('img');
 	img.setAttribute('src',"../sfarm/"+el.value+".png");
 	ell.appendChild(img);
+	
+	ell = document.getElementById('header-'+id);
+	ell.innerHTML = '';
+	var img = document.createElement('img');
+	img.setAttribute('src',"../sfarm/"+el.value+".png");
+	ell.appendChild(img);
 		
 	resetGame();
 	console.log(imgList);
