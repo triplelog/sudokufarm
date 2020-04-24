@@ -16,6 +16,39 @@ ws.onmessage = function(evt){
 		chgSudoku();
 	}
 }
+
+function chgIPT(evt) {
+	var el = evt.target;
+	var i = parseInt(el.id.split('-')[1]);
+	var iiminus1 = parseInt(el.id.split('-')[2]);
+	var val = parseInt(el.value);
+	if (val > 0){
+		itemPerThing[i][iiminus1]=val;
+		spendPerThing[i][iiminus1]=0;
+	}
+	else if (val <0){
+		itemPerThing[i][iiminus1]=0;
+		spendPerThing[i][iiminus1]=val;
+	}
+	else {
+		itemPerThing[i][iiminus1]=0;
+		spendPerThing[i][iiminus1]=0;
+	}
+}
+function chgSPP(evt) {
+	var el = evt.target;
+	var i = parseInt(el.id.split('-')[1]);
+	var val = parseInt(el.value);
+	if (val < 0){
+		spendPerPerson[i]=val;
+	}
+	else if (val >0){
+		spendPerPerson[i]=-1*val;//Is a negative spend possible?
+	}
+	else {
+		spendPerPerson[i]=0;
+	}
+}
 function chgResource(evt) {
 	var el = evt.target;
 	var id = parseInt(el.id.substr(8,9));
@@ -101,15 +134,15 @@ document.getElementById("randomSimple").addEventListener('click',randomSudoku);
 
 function saveGame(evt) {
 	var jsonmessage = {'type':'save','id':gameid};
-	jsonmessage['puzzle']=puzzleReset;
+	jsonmessage['puzzle']=puzzleReset;//
 	jsonmessage['totals']=totalsReset;
 	jsonmessage['nPeople']=nPeopleReset;
 	jsonmessage['bpy']=bpyReset;
-	jsonmessage['itemPerThing']=itemPerThing;
-	jsonmessage['spendPerThing']=spendPerThing;
-	jsonmessage['spendPerPerson']=spendPerPerson;
+	jsonmessage['itemPerThing']=itemPerThing;//
+	jsonmessage['spendPerThing']=spendPerThing;//
+	jsonmessage['spendPerPerson']=spendPerPerson;//
 	jsonmessage['imgList']=imgList;
-	jsonmessage['emojiList']=emojiList;
+	jsonmessage['emojiList']=emojiList;//
 	ws.send(JSON.stringify(jsonmessage));
 }
 document.getElementById("saveGame").addEventListener('click',saveGame);
