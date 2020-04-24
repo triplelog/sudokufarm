@@ -373,7 +373,7 @@ _.CONTAINER = function (input) {
 _.ITEM = function (text, input, item_id) {
 	var html = input.trim() === "" ? text : text.replace(RegExp($.regExpEscape(input.trim()), "gi"), "<mark>$&</mark>");
 	return $.create("li", {
-		innerHTML: html,
+		innerHTML: "html",
 		"role": "option",
 		"aria-selected": "false",
 		"id": "awesomplete_list_" + this.count + "_item_" + item_id
@@ -395,7 +395,6 @@ function Suggestion(data) {
 	  : typeof data === "object" && "label" in data && "value" in data ? data : { label: data, value: data };
 
 	this.label = o.label || o.value;
-	console.log(this);
 	this.value = o.value;
 }
 Object.defineProperty(Suggestion.prototype = Object.create(String.prototype), "length", {
