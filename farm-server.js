@@ -214,10 +214,12 @@ app.get('/create',
 		
 		var tkey = crypto.randomBytes(100).toString('hex').substr(2, 18);
 		var gameid = 'testgame';
+		var username = '';
 		var matches = false;
 		tempKeys[tkey]={username:'',gameid:gameid};
 		if (req.isAuthenticated()){
 			tempKeys[tkey].username = req.user.username;
+			username = req.user.username;
 		}
 		
 		//startPeople as int
@@ -262,6 +264,8 @@ app.get('/create',
 			emojiList: emojiList,
 			tkey: tkey,
 			availableIcons: availableIcons,
+			username: username,
+			gameid: gameid,
 		}));
 		res.end();
 	
