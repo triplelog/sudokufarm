@@ -58,10 +58,7 @@ function chgResource(evt) {
 	var elll = ell.querySelectorAll("td")[id-1];
 	emojiList[id-1] = el.value;
 	elll.textContent = el.value;
-	
-	ell = document.getElementById("emojiData2");
-	elll = ell.querySelectorAll("td")[id-1];
-	elll.textContent = el.value;
+
 	
 	document.getElementById("income"+id+"emoji").textContent = el.value;
 }
