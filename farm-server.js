@@ -86,17 +86,22 @@ wss.on('connection', function connection(ws) {
 
 app.get('/index.html',
 	function(req, res){
-		
-		
 		res.write(nunjucks.render('templates/index.html',{
 			
 		}));
 		res.end();
 	
     }
-    
 );
-
+app.get('/',
+	function(req, res){
+		res.write(nunjucks.render('templates/index.html',{
+			
+		}));
+		res.end();
+	
+    }
+);
 
 app.get('/game',
 	function(req, res){
@@ -115,7 +120,7 @@ app.get('/game',
 				}
 			}
 		}
-		console.log(levelJson);
+		
 		res.write(nunjucks.render('templates/gamebase.html',{
 			cells: levelJson.cells,
 			puzzle: levelJson.puzzle,
@@ -175,7 +180,7 @@ app.get('/:userid/:gameid',
 						}
 					}
 				}
-				console.log(levelJson);
+				
 				res.write(nunjucks.render('templates/gamebase.html',{
 					cells: levelJson.cells,
 					puzzle: levelJson.puzzle,
