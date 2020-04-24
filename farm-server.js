@@ -66,16 +66,14 @@ wss.on('connection', function connection(ws) {
 				for (var i=0;i<result.games.length;i++){
 					if (result.games[i].id == gameid){
 						result.games[i] = dm.game;
-						console.log(result.games);
 						foundMatch = true;
 						break;
 					}
 				}
 				if (!foundMatch){
 					result.games.push(dm.game);
-					console.log(result.games);
 				}
-				result.makModified('games');
+				result.markModified('games');
 				result.save(function(err2,result2){
 					console.log(err2);
 					console.log(result2);
