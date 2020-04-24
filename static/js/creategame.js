@@ -83,10 +83,12 @@ function chgSudoku() {
 		}
 	}
 	if (puzzles.length > 0){
+		console.log(puzzles[0]);
 		puzzleReset = [];
 		for (var i=0;i<puzzles[0].length;i++){
 			puzzleReset.push(puzzles[0][i].slice());
 		}
+		console.log(puzzleReset);
 		moves = [];		
 		resetGame();
 	}
