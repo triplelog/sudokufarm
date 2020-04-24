@@ -46,10 +46,12 @@ wss.on('connection', function connection(ws) {
   	ws.on('message', function incoming(message) {
 		var dm = JSON.parse(message);
 		if (dm.type && dm.type == 'key'){
+			console.log(dm.message)
 			if (dm.message && tempKeys[dm.message]){
 				gameid = tempKeys[dm.message].gameid;
 				username = tempKeys[dm.message].username;
 			}
+			console.log(gameid);
 		}
 		else if (dm.type == 'sudoku'){
 			if (dm.difficulty == 'simple'){
