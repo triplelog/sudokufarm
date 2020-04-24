@@ -382,6 +382,7 @@ _.ITEM = function (text, input, item_id) {
 
 _.REPLACE = function (text) {
 	this.input.value = text.label;
+	this.input.setAttribute('data-value',text.value);
 };
 
 _.DATA = function (item/*, input*/) { return item; };

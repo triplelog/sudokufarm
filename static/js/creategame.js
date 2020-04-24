@@ -116,15 +116,15 @@ document.getElementById("perYear").addEventListener('change',chgBPY);
 function chgItem(evt) {
 	var el = evt.target;
 	var id = parseInt(el.id.substr(4,5));
-	imgList[id]=el.value;
+	imgList[id]=el.getAttribute('data-value');
 	var ell = document.getElementById('button-'+id);
 	ell.innerHTML = '';
 	var img = document.createElement('img');
-	img.setAttribute('src',"../sfarm/"+el.value+".png");
+	img.setAttribute('src',"../sfarm/"+el.getAttribute('data-value')+".png");
 	ell.appendChild(img);
 	
 	ell = document.getElementById('header-'+id).querySelector('img');
-	ell.setAttribute('src',"../sfarm/"+el.value+".png");
+	ell.setAttribute('src',"../sfarm/"+el.getAttribute('data-value')+".png");
 		
 	resetGame();
 }
