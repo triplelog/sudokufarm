@@ -427,7 +427,7 @@ var puzzle = {{ puzzle | dump | safe }};
 var totals = {{ totals | dump | safe if totals else '[]'}};
 var nPeople = {{ nPeople | dump | safe if nPeople else '[]'}};
 var bpy = {{ bpy | dump | safe if bpy else '[]'}};
-var existingPlots = {{ existingPlots | dump | safe if existingPlots else '[]'}};
+var existingPlots;
 var itemPerThing = {{ itemPerThing | dump | safe if itemPerThing else '[]'}};
 var spendPerThing = {{ spendPerThing | dump | safe if spendPerThing else '[]'}};
 var spendPerPerson = {{ spendPerPerson | dump | safe if spendPerPerson else '[]'}};

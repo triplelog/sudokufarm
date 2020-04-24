@@ -160,14 +160,26 @@ function resetGame() {
 	itemSpends = [0,0,0,0,0,0,0];
 	itemGets = [0,0,0,0,0,0,0];
 	puzzle = [];
+	existingPlots = [0,0,0,0,0,0,0,0,0];
 	for (var i=0;i<puzzleReset.length;i++){
 		puzzle.push(puzzleReset[i].slice());
+		for (var ii = 0;ii<9;ii++) {
+			var el = document.getElementById('cell-'+i+'-'+ii);
+			el.innerHTML = '';
+			if (parseInt(puzzle[i][ii])>0){
+				existingPlots[parseInt(puzzle[i][ii])-1]++;
+				var img = document.createElement('img');
+				img.setAttribute('src',"../sfarm/"+imgList[parseInt(puzzle[i][ii])]+".png");
+				el.appendChild(img);
+			}
+		}
 	}
+
+
 	totals = totalsReset.slice();
 	
 	nPeople = nPeopleReset;
 	bpy = bpyReset;
-	existingPlots = existingPlotsReset.slice();
 	nYears = 1;
 	var savedMoves = moves;
 	moves = [];
@@ -210,7 +222,6 @@ for (var i=0;i<puzzle.length;i++){
 var totalsReset = totals.slice();
 var nPeopleReset = nPeople;
 var bpyReset = bpy;
-var existingPlotsReset = existingPlots.slice();
 
 var moves = [];		
 resetGame();
