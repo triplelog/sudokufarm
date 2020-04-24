@@ -162,7 +162,6 @@ app.get('/:userid/:gameid',
 				}
 			}
 			if (foundMatch){
-				console.log(levelJson);
 				var imgList = levelJson.imgList;
 				var emojiList = levelJson.emojiList;
 				levelJson.existingPlots = [0,0,0,0,0,0,0,0,0];
