@@ -7,6 +7,7 @@ const assert = require('assert');
 const https = require('https');
 //var myParser = require("body-parser");
 //var qs = require('querystring');
+var crypto = require("crypto");
 var nunjucks = require('nunjucks');
 
 const options = {
