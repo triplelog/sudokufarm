@@ -190,7 +190,7 @@ function saveGame(evt) {
 	jsonmessage['itemPerThing']=itemPerThing;//is updating on change
 	jsonmessage['spendPerThing']=spendPerThing;//is updating on change
 	jsonmessage['spendPerPerson']=spendPerPerson;//is updating on change
-	jsonmessage['imgList']=imgList;
+	jsonmessage['imgList']=imgList;//is updating on change
 	jsonmessage['emojiList']=emojiList;//is updating on change
 	ws.send(JSON.stringify(jsonmessage));
 }

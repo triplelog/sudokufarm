@@ -395,6 +395,7 @@ function Suggestion(data) {
 	  : typeof data === "object" && "label" in data && "value" in data ? data : { label: data, value: data };
 
 	this.label = o.label || o.value;
+	console.log(this);
 	this.value = o.value;
 }
 Object.defineProperty(Suggestion.prototype = Object.create(String.prototype), "length", {
