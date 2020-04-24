@@ -117,6 +117,7 @@ function chgItem(evt) {
 	var el = evt.target;
 	var id = parseInt(el.id.substr(4,5));
 	imgList[id]=el.value;
+	console.log(imgList);
 }
 document.getElementById("item1icon").addEventListener('change',chgItem);
 document.getElementById("item2icon").addEventListener('change',chgItem);

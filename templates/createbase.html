@@ -292,7 +292,8 @@ tr {
 <div>
 	<label for="item{{ i }}icon">Item {{ i }}: </label>
 	<input type="text" id="item{{ i }}name"></input>
-	<input type="text" id="item{{ i }}icon"></input>
+	<input id="item{{ i }}icon" class="awesomplete" data-list="Apple, Corn, Orange" />
+
 </div>
 {% endfor %}
 
@@ -463,6 +464,7 @@ var gameid = '{{ gameid }}';
 </script>
 <script src="../js/creategame.js"></script>
 <script src="../js/gamelogic.js"></script>
+<script src="../js/awesomplete.js" async></script>
 <script>
 
 {% for i in range(1,7) %}
