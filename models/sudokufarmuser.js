@@ -2,5 +2,5 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
-const UserData = new Schema({username: String, friends: [], followers: []});
-module.exports = mongoose.model('UserData', UserData);
+const SudokufarmUser = new Schema({username: String, games: [], friends: [], followers: []});
+module.exports = mongoose.model('SudokufarmUser', SudokufarmUser);

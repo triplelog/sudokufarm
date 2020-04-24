@@ -46,12 +46,10 @@ wss.on('connection', function connection(ws) {
   	ws.on('message', function incoming(message) {
 		var dm = JSON.parse(message);
 		if (dm.type && dm.type == 'key'){
-			console.log(dm.message)
 			if (dm.message && tempKeys[dm.message]){
 				gameid = tempKeys[dm.message].gameid;
 				username = tempKeys[dm.message].username;
 			}
-			console.log(gameid);
 		}
 		else if (dm.type == 'sudoku'){
 			if (dm.difficulty == 'simple'){
@@ -62,6 +60,27 @@ wss.on('connection', function connection(ws) {
 		}
 		else if (dm.type == 'save'){
 			console.log(dm,gameid,username);
+			dm.message.id = gameid;
+			SudokufarmUser.findOne({username:username},function(err,result){
+				var foundMatch = false;
+				for (var i=0;i<results.games.length;i++){
+					if (result.games[i].id == gameid){
+						result.games[i] = dm.message;
+						console.log(result.games);
+						foundMatch = true;
+						break;
+					}
+				}
+				if (!foundMatch){
+					result.games.push(dm.message);
+					console.log(result.games);
+				}
+				result.makModified('games');
+				result.save(function(err2,result2){
+					console.log(err2);
+					console.log(result2);
+				});
+			})
 		}
 		
   	});
