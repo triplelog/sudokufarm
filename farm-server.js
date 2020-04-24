@@ -63,7 +63,7 @@ wss.on('connection', function connection(ws) {
 			dm.game.id = gameid;
 			SudokufarmUser.findOne({username:username},function(err,result){
 				var foundMatch = false;
-				for (var i=0;i<results.games.length;i++){
+				for (var i=0;i<result.games.length;i++){
 					if (result.games[i].id == gameid){
 						result.games[i] = dm.game;
 						console.log(result.games);
