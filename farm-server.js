@@ -31,7 +31,6 @@ const server = https.createServer(options, (req, res) => {
 }).listen(8080);
 
 const WebSocket = require('ws');
-//const wss = new WebSocket.Server({ port: 8080 , origin: 'http://tabdn.com'});
 const wss = new WebSocket.Server({ server });
 wss.on('connection', function connection(ws) {
   	
