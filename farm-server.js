@@ -17,7 +17,7 @@ const options = {
 
 const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost:27017/triplelog', {useNewUrlParser: true});
-const UserData = require('./models/userdata');
+const SudokufarmUser = require('./models/sudokufarmuser');
 var fromLogin = require('./login-server.js');
 var app = fromLogin.loginApp;
 var tempKeys = fromLogin.tempKeys;

@@ -13,7 +13,7 @@ const { PerformanceObserver, performance } = require('perf_hooks');
 
 var tempKeys = {};
 const User = require('./models/user');
-const UserData = require('./models/userdata');
+const SudokufarmUser = require('./models/sudokufarmuser');
 const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost:27017/triplelog', {useNewUrlParser: true});
 var passport = require('passport')
@@ -63,7 +63,7 @@ app.get('/account',
   		var tkey = crypto.randomBytes(100).toString('hex').substr(2, 18);
 		tempKeys[tkey] = {username:req.user.username};
 		
-		UserData.findOne({username:req.user.username}, function(err,result) {
+		SudokufarmUser.findOne({username:req.user.username}, function(err,result) {
 			
 		
 		
@@ -97,8 +97,8 @@ app.post('/register',
 		  
 		}
 		else {
-			var UserData = new UserData({username: req.body.username.toLowerCase()});
-			UserData.save(function(err,result){
+			var sudokufarmUser = new SudokufarmUser({username: req.body.username.toLowerCase(), friends: [], followers: []});
+			sudokufarmUser.save(function(err,result){
 				console.log('user registered!',performance.now());
 				var robot = 'python3 python/robohash/createrobo.py '+req.body.username.toLowerCase()+' 1';
 				var child = exec(robot, function(err, stdout, stderr) {
