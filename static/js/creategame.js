@@ -130,7 +130,6 @@ function chgItem(evt) {
 	ell.appendChild(img);
 		
 	resetGame();
-	console.log(imgList);
 }
 document.getElementById("item1icon").addEventListener('change',chgItem);
 document.getElementById("item2icon").addEventListener('change',chgItem);
