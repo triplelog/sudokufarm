@@ -117,6 +117,13 @@ function chgItem(evt) {
 	var el = evt.target;
 	var id = parseInt(el.id.substr(4,5));
 	imgList[id]=el.value;
+	var ell = document.getElementById('button-'+id);
+	ell.innerHTML = '';
+	var img = document.createElement('img');
+	img.setAttribute('src',"../sfarm/"+el.value+".png");
+	ell.appendChild(img);
+		
+	resetGame();
 	console.log(imgList);
 }
 document.getElementById("item1icon").addEventListener('change',chgItem);
