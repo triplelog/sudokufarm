@@ -179,7 +179,7 @@ app.get('/:userid/:gameid',
 				res.write(nunjucks.render('templates/gamebase.html',{
 					cells: levelJson.cells,
 					puzzle: levelJson.puzzle,
-					totals: levelJson.initialTotals,
+					totals: levelJson.totals,
 					nPeople: levelJson.startPeople,
 					bpy: levelJson.bpy,
 					existingPlots: levelJson.existingPlots,
