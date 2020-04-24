@@ -29,8 +29,8 @@
 
 .container div .title .titleLeft {
 	float: left;
-	margin-left: 4px;
-	width: 100px;
+	margin-left: calc(var(--border-radius) / 3);
+	width: 4rem;
 	min-height: 1px;
 }
 .container div .title .titleCenter {
@@ -38,7 +38,7 @@
 }
 .container div .title .titleRight {
 	float: right;
-	width: 100px;
+	width: 4rem;
 	min-height: 1px;
 }
 .container div .title .titleRight label{
@@ -107,8 +107,7 @@
 	z-index: 2;
 }
 #radio11-2:checked ~ .content-11 .content{
-	overflow-y: auto;
-	overflow-x: hidden;
+	overflow: auto;
 }
 #radio11-3:checked ~ .content-11 {
 	grid-row:  1 / 4;
@@ -116,8 +115,7 @@
 	z-index: 3;
 }
 #radio11-3:checked ~ .content-11 .content{
-	overflow-y: auto;
-	overflow-x: hidden;
+	overflow: auto;
 }
 
 #radio13-1:checked ~ .content-13 {
