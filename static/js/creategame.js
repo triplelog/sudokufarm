@@ -129,6 +129,15 @@ document.getElementById("item7icon").addEventListener('change',chgItem);
 document.getElementById("item8icon").addEventListener('change',chgItem);
 document.getElementById("item9icon").addEventListener('change',chgItem);
 
+document.getElementById("item1icon").addEventListener('input',chgItem);
+document.getElementById("item2icon").addEventListener('input',chgItem);
+document.getElementById("item3icon").addEventListener('input',chgItem);
+document.getElementById("item4icon").addEventListener('input',chgItem);
+document.getElementById("item5icon").addEventListener('input',chgItem);
+document.getElementById("item6icon").addEventListener('input',chgItem);
+document.getElementById("item7icon").addEventListener('input',chgItem);
+document.getElementById("item8icon").addEventListener('input',chgItem);
+document.getElementById("item9icon").addEventListener('input',chgItem);
 
 function chgSudoku() {
 	var el = document.getElementById("sudoku");
