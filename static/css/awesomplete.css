@@ -77,6 +77,7 @@
 		position: relative;
 		padding: .2em .5em;
 		cursor: pointer;
+		height: 2rem;
 	}
 	
 	.awesomplete > ul > li:hover {

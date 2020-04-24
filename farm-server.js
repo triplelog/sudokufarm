@@ -145,7 +145,7 @@ app.get('/create',
 		var gameid = 'testgame';
 		
 		//Get list of available icons
-		var availableIcons = {'farming':['bees','cow','duck']};
+		var availableIcons = {'farming':['bees','cow','duck','cow']};
 		
 		res.write(nunjucks.render('templates/createbase.html',{
 			cells: levelJson.cells,
