@@ -103,6 +103,19 @@ document.getElementById("resource5initial").addEventListener('change',chgInitial
 document.getElementById("resource6initial").addEventListener('change',chgInitial);
 document.getElementById("resource7initial").addEventListener('change',chgInitial);
 
+function chgBPY(evt) {
+	var el = evt.target;
+	if (el.id == 'births'){
+		bpyReset[0]=parseInt(el.value);
+	}
+	else {
+		bpyReset[1]=parseInt(el.value);
+	}
+	resetGame();
+}
+document.getElementById("births").addEventListener('change',chgBPY);
+document.getElementById("perYear").addEventListener('change',chgBPY);
+
 function chgItem(evt) {
 	var el = evt.target;
 	var id = parseInt(el.id.substr(4,5));
