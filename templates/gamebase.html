@@ -223,6 +223,21 @@ tr {
 	border-bottom: 5px solid black;
 }
 
+.positive {
+	width:100%;
+	border: solid 1px black;
+	display: inline-block;
+	text-align: right;
+	background: green;
+}
+.negative {
+	width:100%;
+	border: solid 1px black;
+	display: inline-block;
+	text-align: right;
+	background: red;
+}
+
 {% endblock %}
 
 
@@ -308,7 +323,7 @@ tr {
 		<tr>
 			<td id="income{{i}}emoji">{{ emojiList[i-1] }}</td>
 		{% for ii in range(1,10) %}
-			<td style="width:8%;"><span id="ipt-{{i}}-{{ii-1}}" style="width:100%; border: solid 1px black; display: inline-block;">{% if itemPerThing[i][ii-1] - spendPerThing[i][ii-1] != 0 %}{{ itemPerThing[i][ii-1] - spendPerThing[i][ii-1] }}{% endif %}</span></td>
+			<td style="width:8%;">{% if itemPerThing[i][ii-1] - spendPerThing[i][ii-1] > 0 %}<span id="ipt-{{i}}-{{ii-1}}" class="positive"style="">{{ itemPerThing[i][ii-1] - spendPerThing[i][ii-1] }}</span>{% elif itemPerThing[i][ii-1] - spendPerThing[i][ii-1] < 0 %}<span id="ipt-{{i}}-{{ii-1}}" class="negative">{{ itemPerThing[i][ii-1] - spendPerThing[i][ii-1] }}</span>{% endif %}</td>
 		{% endfor %}
 			<td style="width:8%;"><span id="spp-{{i}}" style="width:100%; border: solid 1px black; display: inline-block;">{{ -1*spendPerPerson[i] }}</span></td>
 		</tr>
