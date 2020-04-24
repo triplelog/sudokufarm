@@ -13,7 +13,7 @@ const { PerformanceObserver, performance } = require('perf_hooks');
 
 var tempKeys = {};
 const User = require('./models/user');
-const SudokufarmUser = require('./models/sudokufarmuser');
+const SudokufarmUser = require('./models/sudokufarmuser.js');
 const mongoose = require('mongoose');
 mongoose.connect('mongodb://45.32.213.227:27017/triplelog', {useNewUrlParser: true});
 var passport = require('passport')
