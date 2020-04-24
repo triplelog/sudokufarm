@@ -414,16 +414,7 @@ tr {
 var emojiList = {{ emojiList | dump | safe }};
 var imgList = {{ imgList | dump | safe }};
 var puzzle = {{ puzzle | dump | safe }};
-			/*totals: levelJson.initialTotals,
-			nPeople: levelJson.startPeople,
-			bpy: levelJson.bpy,
-			itemPerThing: levelJson.itemPerThing,
-			spendPerThing: levelJson.spendPerThing,
-			spendPerPerson: levelJson.spendPerPerson,*/
-			
-	
-			
-//var puzzle = {{ puzzle | dump | safe if puzzle else '[]'}};
+
 var totals = {{ totals | dump | safe if totals else '[]'}};
 var nPeople = {{ nPeople | dump | safe if nPeople else '[]'}};
 var bpy = {{ bpy | dump | safe if bpy else '[]'}};

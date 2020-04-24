@@ -181,7 +181,6 @@ function resetGame() {
 	nPeople = nPeopleReset;
 	bpy = bpyReset;
 	nYears = 1;
-	console.log(moves);
 	var savedMoves = moves;
 	moves = [];
 	updateSGN();	
@@ -201,6 +200,13 @@ function resetGame() {
 		selectedR = savedMoves[i].selectedR;
 		selectedC = savedMoves[i].selectedC;
 		updateCell(false);
+	}
+	
+	selectedButton = 0;
+	var ell = document.getElementById('buttonRow');
+	var buttons = ell.querySelectorAll('span');
+	for (var i=0;i<buttons.length;i++){
+		buttons[i].classList.remove('selected');
 	}
 	
 	

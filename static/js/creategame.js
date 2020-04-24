@@ -100,7 +100,16 @@ document.getElementById("sudoku").addEventListener('change',chgSudoku);
 document.getElementById("randomSimple").addEventListener('click',randomSudoku);
 
 function saveGame(evt) {
-	var jsonmessage = {'type':'save','id':gameid,'puzzle':puzzleReset};
+	var jsonmessage = {'type':'save','id':gameid};
+	jsonmessage['puzzle']=puzzleReset;
+	jsonmessage['totals']=totalsReset;
+	jsonmessage['nPeople']=nPeopleReset;
+	jsonmessage['bpy']=bpyReset;
+	jsonmessage['itemPerThing']=itemPerThing;
+	jsonmessage['spendPerThing']=spendPerThing;
+	jsonmessage['spendPerPerson']=spendPerPerson;
+	jsonmessage['imgList']=imgList;
+	jsonmessage['emojiList']=emojiList;
 	ws.send(JSON.stringify(jsonmessage));
 }
 document.getElementById("saveGame").addEventListener('click',saveGame);
