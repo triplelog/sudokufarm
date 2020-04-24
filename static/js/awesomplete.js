@@ -371,6 +371,8 @@ _.CONTAINER = function (input) {
 }
 
 _.ITEM = function (text, input, item_id) {
+	console.log(text);
+	console.log(input);
 	var html = input.trim() === "" ? text : text.replace(RegExp($.regExpEscape(input.trim()), "gi"), "<mark>$&</mark>");
 	return $.create("li", {
 		innerHTML: "<span>"+html+"</span><img class='awesomplete-thumbnail' src='"+input.trim()+"'>",
