@@ -265,8 +265,10 @@ tr {
 {% for i in range(1,8) %}
 <div>
 	<label for="resource{{ i }}emoji">Resource {{ i }}: </label>
-	<input type="text" id="resource{{ i }}name"></input>
 	<input type="text" id="resource{{ i }}emoji" value="{{ emojiList[i-1] }}"></input>
+	<input type="text" id="resource{{ i }}name"></input>
+	<input type="text" id="resource{{ i }}initial" value="{{ totals[i] }}"></input>
+	
 </div>
 {% endfor %}
 
@@ -346,6 +348,11 @@ tr {
 		</tr>
 	{% endfor %}
 </table>
+<div>
+	<label>Births per Year</label>
+	<input type="number"></input>
+	<input type="number"></input>
+</div>
 {% endblock %}
 
 {% block title33 %}

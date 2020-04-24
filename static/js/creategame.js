@@ -34,13 +34,14 @@ function chgIPT(evt) {
 		itemPerThing[i][iiminus1]=0;
 		spendPerThing[i][iiminus1]=0;
 	}
+	resetGame();
 }
 function chgSPP(evt) {
 	var el = evt.target;
 	var i = parseInt(el.id.split('-')[1]);
 	var val = parseInt(el.value);
 	if (val < 0){
-		spendPerPerson[i]=val;
+		spendPerPerson[i]=-1*val;
 	}
 	else if (val >0){
 		spendPerPerson[i]=-1*val;//Is a negative spend possible?
@@ -48,6 +49,7 @@ function chgSPP(evt) {
 	else {
 		spendPerPerson[i]=0;
 	}
+	resetGame();
 }
 function chgResource(evt) {
 	var el = evt.target;
@@ -64,6 +66,17 @@ function chgResource(evt) {
 	document.getElementById("income"+id+"emoji").textContent = el.value;
 }
 
+function chgInitial(evt) {
+	var el = evt.target;
+	var id = parseInt(el.id.substr(8,9));
+	if (id < 7){
+		totalsReset[id]=el.value;
+	}
+	else {
+		nPeopleReset = el.value;
+	}
+	resetGame();
+}
 
 document.getElementById("resource1emoji").addEventListener('change',chgResource);
 document.getElementById("resource2emoji").addEventListener('change',chgResource);
@@ -73,6 +86,13 @@ document.getElementById("resource5emoji").addEventListener('change',chgResource)
 document.getElementById("resource6emoji").addEventListener('change',chgResource);
 document.getElementById("resource7emoji").addEventListener('change',chgResource);
 
+document.getElementById("resource1initial").addEventListener('change',chgInitial);
+document.getElementById("resource2initial").addEventListener('change',chgInitial);
+document.getElementById("resource3initial").addEventListener('change',chgInitial);
+document.getElementById("resource4initial").addEventListener('change',chgInitial);
+document.getElementById("resource5initial").addEventListener('change',chgInitial);
+document.getElementById("resource6initial").addEventListener('change',chgInitial);
+document.getElementById("resource7initial").addEventListener('change',chgInitial);
 
 function chgItem(evt) {
 	var el = evt.target;
@@ -134,15 +154,15 @@ document.getElementById("randomSimple").addEventListener('click',randomSudoku);
 
 function saveGame(evt) {
 	var jsonmessage = {'type':'save','id':gameid};
-	jsonmessage['puzzle']=puzzleReset;//
-	jsonmessage['totals']=totalsReset;
-	jsonmessage['nPeople']=nPeopleReset;
+	jsonmessage['puzzle']=puzzleReset;//is updating on change
+	jsonmessage['totals']=totalsReset;//is updating on change
+	jsonmessage['nPeople']=nPeopleReset;//is updating on change
 	jsonmessage['bpy']=bpyReset;
-	jsonmessage['itemPerThing']=itemPerThing;//
-	jsonmessage['spendPerThing']=spendPerThing;//
-	jsonmessage['spendPerPerson']=spendPerPerson;//
+	jsonmessage['itemPerThing']=itemPerThing;//is updating on change
+	jsonmessage['spendPerThing']=spendPerThing;//is updating on change
+	jsonmessage['spendPerPerson']=spendPerPerson;//is updating on change
 	jsonmessage['imgList']=imgList;
-	jsonmessage['emojiList']=emojiList;//
+	jsonmessage['emojiList']=emojiList;//is updating on change
 	ws.send(JSON.stringify(jsonmessage));
 }
 document.getElementById("saveGame").addEventListener('click',saveGame);
