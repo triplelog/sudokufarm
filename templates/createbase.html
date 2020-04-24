@@ -446,9 +446,9 @@ var nYears = 1;
 var gameid = '{{ gameid }}';
 {% for i in range(1,7) %}
 	{% for ii in range(1,10) %}
-		document.getElementById('ipt-'+i+'-'+(ii-1)).addEventListener('change',chgIPT);
+		document.getElementById('ipt-{{i}}-{{ii-1}}').addEventListener('change',chgIPT);
 	{% endfor %}
-	document.getElementById('spp-'+i).addEventListener('change',chgSPP);
+	document.getElementById('spp-{{i}}').addEventListener('change',chgSPP);
 {% endfor %}	
 
 </script>
