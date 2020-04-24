@@ -82,7 +82,14 @@ function chgSudoku() {
 			puzzle = [];
 		}
 	}
-	console.log(puzzles);
+	if (puzzles.length > 0){
+		puzzleReset = [];
+		for (var i=0;i<puzzles[0].length;i++){
+			puzzleReset.push(puzzles[0][i].slice());
+		}
+		moves = [];		
+		resetGame();
+	}
 }
 function randomSudoku(evt) {
 	var jsonmessage = {'type':'sudoku','difficulty':'simple'};
@@ -92,4 +99,9 @@ function randomSudoku(evt) {
 document.getElementById("sudoku").addEventListener('change',chgSudoku);
 document.getElementById("randomSimple").addEventListener('click',randomSudoku);
 
+function saveGame(evt) {
+	var jsonmessage = {'type':'save','id':gameid,'puzzle':puzzleReset};
+	ws.send(JSON.stringify(jsonmessage));
+}
+document.getElementById("saveGame").addEventListener('click',saveGame);
 

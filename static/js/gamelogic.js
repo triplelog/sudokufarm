@@ -168,7 +168,6 @@ function resetGame() {
 	nPeople = nPeopleReset;
 	bpy = bpyReset;
 	existingPlots = existingPlotsReset.slice();
-	console.log(puzzle);
 	nYears = 1;
 	var savedMoves = moves;
 	moves = [];

@@ -44,6 +44,9 @@ wss.on('connection', function connection(ws) {
 				ws.send(JSON.stringify(jsonmessage));
 			}
 		}
+		else if (dm.type == 'save'){
+			console.log(dm);
+		}
 		
   	});
 });
@@ -142,6 +145,7 @@ app.get('/create',
 				}
 			}
 		}
+		var gameid = 'testgame';
 		res.write(nunjucks.render('templates/createbase.html',{
 			cells: levelJson.cells,
 			puzzle: levelJson.puzzle,
@@ -154,6 +158,7 @@ app.get('/create',
 			spendPerPerson: levelJson.spendPerPerson,
 			imgList: imgList,
 			emojiList: emojiList,
+			gameid: gameid,
 		}));
 		res.end();
 	

@@ -346,6 +346,7 @@ tr {
 {% block content33 %}
 	<button id="randomSimple">Random Simple</button>
 	<button id="resetGame">Reset</button>
+	<button id="saveGame">Save</button>
 	<br />
 	<textarea id="sudoku" rows="12"></textarea>
 {% endblock %}
@@ -431,6 +432,7 @@ var itemPerThing = {{ itemPerThing | dump | safe if itemPerThing else '[]'}};
 var spendPerThing = {{ spendPerThing | dump | safe if spendPerThing else '[]'}};
 var spendPerPerson = {{ spendPerPerson | dump | safe if spendPerPerson else '[]'}};
 var nYears = 1;
+var gameid = '{{ gameid }}';
 		
 
 </script>
