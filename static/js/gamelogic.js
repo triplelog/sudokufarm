@@ -177,6 +177,7 @@ function resetGame() {
 
 
 	totals = totalsReset.slice();
+	minTotals = minTotalsReset.slice();
 	
 	nPeople = nPeopleReset;
 	bpy = bpyReset;
@@ -234,6 +235,7 @@ for (var i=0;i<puzzle.length;i++){
 	puzzleReset.push(puzzle[i].slice());
 }
 var totalsReset = totals.slice();
+var minTotalsReset = minTotals.slice();
 var nPeopleReset = nPeople;
 var bpyReset = bpy;
 

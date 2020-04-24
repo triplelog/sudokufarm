@@ -461,6 +461,7 @@ var imgList = {{ imgList | dump | safe }};
 var puzzle = {{ puzzle | dump | safe }};
 
 var totals = {{ totals | dump | safe if totals else '[]'}};
+var minTotals = {{ totals | dump | safe if totals else '[]'}};
 var nPeople = {{ nPeople | dump | safe if nPeople else '[]'}};
 var bpy = {{ bpy | dump | safe if bpy else '[]'}};
 var existingPlots;

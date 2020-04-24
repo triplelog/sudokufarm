@@ -73,8 +73,13 @@ function chgInitial(evt) {
 	var elll = ell.querySelectorAll("td")[id-1];
 	elll.textContent = el.value;
 	
+	ell = document.getElementById("minimumData");
+	elll = ell.querySelectorAll("td")[id-1];
+	elll.textContent = el.value;
+	
 	if (id < 7){
 		totalsReset[id]=parseInt(el.value);
+		minTotalsReset[id]=parseInt(el.value);
 	}
 	else {
 		nPeopleReset = parseInt(el.value);
