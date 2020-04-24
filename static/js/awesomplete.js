@@ -381,7 +381,7 @@ _.ITEM = function (text, input, item_id) {
 };
 
 _.REPLACE = function (text) {
-	this.input.value = text.value;
+	this.input.value = text.label;
 };
 
 _.DATA = function (item/*, input*/) { return item; };
