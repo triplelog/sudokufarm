@@ -179,7 +179,7 @@ function saveGame(evt) {
 	jsonmessage['puzzle']=puzzleReset;//is updating on change
 	jsonmessage['totals']=totalsReset;//is updating on change
 	jsonmessage['nPeople']=nPeopleReset;//is updating on change
-	jsonmessage['bpy']=bpyReset;
+	jsonmessage['bpy']=bpyReset;//is updating on change
 	jsonmessage['itemPerThing']=itemPerThing;//is updating on change
 	jsonmessage['spendPerThing']=spendPerThing;//is updating on change
 	jsonmessage['spendPerPerson']=spendPerPerson;//is updating on change
