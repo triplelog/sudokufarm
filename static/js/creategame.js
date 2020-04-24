@@ -1,8 +1,8 @@
 var ws = new WebSocket('wss://soliturn.com:8080');
 ws.onopen = function(evt) {
 	
-	//var jsonmessage = {'operation':'key','message':key};
-	//ws.send(JSON.stringify(jsonmessage));
+	var jsonmessage = {'operation':'key','message':tkey};
+	ws.send(JSON.stringify(jsonmessage));
 	
 	
 }
@@ -182,7 +182,7 @@ document.getElementById("sudoku").addEventListener('change',chgSudoku);
 document.getElementById("randomSimple").addEventListener('click',randomSudoku);
 
 function saveGame(evt) {
-	var jsonmessage = {'type':'save','id':gameid};
+	var jsonmessage = {'type':'save'};
 	jsonmessage['puzzle']=puzzleReset;//is updating on change
 	jsonmessage['totals']=totalsReset;//is updating on change
 	jsonmessage['nPeople']=nPeopleReset;//is updating on change

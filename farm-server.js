@@ -39,10 +39,17 @@ const server = https.createServer(options, (req, res) => {
 const WebSocket = require('ws');
 const wss = new WebSocket.Server({ server });
 wss.on('connection', function connection(ws) {
-  	
+  	var gameid = '';
+  	var username = '';
   	ws.on('message', function incoming(message) {
 		var dm = JSON.parse(message);
-		if (dm.type == 'sudoku'){
+		if (dm.type && dm.type == 'key'){
+			if (dm.message && tempKeys[dm.message]){
+				gameid = tempKeys[dm.message].gameid;
+				username = tempKeys[dm.message].username;
+			}
+		}
+		else if (dm.type == 'sudoku'){
 			if (dm.difficulty == 'simple'){
 				var puzzle = "...39.1.48..74...5.....8....5691.4..18..65.3.9.34.......5..4..1......8......5....";
 				var jsonmessage = {'puzzle':puzzle};
@@ -50,7 +57,7 @@ wss.on('connection', function connection(ws) {
 			}
 		}
 		else if (dm.type == 'save'){
-			console.log(dm);
+			console.log(dm,gameid,username);
 		}
 		
   	});
@@ -119,10 +126,13 @@ app.get('/game',
 app.get('/create',
 	function(req, res){
 		
-		/*var tkey = crypto.randomBytes(100).toString('hex').substr(2, 18);
+		var tkey = crypto.randomBytes(100).toString('hex').substr(2, 18);
+		var gameid = 'testgame';
+		var matches = false;
+		tempKeys[tkey]={username:'',gameid:gameid};
 		if (req.isAuthenticated()){
-			tempKeys[tkey] = {username:req.user.username};
-		}*/
+			tempKeys[tkey].username = req.user.username;
+		}
 		
 		//startPeople as int
 		//bpy as [births,years]
@@ -147,7 +157,7 @@ app.get('/create',
 				}
 			}
 		}
-		var gameid = 'testgame';
+		
 		
 		//Get list of available icons
 		var availableIcons = {'farming':['Bees','Cow','Duck','Cow']};
@@ -164,7 +174,7 @@ app.get('/create',
 			spendPerPerson: levelJson.spendPerPerson,
 			imgList: imgList,
 			emojiList: emojiList,
-			gameid: gameid,
+			tkey: tkey,
 			availableIcons: availableIcons,
 		}));
 		res.end();
