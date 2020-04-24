@@ -60,19 +60,19 @@ wss.on('connection', function connection(ws) {
 		}
 		else if (dm.type == 'save'){
 			console.log(dm,gameid,username);
-			dm.message.id = gameid;
+			dm.game.id = gameid;
 			SudokufarmUser.findOne({username:username},function(err,result){
 				var foundMatch = false;
 				for (var i=0;i<results.games.length;i++){
 					if (result.games[i].id == gameid){
-						result.games[i] = dm.message;
+						result.games[i] = dm.game;
 						console.log(result.games);
 						foundMatch = true;
 						break;
 					}
 				}
 				if (!foundMatch){
-					result.games.push(dm.message);
+					result.games.push(dm.game);
 					console.log(result.games);
 				}
 				result.makModified('games');

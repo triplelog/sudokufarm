@@ -182,16 +182,16 @@ document.getElementById("sudoku").addEventListener('change',chgSudoku);
 document.getElementById("randomSimple").addEventListener('click',randomSudoku);
 
 function saveGame(evt) {
-	var jsonmessage = {'type':'save'};
-	jsonmessage['puzzle']=puzzleReset;//is updating on change
-	jsonmessage['totals']=totalsReset;//is updating on change
-	jsonmessage['nPeople']=nPeopleReset;//is updating on change
-	jsonmessage['bpy']=bpyReset;//is updating on change
-	jsonmessage['itemPerThing']=itemPerThing;//is updating on change
-	jsonmessage['spendPerThing']=spendPerThing;//is updating on change
-	jsonmessage['spendPerPerson']=spendPerPerson;//is updating on change
-	jsonmessage['imgList']=imgList;//is updating on change
-	jsonmessage['emojiList']=emojiList;//is updating on change
+	var jsonmessage = {'type':'save','game':{}};
+	jsonmessage.game['puzzle']=puzzleReset;//is updating on change
+	jsonmessage.game['totals']=totalsReset;//is updating on change
+	jsonmessage.game['nPeople']=nPeopleReset;//is updating on change
+	jsonmessage.game['bpy']=bpyReset;//is updating on change
+	jsonmessage.game['itemPerThing']=itemPerThing;//is updating on change
+	jsonmessage.game['spendPerThing']=spendPerThing;//is updating on change
+	jsonmessage.game['spendPerPerson']=spendPerPerson;//is updating on change
+	jsonmessage.game['imgList']=imgList;//is updating on change
+	jsonmessage.game['emojiList']=emojiList;//is updating on change
 	ws.send(JSON.stringify(jsonmessage));
 }
 document.getElementById("saveGame").addEventListener('click',saveGame);
