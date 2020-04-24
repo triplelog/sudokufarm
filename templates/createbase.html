@@ -292,7 +292,7 @@ tr {
 <div>
 	<label for="item{{ i }}icon">Item {{ i }}: </label>
 	<input type="text" id="item{{ i }}name"></input>
-	<input id="item{{ i }}icon" class="awesomplete" data-autofirst="true" data-list="Apple, Corn, Orange" />
+	<input id="item{{ i }}icon" class="awesomplete" />
 
 </div>
 {% endfor %}
@@ -457,9 +457,10 @@ var existingPlots;
 var itemPerThing = {{ itemPerThing | dump | safe if itemPerThing else '[]'}};
 var spendPerThing = {{ spendPerThing | dump | safe if spendPerThing else '[]'}};
 var spendPerPerson = {{ spendPerPerson | dump | safe if spendPerPerson else '[]'}};
+
 var nYears = 1;
 var gameid = '{{ gameid }}';
-	
+var availableIcons = {{ availableIcons | dump | safe }};	
 
 </script>
 <script src="../js/creategame.js"></script>
@@ -473,6 +474,22 @@ var gameid = '{{ gameid }}';
 	{% endfor %}
 	document.getElementById('spp-{{i}}').addEventListener('change',chgSPP);
 {% endfor %}	
+
+{% for i in range(1,10) %}
+	var input = document.getElementById("item{{ i }}icon");
+	new Awesomplete(input, {
+		minChars: 2,
+		maxItems: 15,
+		autoFirst: true,
+		list: [
+			{ label: "Bees", value: "bees" },
+			{ label: "Cow", value: "cow" },
+			{ label: "Duck", value: "duck" }
+		]
+	});
+
+{% endfor %}
+
 
 </script>
 {% endblock %}

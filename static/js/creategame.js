@@ -139,8 +139,16 @@ document.getElementById("item7icon").addEventListener('input',chgItem);
 document.getElementById("item8icon").addEventListener('input',chgItem);
 document.getElementById("item9icon").addEventListener('input',chgItem);
 
-
 document.getElementById("item1icon").addEventListener('awesomplete-selectcomplete',chgItem);
+document.getElementById("item2icon").addEventListener('awesomplete-selectcomplete',chgItem);
+document.getElementById("item3icon").addEventListener('awesomplete-selectcomplete',chgItem);
+document.getElementById("item4icon").addEventListener('awesomplete-selectcomplete',chgItem);
+document.getElementById("item5icon").addEventListener('awesomplete-selectcomplete',chgItem);
+document.getElementById("item6icon").addEventListener('awesomplete-selectcomplete',chgItem);
+document.getElementById("item7icon").addEventListener('awesomplete-selectcomplete',chgItem);
+document.getElementById("item8icon").addEventListener('awesomplete-selectcomplete',chgItem);
+document.getElementById("item9icon").addEventListener('awesomplete-selectcomplete',chgItem);
+
 function chgSudoku() {
 	var el = document.getElementById("sudoku");
 	var puzzleRaw = el.value;

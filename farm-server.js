@@ -142,6 +142,10 @@ app.get('/create',
 			}
 		}
 		var gameid = 'testgame';
+		
+		//Get list of available icons
+		var availableIcons = {'farming':['bees','cow','duck']};
+		
 		res.write(nunjucks.render('templates/createbase.html',{
 			cells: levelJson.cells,
 			puzzle: levelJson.puzzle,
@@ -155,6 +159,7 @@ app.get('/create',
 			imgList: imgList,
 			emojiList: emojiList,
 			gameid: gameid,
+			availableIcons: availableIcons,
 		}));
 		res.end();
 	
