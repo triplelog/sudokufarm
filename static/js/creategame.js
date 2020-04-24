@@ -1,7 +1,7 @@
 var ws = new WebSocket('wss://soliturn.com:8080');
 ws.onopen = function(evt) {
 	
-	var jsonmessage = {'operation':'key','message':tkey};
+	var jsonmessage = {'type':'key','message':tkey};
 	ws.send(JSON.stringify(jsonmessage));
 	
 	
