@@ -14,11 +14,17 @@ const options = {
   cert: fs.readFileSync('/etc/letsencrypt/live/soliturn.com/fullchain.pem')
 };
 
+const SudokufarmUser = require('./models/sudokufarmuser');
+const mongoose = require('mongoose');
+mongoose.connect('mongodb://45.32.213.227:27017/triplelog', {useNewUrlParser: true});
+
+var fromLogin = require('./login-server.js');
+var app = fromLogin.loginApp;
+var tempKeys = fromLogin.tempKeys;
 
 
 var express = require('express');
-var app = express();
-app.use('/',express.static('static'));
+
 
 
 const server1 = https.createServer(options, app);
