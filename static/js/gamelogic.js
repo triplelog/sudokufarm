@@ -161,6 +161,7 @@ function resetGame() {
 	itemGets = [0,0,0,0,0,0,0];
 	puzzle = [];
 	existingPlots = [0,0,0,0,0,0,0,0,0];
+	console.log(totals);
 	for (var i=0;i<puzzleReset.length;i++){
 		puzzle.push(puzzleReset[i].slice());
 		for (var ii = 0;ii<9;ii++) {
@@ -182,20 +183,20 @@ function resetGame() {
 	bpy = bpyReset;
 	nYears = 1;
 	console.log(moves);
+	console.log(totals);
 	var savedMoves = moves;
 	moves = [];
 	updateSGN();	
+	console.log(totals);
 		
 	
 	
 	for (var i=0;i<savedMoves.length;i++){
-		console.log(totals);
 		selectedButton = savedMoves[i].selectedButton;
 		updateSGN();
 		selectedR = savedMoves[i].selectedR;
 		selectedC = savedMoves[i].selectedC;
 		updateCell(false);
-		console.log(totals);
 	}
 	
 	
