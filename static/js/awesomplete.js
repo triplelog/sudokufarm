@@ -371,11 +371,10 @@ _.CONTAINER = function (input) {
 }
 
 _.ITEM = function (text, input, item_id) {
-	console.log(text);
 	console.log(text.value);
 	var html = input.trim() === "" ? text : text.replace(RegExp($.regExpEscape(input.trim()), "gi"), "<mark>$&</mark>");
 	return $.create("li", {
-		innerHTML: "<span>"+html+"</span><img class='awesomplete-thumbnail' src='"+input.trim()+"'>",
+		innerHTML: "<span>"+html+"</span><img class='awesomplete-thumbnail' src='"+text.value+"'>",
 		"role": "option",
 		"aria-selected": "false",
 		"id": "awesomplete_list_" + this.count + "_item_" + item_id
