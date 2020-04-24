@@ -21,12 +21,12 @@ mongoose.connect('mongodb://45.32.213.227:27017/triplelog', {useNewUrlParser: tr
 const SudokufarmUser = require('./models/sudokufarmuser');
 var fromLogin = require('./login-server.js');
 var app = fromLogin.loginApp;
-app.use('/',express.static('static'));
+
 var tempKeys = fromLogin.tempKeys;
 
 
 var express = require('express');
-
+app.use('/',express.static('static'));
 
 
 const server1 = https.createServer(options, app);
