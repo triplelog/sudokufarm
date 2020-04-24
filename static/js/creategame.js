@@ -70,10 +70,10 @@ function chgInitial(evt) {
 	var el = evt.target;
 	var id = parseInt(el.id.substr(8,9));
 	if (id < 7){
-		totalsReset[id]=el.value;
+		totalsReset[id]=parseInt(el.value);
 	}
 	else {
-		nPeopleReset = el.value;
+		nPeopleReset = parseInt(el.value);
 	}
 	resetGame();
 }
