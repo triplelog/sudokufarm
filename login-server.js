@@ -97,7 +97,7 @@ app.post('/register',
 		  
 		}
 		else {
-			var UserData = new UserData({username: req.body.username.toLowerCase(), friends: [], followers: []});
+			var UserData = new UserData({username: req.body.username.toLowerCase()});
 			UserData.save(function(err,result){
 				console.log('user registered!',performance.now());
 				var robot = 'python3 python/robohash/createrobo.py '+req.body.username.toLowerCase()+' 1';
