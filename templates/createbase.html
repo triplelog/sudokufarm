@@ -268,6 +268,26 @@ tr {
 .row8 {
 	border-bottom: 5px solid black;
 }
+
+.positive {
+	width: calc(100% - .25rem);
+	padding-right: .25rem;
+	border: solid 1px black;
+	display: inline-block;
+	text-align: right;
+	background: green;
+	color: white;
+}
+.negative {
+	width: calc(100% - .25rem);
+	padding-right: .25rem;
+	border: solid 1px black;
+	display: inline-block;
+	text-align: right;
+	background: red;
+	color: white;
+}
+
 {% endblock %}
 
 
@@ -358,6 +378,30 @@ tr {
 {% block content31 %}
 
 <table>
+	<tr>
+		<td style="width:14%;"></td>
+	{% for i in range(1,7) %}
+		<td style="width:14%;" id="income{{i}}emoji">{{ emojiList[i-1] }}</td>
+	{% endfor %}
+	</tr>
+	{% for ii in range(1,9) %}
+		<tr>
+			<td id="header-{{ii}}"><img src="../sfarm/{{ imgList[ii] }}.png" style="width:40%;"></td>
+		{% for i in range(1,7) %}
+			<td style="width:14%;">{% if itemPerThing[i][ii-1] - spendPerThing[i][ii-1] > 0 %}<input type="number" id="ipt-{{i}}-{{ii-1}}" class="positive" value="{{ itemPerThing[i][ii-1] - spendPerThing[i][ii-1] }}"></input>{% elif itemPerThing[i][ii-1] - spendPerThing[i][ii-1] < 0 %}<input type="number" id="ipt-{{i}}-{{ii-1}}" class="negative" value="{{ itemPerThing[i][ii-1] - spendPerThing[i][ii-1] }}"></input>{% endif %}</td>
+		{% endfor %}
+			
+		</tr>
+	{% endfor %}
+	<tr>
+		<td style="width:14%;">P</td>
+	{% for i in range(1,7) %}
+		<td style="width:14%;">{% if spendPerPerson[i] > 0 %}<input type="number" id="spp-{{i}}" class="negative" value="{{ -1*spendPerPerson[i] }}"></input>{% elif spendPerPerson[i] < 0 %}<input type="number" id="spp-{{i}}" class="positive" value="{{ -1*spendPerPerson[i] }}"></input>{% endif %}</td>
+	{% endfor %}
+	</tr>
+</table>
+<!--
+<table>
 	<tr style="width:100%;">
 		<td style="width:8%;"></td>
 	{% for ii in range(1,10) %}
@@ -374,7 +418,7 @@ tr {
 			<td style="width:8%;"><input id="spp-{{i}}" type="number" value="{{ -1*spendPerPerson[i] }}" style="width:100%;"></input></td>
 		</tr>
 	{% endfor %}
-</table>
+</table>-->
 <div>
 	<label>Births per Year</label>
 	<input type="number" id="births" value="{{ bpy[0] }}" style="width:3rem;"></input>
@@ -470,7 +514,7 @@ tr {
 		{% endfor %}
 	</div>
 	<div>
-		<a href="../{{ username }}/ {{ gameid }}">https://sudokufarm.com/{{ username }}/ {{ gameid }}</a>
+		<a href="../{{ username }}/{{ gameid }}">https://sudokufarm.com/{{ username }}/{{ gameid }}</a>
 	</div>
 {% endblock %}
 
