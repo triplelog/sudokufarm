@@ -386,7 +386,7 @@ tr {
 	</tr>
 	{% for ii in range(1,9) %}
 		<tr>
-			<td id="header-{{ii}}"><img src="../sfarm/{{ imgList[ii] }}.png" style="width:40%;"></td>
+			<td id="header-{{ii}}"><img src="../sfarm/{{ imgList[ii] }}.png" style="width:30%;"></td>
 		{% for i in range(1,7) %}
 			<td style="width:14%;">{% if itemPerThing[i][ii-1] - spendPerThing[i][ii-1] > 0 %}<input type="number" id="ipt-{{i}}-{{ii-1}}" class="positive" value="{{ itemPerThing[i][ii-1] - spendPerThing[i][ii-1] }}"></input>{% elif itemPerThing[i][ii-1] - spendPerThing[i][ii-1] < 0 %}<input type="number" id="ipt-{{i}}-{{ii-1}}" class="negative" value="{{ itemPerThing[i][ii-1] - spendPerThing[i][ii-1] }}"></input>{% endif %}</td>
 		{% endfor %}
