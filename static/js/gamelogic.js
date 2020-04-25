@@ -223,6 +223,7 @@ function resetGame() {
 	for (var i=0;i<buttons.length;i++){
 		buttons[i].classList.remove('selected');
 	}
+	updateSGN();
 	
 	
 }
