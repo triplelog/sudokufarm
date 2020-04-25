@@ -257,7 +257,9 @@ app.get('/create',
 			tempKeys[tkey].username = req.user.username;
 			username = req.user.username;
 		}
-		
+		else {
+			//Add a redirect to account page
+		}
 		//startPeople as int
 		//bpy as [births,years]
 		//itemPerThing as array of 7 arrays of 9 with first blank
