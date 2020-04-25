@@ -114,7 +114,7 @@ body {
 {% block content13 %}
 
 {% for game in games %}
-<div>{{game.id}}
+<div><a href="../{{username}}/{{game.id}}">{{game.id}}</a>
 </div>
 {% endfor %}
 
