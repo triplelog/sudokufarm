@@ -73,6 +73,7 @@ app.get('/account',
 				options: req.user.options,
 				friends: result.friends,
 				tkey: tkey,
+				games: result.games,
 			}));
 			res.end();
 		})
