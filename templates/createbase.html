@@ -310,11 +310,11 @@ tr {
 
 {% for i in range(1,8) %}
 <div>
-	<label for="resource{{ i }}emoji">R {{ i }}: </label>
+	<input type="text" id="resource{{ i }}name" style="width:5rem;"></input> : 
 	<input type="text" id="resource{{ i }}emoji" value="{{ emojiList[i-1] }}" style="width:2rem;"></input>
-	<input type="text" id="resource{{ i }}name" style="width:5rem;"></input>
 	<input type="number" id="resource{{ i }}initial" value="{% if i == 7 %}{{ nPeople }}{% else %}{{ totals[i] }}{% endif %}" style="width:3rem;"></input>
-	
+	{% if i < 7 %}<span id="minimum-{{i}}">{{ totals[1] }}</span>{% endif %}
+
 </div>
 {% endfor %}
 
@@ -381,7 +381,7 @@ tr {
 	<tr>
 		<td style="width:14%;"></td>
 	{% for i in range(1,7) %}
-		<td style="width:14%;" id="income{{i}}emoji">{{ emojiList[i-1] }}</td>
+		<td style="width:14%; text-align: center;" id="income{{i}}emoji">{{ emojiList[i-1] }}</td>
 	{% endfor %}
 	</tr>
 	{% for ii in range(1,9) %}
@@ -454,24 +454,6 @@ tr {
 
 {% block content22 %}
 	<table id="dataTable">
-		<tr id="initialData">
-			<td class="pointsBoard1 firstSix">{{ totals[1] }}</td>
-			<td class="pointsBoard2 firstSix">{{ totals[2] }}</td>
-			<td class="pointsBoard3 firstSix">{{ totals[3] }}</td>
-			<td class="pointsBoard4 firstSix">{{ totals[4] }}</td>
-			<td class="pointsBoard5 firstSix">{{ totals[5] }}</td>
-			<td class="pointsBoard6 firstSix">{{ totals[6] }}</td>
-			<td class="pointsBoard7 peopleTD">{{ nPeople }}</td>
-		</tr>
-		<tr id="minimumData">
-			<td class="pointsBoard1 firstSix">{{ totals[1] }}</td>
-			<td class="pointsBoard2 firstSix">{{ totals[2] }}</td>
-			<td class="pointsBoard3 firstSix">{{ totals[3] }}</td>
-			<td class="pointsBoard4 firstSix">{{ totals[4] }}</td>
-			<td class="pointsBoard5 firstSix">{{ totals[5] }}</td>
-			<td class="pointsBoard6 firstSix">{{ totals[6] }}</td>
-			<td class="pointsBoard7 peopleTD">{{ nPeople }}</td>
-		</tr>
 		<tr id="emojiData">
 			<td class="firstSix">{{ emojiList[0] }}</td>
 			<td class="firstSix">{{ emojiList[1] }}</td>

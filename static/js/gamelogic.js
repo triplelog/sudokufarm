@@ -32,9 +32,9 @@ function updateSGN() {
 function updateTotals(save) {
 	var el = document.getElementById('newData');
 	var ts = el.querySelectorAll('td');
-	var minel = document.getElementById('minimumData');
-	var mints = minel.querySelectorAll('td');
+
 	for (var i=0;i<7;i++) {
+		var minel = document.getElementById('minimum-'+i);
 		if (!save && selectedButton >0){
 			if (i>0){
 				ts[i-1].textContent = totals[i] + itemGets[i] - itemSpends[i];
@@ -53,7 +53,7 @@ function updateTotals(save) {
 			}
 			if (i>0 && totals[i]<minTotals[i]){
 				minTotals[i]=totals[i];
-				mints[i-1].textContent = minTotals[i];
+				minel.textContent = minTotals[i];
 			}
 		}
 		
