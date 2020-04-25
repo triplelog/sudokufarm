@@ -58,12 +58,10 @@
 	display: none;
 }
 .content-13 {
-	grid-row: 2;
-	grid-column: 1;
+	grid-column: 1 / 3;
 }
 .container {
-	grid-template-columns: calc((var(--width-container) - var(--width-center)) * 2 / 3) var(--width-center) calc((var(--width-container) - var(--width-center)) / 3);
-  	grid-template-rows: calc((var(--height-container) - var(--height-center))) var(--height-center) 0px;
+	grid-template-rows: calc((var(--height-container) - var(--height-center))) var(--height-center) 0px;
 }
 .title a {
 	text-decoration: none;
@@ -319,24 +317,31 @@ tr {
 </div>
 {% endblock %}
 {% block content13 %}
+
 <table>
-	<tr style="width:100%;">
-		<td style="width:8%;"></td>
-	{% for ii in range(1,10) %}
-		<td style="width:8%;" id="header-{{ii}}"><img src="../sfarm/{{ imgList[ii] }}.png" style="width:100%;"></td>
-	{% endfor %}
-		<td style="width:8%;">P</td>
-	</tr>
+	<tr>
+		<td style="width:14%;"></td>
 	{% for i in range(1,7) %}
+		<td style="width:14%;" id="income{{i}}emoji">{{ emojiList[i-1] }}</td>
+	{% endfor %}
+	</tr>
+	{% for ii in range(1,9) %}
 		<tr>
-			<td id="income{{i}}emoji">{{ emojiList[i-1] }}</td>
-		{% for ii in range(1,10) %}
-			<td style="width:8%;">{% if itemPerThing[i][ii-1] - spendPerThing[i][ii-1] > 0 %}<span id="ipt-{{i}}-{{ii-1}}" class="positive">{{ itemPerThing[i][ii-1] - spendPerThing[i][ii-1] }}</span>{% elif itemPerThing[i][ii-1] - spendPerThing[i][ii-1] < 0 %}<span id="ipt-{{i}}-{{ii-1}}" class="negative">{{ itemPerThing[i][ii-1] - spendPerThing[i][ii-1] }}</span>{% endif %}</td>
+			<td id="header-{{ii}}"><img src="../sfarm/{{ imgList[ii] }}.png" style="width:40%;"></td>
+		{% for i in range(1,7) %}
+			<td style="width:14%;">{% if itemPerThing[i][ii-1] - spendPerThing[i][ii-1] > 0 %}<span id="ipt-{{i}}-{{ii-1}}" class="positive">{{ itemPerThing[i][ii-1] - spendPerThing[i][ii-1] }}</span>{% elif itemPerThing[i][ii-1] - spendPerThing[i][ii-1] < 0 %}<span id="ipt-{{i}}-{{ii-1}}" class="negative">{{ itemPerThing[i][ii-1] - spendPerThing[i][ii-1] }}</span>{% endif %}</td>
 		{% endfor %}
-			<td style="width:8%;">{% if spendPerPerson[i] > 0 %}<span id="spp-{{i}}" class="negative">{{ -1*spendPerPerson[i] }}</span>{% elif spendPerPerson[i] < 0 %}<span id="spp-{{i}}" class="positive">{{ -1*spendPerPerson[i] }}</span>{% endif %}</td>
+			
 		</tr>
 	{% endfor %}
+	<tr>
+		<td style="width:14%;">P</td>
+	{% for i in range(1,7) %}
+		<td style="width:14%;">{% if spendPerPerson[i] > 0 %}<span id="spp-{{i}}" class="negative">{{ -1*spendPerPerson[i] }}</span>{% elif spendPerPerson[i] < 0 %}<span id="spp-{{i}}" class="positive">{{ -1*spendPerPerson[i] }}</span>{% endif %}</td>
+	{% endfor %}
+	</tr>
 </table>
+
 <div>
 	<label>Births per Year</label>
 	<input type="number" id="births" value="{{ bpy[0] }}" style="width:3rem;"></input>
