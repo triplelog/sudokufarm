@@ -161,6 +161,14 @@ function updateCell(evt){
 	
 }
 
+function undoMove() {
+	moves.splice(moves.length-1,1);
+	resetGame();
+}
+function clearGame() {
+	moves = [];
+	resetGame();
+}
 function resetGame() {
 	selectedButton = 0;
 	itemSpends = [0,0,0,0,0,0,0];
@@ -247,4 +255,5 @@ var bpyReset = bpy;
 
 var moves = [];		
 resetGame();
-document.getElementById("resetGame").addEventListener('click',resetGame);
+document.getElementById("resetGame").addEventListener('click',clearGame);
+document.getElementById("undoMove").addEventListener('click',undoMove);
