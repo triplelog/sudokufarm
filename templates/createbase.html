@@ -542,9 +542,10 @@ var availableIcons = {{ availableIcons | dump | safe }};
 		{% elif itemPerThing[i][ii-1] - spendPerThing[i][ii-1] < 0 %}
 			document.getElementById('ipt-{{i}}-{{ii-1}}').addEventListener('change',chgIPT);
 		{% endif %}
-		
 	{% endfor %}
-	document.getElementById('spp-{{i}}').addEventListener('change',chgSPP);
+	{% if spendPerPerson[i] > 0 %}
+		document.getElementById('spp-{{i}}').addEventListener('change',chgSPP);
+	{% endif %}
 {% endfor %}	
 
 var list = [];
