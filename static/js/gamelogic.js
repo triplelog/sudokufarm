@@ -3,7 +3,6 @@ function updateSGN() {
 	var el = document.getElementById('changeData');
 	var nets = el.querySelectorAll('td');
 	for (var i=0;i<7;i++) {
-		if (i==1){console.log(nYears,nPeople,spendPerPerson[i]*nPeople);}
 		itemSpends[i]=spendPerPerson[i]*nPeople
 		itemGets[i]=0
 		for (var ii=0;ii<9;ii++) {
@@ -151,7 +150,7 @@ function updateCell(evt){
 		
 		updateTotals(true);
 		updateSGN();
-		
+		console.log(nYears,nPeople);
 		if (nYears%bpy[1] == 0) {
 			nPeople+=bpy[0];
 		}
