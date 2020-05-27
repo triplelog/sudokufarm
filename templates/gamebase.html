@@ -33,6 +33,24 @@
 	grid-column: 1;
 	grid-row: 1 / 3;
 }
+#radio13-1:checked ~ .content-13 {
+	grid-column:  1;
+	grid-row:  1;
+	z-index: 1;
+}
+#radio13-1:checked ~ .content-13 .content {
+	display: none;
+}
+#radio13-2:checked ~ .content-13 {
+	grid-row:  1 / 3;
+	grid-column:  1;
+	z-index: 2;
+}
+#radio13-3:checked ~ .content-13 {
+	grid-row:  1 / 4;
+	grid-column:  1 / 4;
+	z-index: 3;
+}
 .content-11 {
 	grid-column: 2;
 	grid-row: 1;
