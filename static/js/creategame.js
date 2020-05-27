@@ -135,6 +135,9 @@ function chgItem(evt) {
 	
 	ell = document.getElementById('header-'+id).querySelector('img');
 	ell.setAttribute('src',"../sfarm/"+el.getAttribute('data-value')+".png");
+	
+	ell = document.getElementById('item'+id+'img');
+	ell.setAttribute('src',"../sfarm/"+el.getAttribute('data-value')+".png");
 		
 	resetGame();
 }

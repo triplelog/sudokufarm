@@ -364,10 +364,15 @@ tr {
 	{% for coli in [1,2,3,4,5,6,7,8,9] %}<span class="button{{ coli }}"><img src="../sfarm/{{ imgList[coli] }}.png" /></span>{% endfor %}
 </div>
 
+<div>
+	<span style="width:8rem; display: inline-block;">Icon</span>
+	<span style="width:1rem; display: inline-block;">Preview</span>
+</div>
 {% for i in range(1,10) %}
 <div>
 	<!--<input type="text" id="item{{ i }}name"></input> : -->
-	<input id="item{{ i }}icon" class="awesomplete" />
+	<input id="item{{ i }}icon" class="awesomplete" style="width:8rem; display: inline-block;" value="{{ imgName[i] }}"/>
+	<img id="item{{ i }}img" style="width:1rem; display: inline-block;" src="../sfarm/{{ imgList[i] }}.png"/>
 
 </div>
 {% endfor %}
