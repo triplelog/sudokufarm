@@ -18,14 +18,14 @@
 	--width-container: calc(100vw - 3rem);
 	height: var(--height-container);
 	width: var(--width-container);
+	max-width: 60rem;
 	{% block centerSize %}
 	{% endblock %}
 	{% block borderRadius %}
 	{% endblock %}
 	margin: 1rem auto;
-	/*border: 1px dotted blue;*/
-	grid-template-columns: calc((var(--width-container) - var(--width-center)) / 2) var(--width-center) calc((var(--width-container) - var(--width-center)) / 2);
-  	grid-template-rows: calc((var(--height-container) - var(--height-center)) / 2) var(--height-center) calc((var(--height-container) - var(--height-center)) / 2);
+	grid-template-columns: 1fr var(--width-center) 1fr;
+	grid-template-rows: calc((var(--height-container) - var(--height-center)) / 2) var(--height-center) calc((var(--height-container) - var(--height-center)) / 2);
 }
 
 .container div .title .titleLeft {
@@ -215,6 +215,71 @@
   grid-column:  2; 
 }
 
+.logoDiv {
+	position: relative;
+	left:0rem;
+	top: 0rem;
+}
+.centerLink {
+	text-align: center;
+	position: relative;
+	top: 1rem;
+}
+
+div:Not(.content-22) > .content {
+	overflow-y: auto;
+	overflow-x: auto;
+	overflow: auto;
+	height: calc(100% - 2 * var(--border-radius));
+	padding: calc(.5 * var(--border-radius));
+	text-align: center;
+}
+.content-22 .content {
+	text-align: center;
+}
+
+button.basic {
+	color: #fff !important;
+	text-decoration: none;
+	background: #aa2233;
+	padding: .4rem .8rem;
+	border-radius: .6rem;
+	border: 1px solid black;
+	margin: .2rem 0rem;
+	transition: all 0.4s ease 0s;
+	font-size: 1rem;
+}
+button.basic:hover {
+	background: #662222;
+	letter-spacing: 1px;
+	-webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+	-moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+	box-shadow: 5px 40px -10px rgba(0,0,0,0.57);
+	transition: all 0.4s ease 0s;
+	cursor: pointer;
+}
+a.basic {
+	color: #fff !important;
+	text-decoration: none;
+	background: #aa2233;
+	padding: .4rem .8rem;
+	border-radius: .6rem;
+	border: 1px solid black;
+	margin: .2rem 0rem;
+	transition: all 0.4s ease 0s;
+	font-size: 1rem;
+	height: 2rem;
+	line-height: 2.2rem;
+}
+a.basic:hover {
+	background: #662222;
+	letter-spacing: 1px;
+	-webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+	-moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+	box-shadow: 5px 40px -10px rgba(0,0,0,0.57);
+	transition: all 0.4s ease 0s;
+	cursor: pointer;
+}
 
 {% block titleCSS %}
 {% endblock %}

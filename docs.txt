@@ -52,5 +52,5 @@ Create ssh key on server and add to github
 
 
 #
-change references to sudokufarm.com in sites-available and on servers with fullchain
+change references to sudokufarm.com in sites-available and on servers with fullchain and ws in client js
 redo certbot
