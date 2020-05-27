@@ -186,16 +186,24 @@ function chgSudoku() {
 		resetGame();
 	}
 }
-function randomSudoku(evt,difficulty) {
+function randomSudoku(evt) {
+	var elid = evt.target.id;
+	var difficulty = 'easy';
+	if (elid == 'randomMedium'){
+		difficulty = 'medium';
+	}
+	else if (elid == 'randomHard'){
+		difficulty = 'hard';
+	}
 	console.log(difficulty);
-	var jsonmessage = {'type':'sudoku','difficulty':'simple'};
+	var jsonmessage = {'type':'sudoku','difficulty':difficulty};
 	ws.send(JSON.stringify(jsonmessage));
 	
 }
 document.getElementById("sudoku").addEventListener('change',chgSudoku);
-document.getElementById("randomEasy").addEventListener('click',randomSudoku,'easy');
-document.getElementById("randomMedium").addEventListener('click',randomSudoku,'medium');
-document.getElementById("randomHard").addEventListener('click',randomSudoku,'hard');
+document.getElementById("randomEasy").addEventListener('click',randomSudoku);
+document.getElementById("randomMedium").addEventListener('click',randomSudoku);
+document.getElementById("randomHard").addEventListener('click',randomSudoku);
 
 function saveGame(evt) {
 	var jsonmessage = {'type':'save','game':{}};
