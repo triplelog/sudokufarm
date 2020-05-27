@@ -62,7 +62,7 @@ wss.on('connection', function connection(ws) {
 			if (gameid == '' && !dm.name){
 				gameid = parseInt(crypto.randomBytes(50).toString('hex'),16).toString(36).substr(2, 12);
 			}
-			else {
+			else if (dm.name) {
 				gameid = dm.name;
 			}
 			dm.game.id = gameid;
