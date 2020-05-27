@@ -64,12 +64,23 @@ app.get('/account',
 		tempKeys[tkey] = {username:req.user.username};
 		
 		SudokufarmUser.findOne({username:req.user.username}, function(err,result) {
+			if (result == null){
+				var useremail = req.user.email;
+				result = {username: req.user.username, games: [], friends: [], followers: [], settings: {robot:1,email: useremail}};
+				var sudokufarmUser = new SudokufarmUser(result);
+				sudokufarmUser.save(function(err2,result2){
+					console.log('user registered!',performance.now());
+					var robot = 'python3 python/robohash/createrobo.py '+req.user.username.toLowerCase()+' 1';
+					var child = exec(robot, function(err, stdout, stderr) {
+						console.log('robot created: ',performance.now());
+					});
+				})
 			
+			}
 		
 		
 			res.write(nunjucks.render('templates/accountbase.html',{
 				username: req.user.options.displayName || req.user.username,
-				name: req.user.name || '',
 				options: req.user.options,
 				friends: result.friends,
 				tkey: tkey,
@@ -86,7 +97,7 @@ app.get('/account',
 app.post('/register',
   function(req, res){
   	console.log('registering: ',performance.now());
-  	var user = new User({username: req.body.username.toLowerCase(), options: {displayName: req.body.username,robot:1}});
+  	var user = new User({username: req.body.username.toLowerCase(),email: req.body.email, options: {displayName: req.body.username,robot:1}});
 	User.register(user,req.body.password, function(err) {
 		if (err) {
 		  if (err.name == 'UserExistsError'){
@@ -98,7 +109,7 @@ app.post('/register',
 		  
 		}
 		else {
-			var sudokufarmUser = new SudokufarmUser({username: req.body.username.toLowerCase(), games: [], friends: [], followers: []});
+			var sudokufarmUser = new SudokufarmUser({username: req.body.username.toLowerCase(), games: [], friends: [], followers: [], settings: {robot:1,email: req.body.email}});
 			sudokufarmUser.save(function(err,result){
 				console.log('user registered!',performance.now());
 				var robot = 'python3 python/robohash/createrobo.py '+req.body.username.toLowerCase()+' 1';
