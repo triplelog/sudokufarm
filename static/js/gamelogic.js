@@ -150,7 +150,6 @@ function updateCell(evt){
 		
 		updateTotals(true);
 		updateSGN();
-		console.log(nYears,nPeople);
 		if (nYears%bpy[1] == 0) {
 			nPeople+=bpy[0];
 		}
