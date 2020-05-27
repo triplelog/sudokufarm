@@ -185,6 +185,9 @@ app.get('/game',
 );
 app.get('/:userid/:gameid',
 	function(req, res){
+		if (req.isAuthenticated() && req.user.username == req.params.userid && req.query.q && req.query.q == 'edit'){
+			res.redirect('../create?name='+req.params.gameid);
+		}
 		console.log(req.params);
 		/*var tkey = crypto.randomBytes(100).toString('hex').substr(2, 18);
 		if (req.isAuthenticated()){
