@@ -22,6 +22,7 @@ function chgIPT(evt) {
 	var i = parseInt(el.id.split('-')[1]);
 	var iiminus1 = parseInt(el.id.split('-')[2]);
 	var val = parseInt(el.value);
+	console.log(itemPerThing,i,iiminus1);
 	if (val > 0){
 		itemPerThing[i][iiminus1]=val;
 		spendPerThing[i][iiminus1]=0;
@@ -43,6 +44,7 @@ function chgIPT(evt) {
 		el.classList.remove('negative');
 		el.classList.remove('positive');
 	}
+	console.log(itemPerThing);
 	resetGame();
 }
 function chgSPP(evt) {
