@@ -80,7 +80,8 @@ wss.on('connection', function connection(ws) {
 				}
 				result.markModified('games');
 				result.save(function(err2,result2){
-				
+					var jsonmessage = {type:'saved',name:gameid};
+					ws.send(JSON.stringify(jsonmessage))
 				});
 			})
 		}

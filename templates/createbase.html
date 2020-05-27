@@ -501,7 +501,7 @@ tr {
 		{% endfor %}
 	</div>
 	<div>
-		<a href="../{{ username }}/{{ gameid }}">https://sudokufarm.com/{{ username }}/{{ gameid }}</a>
+		<a id="gameLink" style="display: none;" href="../{{ username }}/{{ gameid }}">https://sudokufarm.com/{{ username }}/{{ gameid }}</a>
 	</div>
 	<button id="saveGame" class="basic">Save Game</button>
 	<button id="undoMove" class="basic">Undo Last Play</button>
@@ -535,7 +535,8 @@ var spendPerPerson = {{ spendPerPerson | dump | safe if spendPerPerson else '[]'
 
 var nYears = 1;
 var tkey = '{{ tkey }}';
-var availableIcons = {{ availableIcons | dump | safe }};	
+var availableIcons = {{ availableIcons | dump | safe }};
+var username = '{{ username }}';	
 
 </script>
 <script src="../js/creategame.js"></script>

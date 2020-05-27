@@ -11,7 +11,12 @@ ws.onmessage = function(evt){
 	if (evt.data[0]=='{'){
 		dm = JSON.parse(evt.data);
 	}
-	if (dm.puzzle){
+	if (dm.type && dm.type == 'saved'){
+		var el = document.getElementById('gameLink');
+		el.setAttribute('href','../'+username+'/'+dm.name);
+		el.style.display = 'inline-block';
+	}
+	else if (dm.puzzle){
 		document.getElementById("sudoku").value = dm.puzzle;
 		chgSudoku();
 	}
