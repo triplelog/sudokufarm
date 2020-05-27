@@ -186,13 +186,16 @@ function chgSudoku() {
 		resetGame();
 	}
 }
-function randomSudoku(evt) {
+function randomSudoku(evt,difficulty) {
+	console.log(difficulty);
 	var jsonmessage = {'type':'sudoku','difficulty':'simple'};
 	ws.send(JSON.stringify(jsonmessage));
 	
 }
 document.getElementById("sudoku").addEventListener('change',chgSudoku);
-document.getElementById("randomSimple").addEventListener('click',randomSudoku);
+document.getElementById("randomEasy").addEventListener('click',randomSudoku,'easy');
+document.getElementById("randomMedium").addEventListener('click',randomSudoku,'medium');
+document.getElementById("randomHard").addEventListener('click',randomSudoku,'hard');
 
 function saveGame(evt) {
 	var jsonmessage = {'type':'save','game':{}};
