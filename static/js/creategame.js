@@ -195,7 +195,6 @@ function randomSudoku(evt) {
 	else if (elid == 'randomHard'){
 		difficulty = 'hard';
 	}
-	console.log(difficulty);
 	var jsonmessage = {'type':'sudoku','difficulty':difficulty};
 	ws.send(JSON.stringify(jsonmessage));
 	
