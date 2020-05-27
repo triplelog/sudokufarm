@@ -155,6 +155,7 @@ function updateCell(evt){
 			nPeople+=bpy[0];
 		}
 		nYears+=1
+		updateSGN();
 		//updateTotals(false);
 		
 	}
