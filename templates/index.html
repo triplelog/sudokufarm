@@ -9,8 +9,8 @@
 {% endblock %}
 	
 {% block centerSize %}
-	--height-center: 150px;
-	--width-center: 200px;
+	--height-center: 9rem;
+	--width-center: 9rem;
 {% endblock %}
 
 {% block titleCSS %}
@@ -65,6 +65,21 @@ body {
 	background-image: url("../img/lightbg.png");
 	background-size: cover;
 	
+}
+.logoText {
+	width:10rem;
+	left:-1rem;
+	position:relative;
+	top:2.5rem;
+	display: inline-block;
+	 height: 4rem; 
+	 line-height: 4rem; 
+	 color: white;
+	 font-size: 3.14rem; 
+	 text-align: center;
+	 text-shadow: 0px 0px 5px black, 0px 0px 10px rgb(64,64,64), 0px 0px 20px gray;
+	 font-family: Tahoma, Geneva, sans-serif;
+	 letter-spacing: 2px;
 }
 {% endblock %}
 
@@ -163,7 +178,7 @@ Download Sudoku Farm for iOS.
 
 {% block content22 %}
 	<div class="logoDiv">
-		<img src="../img/sflogo1024.jpeg" style="width:12rem;left:-1.5rem;position:absolute;top:-1rem;">
+		<img src="../img/sflogo1024.jpeg" style="width:8rem;left:.5rem;position:absolute;top:.5rem;">
 		<span class="logoText">Sudoku Farm</span>	
 	</div>
 	<div class="centerLink">
