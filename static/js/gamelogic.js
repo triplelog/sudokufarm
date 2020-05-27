@@ -205,6 +205,7 @@ function resetGame() {
 	for (var i=0;i<buttons.length;i++){
 		buttons[i].classList.remove('selected');
 	}
+	console.log(nPeople);
 	updateTotals(false);
 		
 	
