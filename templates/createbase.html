@@ -536,7 +536,7 @@ var availableIcons = {{ availableIcons | dump | safe }};
 <script>
 
 {% for i in range(1,7) %}
-	{% for ii in range(1,10) %}
+	{% for ii in range(1,9) %}
 		{% if itemPerThing[i][ii-1] - spendPerThing[i][ii-1] > 0 %}
 			document.getElementById('ipt-{{i}}-{{ii-1}}').addEventListener('change',chgIPT);
 		{% elif itemPerThing[i][ii-1] - spendPerThing[i][ii-1] < 0 %}
