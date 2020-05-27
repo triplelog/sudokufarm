@@ -305,16 +305,19 @@ app.get('/create',
 		var availableIcons = {'farming':['Bees','Cow','Duck','Cow']};
 			
 		if (req.query.name){
-			SudokufarmUser.findOne({username:req.params.userid},function(err,result){
+			SudokufarmUser.findOne({username:username},function(err,result){
 				var levelJson;
 				var foundMatch = false;
-				for (var i=0;i<result.games.length;i++){
-					if (result.games[i].id == req.params.gameid){
-						levelJson = result.games[i];
-						foundMatch = true;
-						break;
+				if (result && result.games){
+					for (var i=0;i<result.games.length;i++){
+						if (result.games[i].id == req.params.gameid){
+							levelJson = result.games[i];
+							foundMatch = true;
+							break;
+						}
 					}
 				}
+				
 				if (foundMatch){
 					var imgList = levelJson.imgList;
 					var emojiList = levelJson.emojiList;
