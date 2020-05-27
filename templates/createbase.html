@@ -319,9 +319,15 @@ tr {
 
 {% for i in range(1,8) %}
 <div>
+	<span style="width:3rem; display: inline-block; font-size: .9rem;">Emoji</span>
+	<span style="width:4rem; display: inline-block; font-size: .9rem;">Initial</span>
+	<span style="width:2rem; display: inline-block; font-size: .9rem;">Min</span>
+
+</div>
+<div>
 	<!--<input type="text" id="resource{{ i }}name" style="width:5rem;"></input> :--> 
-	<input type="text" id="resource{{ i }}emoji" value="{{ emojiList[i-1] }}" style="width:2rem; display: inline-block;"></input>
-	<input type="number" id="resource{{ i }}initial" value="{% if i == 7 %}{{ nPeople }}{% else %}{{ totals[i] }}{% endif %}" style="width:3rem; display: inline-block;"></input>
+	<input type="text" id="resource{{ i }}emoji" value="{{ emojiList[i-1] }}" style="width:3rem; display: inline-block;"></input>
+	<input type="number" id="resource{{ i }}initial" value="{% if i == 7 %}{{ nPeople }}{% else %}{{ totals[i] }}{% endif %}" style="width:4rem; display: inline-block;"></input>
 	{% if i < 7 %}<span id="minimum-{{i}}" style="width:2rem; display: inline-block;">{{ totals[1] }}</span>
 	{% else %}<span id="minimum-7" style="width:2rem; display: inline-block;"></span>
 	{% endif %}
