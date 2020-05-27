@@ -44,7 +44,6 @@ function chgIPT(evt) {
 		el.classList.remove('negative');
 		el.classList.remove('positive');
 	}
-	console.log(itemPerThing);
 	resetGame();
 }
 function chgSPP(evt) {
@@ -78,8 +77,8 @@ function chgInitial(evt) {
 	var el = evt.target;
 	var id = parseInt(el.id.substr(8,9));
 	var ell = document.getElementById("initialData");
-	var elll = ell.querySelectorAll("td")[id-1];
-	elll.textContent = el.value;
+	//var elll = ell.querySelectorAll("td")[id-1];
+	//elll.textContent = el.value;
 	
 	
 	
