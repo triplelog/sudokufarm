@@ -19,7 +19,6 @@ ws.onmessage = function(evt){
 
 function chgIPT(evt) {
 	var el = evt.target;
-	console.log(el.id);
 	var i = parseInt(el.id.split('-')[1]);
 	var iiminus1 = parseInt(el.id.split('-')[2]);
 	var val = parseInt(el.value);
@@ -29,7 +28,7 @@ function chgIPT(evt) {
 	}
 	else if (val <0){
 		itemPerThing[i][iiminus1]=0;
-		spendPerThing[i][iiminus1]=val;
+		spendPerThing[i][iiminus1]=-1*val;
 	}
 	else {
 		itemPerThing[i][iiminus1]=0;
