@@ -359,7 +359,7 @@ app.get('/create',
 				else {
 					res.redirect('../create');
 				}
-			}
+			});
 		}
 		else {
 			
