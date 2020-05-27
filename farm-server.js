@@ -301,29 +301,91 @@ app.get('/create',
 				}
 			}
 		}
-		
-		
 		//Get list of available icons
 		var availableIcons = {'farming':['Bees','Cow','Duck','Cow']};
-		res.write(nunjucks.render('templates/createbase.html',{
-			cells: levelJson.cells,
-			puzzle: levelJson.puzzle,
-			totals: levelJson.initialTotals,
-			nPeople: levelJson.startPeople,
-			bpy: levelJson.bpy,
-			existingPlots: levelJson.existingPlots,
-			itemPerThing: levelJson.itemPerThing,
-			spendPerThing: levelJson.spendPerThing,
-			spendPerPerson: levelJson.spendPerPerson,
-			imgList: imgList,
-			imgName: imgName,
-			emojiList: emojiList,
-			tkey: tkey,
-			availableIcons: availableIcons,
-			username: username,
-			gameid: gameid,
-		}));
-		res.end();
+			
+		if (req.query.name){
+			SudokufarmUser.findOne({username:req.params.userid},function(err,result){
+				var levelJson;
+				var foundMatch = false;
+				for (var i=0;i<result.games.length;i++){
+					if (result.games[i].id == req.params.gameid){
+						levelJson = result.games[i];
+						foundMatch = true;
+						break;
+					}
+				}
+				if (foundMatch){
+					var imgList = levelJson.imgList;
+					var emojiList = levelJson.emojiList;
+					levelJson.existingPlots = [0,0,0,0,0,0,0,0,0];
+					levelJson.cells = [];
+					for (var i=0;i<9;i++){
+						levelJson.cells.push([]);
+						for (var ii=0;ii<9;ii++){
+							levelJson.cells[i].push(levelJson.puzzle[i][ii]);
+							if (parseInt(levelJson.puzzle[i][ii])>0){
+								levelJson.existingPlots[parseInt(levelJson.puzzle[i][ii])-1]++;
+							}
+						}
+					}
+				
+					res.write(nunjucks.render('templates/createbase.html',{
+						cells: levelJson.cells,
+						puzzle: levelJson.puzzle,
+						totals: levelJson.totals,
+						nPeople: levelJson.nPeople,
+						bpy: levelJson.bpy,
+						existingPlots: levelJson.existingPlots,
+						itemPerThing: levelJson.itemPerThing,
+						spendPerThing: levelJson.spendPerThing,
+						spendPerPerson: levelJson.spendPerPerson,
+						imgList: imgList,
+						emojiList: emojiList,
+						
+						imgName: imgName,
+						
+						tkey: tkey,
+						availableIcons: availableIcons,
+						username: username,
+						gameid: gameid,
+			
+					}));
+					res.end();
+					return;
+			
+			
+				}
+				else {
+					res.redirect('../create');
+				}
+			}
+		}
+		else {
+			
+			res.write(nunjucks.render('templates/createbase.html',{
+				cells: levelJson.cells,
+				puzzle: levelJson.puzzle,
+				totals: levelJson.initialTotals,
+				nPeople: levelJson.startPeople,
+				bpy: levelJson.bpy,
+				existingPlots: levelJson.existingPlots,
+				itemPerThing: levelJson.itemPerThing,
+				spendPerThing: levelJson.spendPerThing,
+				spendPerPerson: levelJson.spendPerPerson,
+				imgList: imgList,
+				imgName: imgName,
+				emojiList: emojiList,
+				tkey: tkey,
+				availableIcons: availableIcons,
+				username: username,
+				gameid: gameid,
+			}));
+			res.end();
+		}
+		
+		
+		
 	
     }
     
