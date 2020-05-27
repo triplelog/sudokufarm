@@ -3,7 +3,7 @@ function updateSGN() {
 	var el = document.getElementById('changeData');
 	var nets = el.querySelectorAll('td');
 	for (var i=0;i<7;i++) {
-		if (i==0){console.log(nPeople,spendPerPerson[i]*nPeople);}
+		if (i==1){console.log(nPeople,spendPerPerson[i]*nPeople);}
 		itemSpends[i]=spendPerPerson[i]*nPeople
 		itemGets[i]=0
 		for (var ii=0;ii<9;ii++) {
