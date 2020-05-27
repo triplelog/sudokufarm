@@ -25,14 +25,23 @@ function chgIPT(evt) {
 	if (val > 0){
 		itemPerThing[i][iiminus1]=val;
 		spendPerThing[i][iiminus1]=0;
+		el.classList.add('positive');
+		el.classList.remove('negative');
+		el.classList.remove('zero');
 	}
 	else if (val <0){
 		itemPerThing[i][iiminus1]=0;
 		spendPerThing[i][iiminus1]=-1*val;
+		el.classList.add('negative');
+		el.classList.remove('positive');
+		el.classList.remove('zero');
 	}
 	else {
 		itemPerThing[i][iiminus1]=0;
 		spendPerThing[i][iiminus1]=0;
+		el.classList.add('zero');
+		el.classList.remove('negative');
+		el.classList.remove('positive');
 	}
 	resetGame();
 }
