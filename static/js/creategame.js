@@ -19,6 +19,7 @@ ws.onmessage = function(evt){
 
 function chgIPT(evt) {
 	var el = evt.target;
+	console.log(el.id);
 	var i = parseInt(el.id.split('-')[1]);
 	var iiminus1 = parseInt(el.id.split('-')[2]);
 	var val = parseInt(el.value);
