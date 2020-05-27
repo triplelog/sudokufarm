@@ -287,6 +287,15 @@ tr {
 	background: rgba(255,0,0,.05);
 	color: black;
 }
+.zero {
+	width: calc(100% - .25rem);
+	padding-right: .25rem;
+	border: solid 1px black;
+	display: inline-block;
+	text-align: right;
+	background: rgba(255,255,255,.05);
+	color: black;
+}
 
 {% endblock %}
 
@@ -387,7 +396,7 @@ tr {
 		<tr>
 			<td id="header-{{ii}}"><img src="../sfarm/{{ imgList[ii] }}.png" style="width:30%;"></td>
 		{% for i in range(1,7) %}
-			<td style="width:14%;">{% if itemPerThing[i][ii-1] - spendPerThing[i][ii-1] > 0 %}<input type="number" id="ipt-{{i}}-{{ii-1}}" class="positive" value="{{ itemPerThing[i][ii-1] - spendPerThing[i][ii-1] }}"></input>{% elif itemPerThing[i][ii-1] - spendPerThing[i][ii-1] < 0 %}<input type="number" id="ipt-{{i}}-{{ii-1}}" class="negative" value="{{ itemPerThing[i][ii-1] - spendPerThing[i][ii-1] }}"></input>{% endif %}</td>
+			<td style="width:14%;">{% if itemPerThing[i][ii-1] - spendPerThing[i][ii-1] > 0 %}<input type="number" id="ipt-{{i}}-{{ii-1}}" class="positive" value="{{ itemPerThing[i][ii-1] - spendPerThing[i][ii-1] }}"></input>{% elif itemPerThing[i][ii-1] - spendPerThing[i][ii-1] < 0 %}<input type="number" id="ipt-{{i}}-{{ii-1}}" class="negative" value="{{ itemPerThing[i][ii-1] - spendPerThing[i][ii-1] }}"></input>{% else %}<input type="number" id="ipt-{{i}}-{{ii-1}}" class="zero" value="0"></input>{% endif %}</td>
 		{% endfor %}
 			
 		</tr>
@@ -395,7 +404,7 @@ tr {
 	<tr>
 		<td style="width:14%;">P</td>
 	{% for i in range(1,7) %}
-		<td style="width:14%;">{% if spendPerPerson[i] > 0 %}<input type="number" id="spp-{{i}}" class="negative" value="{{ -1*spendPerPerson[i] }}"></input>{% elif spendPerPerson[i] < 0 %}<input type="number" id="spp-{{i}}" class="positive" value="{{ -1*spendPerPerson[i] }}"></input>{% endif %}</td>
+		<td style="width:14%;">{% if spendPerPerson[i] > 0 %}<input type="number" id="spp-{{i}}" class="negative" value="{{ -1*spendPerPerson[i] }}"></input>{% elif spendPerPerson[i] < 0 %}<input type="number" id="spp-{{i}}" class="positive" value="{{ -1*spendPerPerson[i] }}"></input>{% else %}<input type="number" id="spp-{{i}}" class="zero" value="0"></input>{% endif %}</td>
 	{% endfor %}
 	</tr>
 </table>
@@ -537,15 +546,9 @@ var availableIcons = {{ availableIcons | dump | safe }};
 
 {% for i in range(1,7) %}
 	{% for ii in range(1,9) %}
-		{% if itemPerThing[i][ii-1] - spendPerThing[i][ii-1] > 0 %}
-			document.getElementById('ipt-{{i}}-{{ii-1}}').addEventListener('change',chgIPT);
-		{% elif itemPerThing[i][ii-1] - spendPerThing[i][ii-1] < 0 %}
-			document.getElementById('ipt-{{i}}-{{ii-1}}').addEventListener('change',chgIPT);
-		{% endif %}
+		document.getElementById('ipt-{{i}}-{{ii-1}}').addEventListener('change',chgIPT);
 	{% endfor %}
-	{% if spendPerPerson[i] > 0 %}
-		document.getElementById('spp-{{i}}').addEventListener('change',chgSPP);
-	{% endif %}
+	document.getElementById('spp-{{i}}').addEventListener('change',chgSPP);
 {% endfor %}	
 
 var list = [];
