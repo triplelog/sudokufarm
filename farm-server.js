@@ -52,13 +52,19 @@ wss.on('connection', function connection(ws) {
 			}
 		}
 		else if (dm.type == 'sudoku'){
-			if (dm.difficulty == 'simple'){
+			if (dm.difficulty == 'easy'){
 				var puzzle = "...39.1.48..74...5.....8....5691.4..18..65.3.9.34.......5..4..1......8......5....";
 				var jsonmessage = {'puzzle':puzzle};
 				ws.send(JSON.stringify(jsonmessage));
 			}
 		}
 		else if (dm.type == 'save'){
+			if (gameid == '' && !dm.name){
+				gameid = parseInt(crypto.randomBytes(50).toString('hex'),16).toString(36).substr(2, 12);
+			}
+			else {
+				gameid = dm.name;
+			}
 			dm.game.id = gameid;
 			SudokufarmUser.findOne({username:username},function(err,result){
 				var foundMatch = false;
@@ -249,7 +255,13 @@ app.get('/create',
 	function(req, res){
 		
 		var tkey = crypto.randomBytes(100).toString('hex').substr(2, 18);
-		var gameid = 'testgame';
+		var gameid = '';
+		if (req.query.name){
+			gameid = req.query.name;
+		}
+		else {
+			gameid = parseInt(crypto.randomBytes(50).toString('hex'),16).toString(36).substr(2, 12);
+		}
 		var username = '';
 		var matches = false;
 		tempKeys[tkey]={username:'',gameid:gameid};
