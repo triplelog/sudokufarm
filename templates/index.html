@@ -89,9 +89,9 @@ body {
 {% block content11 %}
 Play our <a href="../game.html">game of the day</a>.<br />
 Or play a random game:<br />
-<button class="basic" onclick="window.location.href='../game.html?l=easy{{ range(1,82) | random }}';">Easy</button>
-<button class="basic" onclick="window.location.href='../game.html?l=medium1';">Medium</button>
-<button class="basic" onclick="window.location.href='../game.html?l=hard1';">Hard</button>
+<button class="basic" onclick="randomGame('easy')">Easy</button>
+<button class="basic" onclick="randomGame('medium')">Medium</button>
+<button class="basic" onclick="randomGame('hard')">Hard</button>
 <br />
 Or play a user generated game.
 {% endblock %}	
@@ -189,6 +189,9 @@ Then pick a Sudoku puzzle and share <a href="../create">your game</a> with the w
 
 
 {% block scripts %}
-
+<script>
+	function randomGame(difficulty){
+		window.location.href='../game.html?l='+difficulty+Math.floor(Math.random*81 + 1);
+	}
 {% endblock %}
 
