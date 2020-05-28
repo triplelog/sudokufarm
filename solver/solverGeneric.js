@@ -14,7 +14,7 @@ var needed2 = 20 // increase to require more depletions
 var sumNeeded = 299 // increase to require more depletions
 
 var nMade = 0
-fs.writeFileSync("../games/medium.txt", "", function (err) {
+fs.writeFileSync("../games/mediumRaw.txt", "", function (err) {
 	if (err){
 		console.log(err);
 	}
@@ -549,7 +549,7 @@ function runSimulation() {
 							levelJson.bpy = [1,3]; //solver does not use this and nYear might not be 1 mod year
 							
 							//console.log(JSON.stringify(levelJson))
-							fs.appendFileSync("../games/medium.txt", JSON.stringify(levelJson)+"\n", function (err) {
+							fs.appendFileSync("../games/mediumRaw.txt", JSON.stringify(levelJson)+"\n", function (err) {
 								if (err){
 									console.log(err);
 								}
