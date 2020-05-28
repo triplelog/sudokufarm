@@ -106,13 +106,12 @@ for (var ii=0;ii<4;ii++ ){
 		data = fs.readFileSync('./games/hardDaily.txt', 'utf8');
 		lines = data.split('\n');
 		lines = lines.slice(0,110);
-		console.log(lines.length);
 		data = fs.readFileSync('./games/easyDaily.txt', 'utf8');
 		lines = lines.concat(data.split('\n'));
-		console.log(lines.length);
+		lines = lines.slice(0,440);
 		data = fs.readFileSync('./games/mediumDaily.txt', 'utf8');
 		lines = lines.concat(data.split('\n'));
-		console.log(lines.length);
+		lines = lines.slice(0,770);
 	}
 	else {
 		data = fs.readFileSync('./games/'+puzzleTypes[ii]+'.txt', 'utf8');
