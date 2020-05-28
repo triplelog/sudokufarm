@@ -62,6 +62,26 @@ wss.on('connection', function connection(ws) {
 				})
 				
 			}
+			else if (dm.difficulty == 'medium'){
+				var wget1 = 'qqwing --generate 1 --difficulty easy --symmetry random --csv';
+				execShellCommand(wget1).then((result) =>{
+					var puzzle = result.replace(/\n/g,"").split(',')[1];
+					console.log('__'+puzzle+'__');
+					var jsonmessage = {'puzzle':puzzle};
+					ws.send(JSON.stringify(jsonmessage));
+				})
+				
+			}
+			else if (dm.difficulty == 'hard'){
+				var wget1 = 'qqwing --generate 1 --difficulty intermediate --symmetry random --csv';
+				execShellCommand(wget1).then((result) =>{
+					var puzzle = result.replace(/\n/g,"").split(',')[1];
+					console.log('__'+puzzle+'__');
+					var jsonmessage = {'puzzle':puzzle};
+					ws.send(JSON.stringify(jsonmessage));
+				})
+				
+			}
 		}
 		else if (dm.type == 'save'){
 			if (gameid == '' && !dm.name){
