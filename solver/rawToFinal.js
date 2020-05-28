@@ -140,7 +140,12 @@ Promise.all([execShellCommand(wget)]).then((values) => {
 	else if (difficulty == 'hardDaily'){
 		for (var i=0;i<110;i++){
 			var game = {};
-			
+			if (i%7 == 0){
+				game=gamesIntermediate[i/7]
+			}
+			else {
+				game=gamesEasy[(i-(i%7))/7]
+			}
 		
 			fs.appendFileSync("../games/"+difficulty+".txt", JSON.stringify(game)+"\n", function (err) {
 				if (err){
