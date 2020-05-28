@@ -16,7 +16,7 @@ for (var i=0;i<lines.length;i++){
 	}
 }
 for (var i=0;i<puzzles.length;i++){
-	rawpuzzle = '';
+	var rawpuzzle = '';
 	for (var ii=0;ii<9;ii++){
 		for (var iii=0;iii<9;iii++){
 			if (puzzles[i][ii][iii]=='0'){
