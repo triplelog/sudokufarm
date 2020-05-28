@@ -580,10 +580,10 @@ var child = exec(wget, function(err, stdout, stderr) {
 		return;
 	}
 	else {
-		allPuzzles = stdout;
-		console.log(allPuzzles);
+		allPuzzles = stdout.replace("Puzzle,Solution,\n", "");
 		allPuzzles = allPuzzles.replace(/\n/g, "")
 		let puzzleArray = allPuzzles.split(",")
+		console.log(puzzleArray);
 		for (var i=0;i<2;i++) {
 			//console.log(i,performance.now());
 			initialPuzzle = puzzleArray[i*2]
