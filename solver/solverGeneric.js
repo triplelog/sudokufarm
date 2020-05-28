@@ -586,8 +586,7 @@ var child = execSync(wget, function(err, stdout, stderr) {
 	}
 
 });
-console.log(child);
-console.log(Object.keys(child));
+console.log(child.stdout);
 /*
 allPuzzles = allPuzzles.replace(/\n/g, "")
 let puzzleArray = allPuzzles.split(",")
