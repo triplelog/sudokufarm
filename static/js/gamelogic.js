@@ -253,7 +253,7 @@ for (var i=0;i<puzzle.length;i++){
 }
 var totalsReset = totals.slice();
 var minTotalsReset = [];
-if (minTotals){
+if (minTotals != undefined){
 	minTotalsReset = minTotals.slice();
 } 
 var nPeopleReset = nPeople;
