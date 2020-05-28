@@ -54,7 +54,7 @@ wss.on('connection', function connection(ws) {
 		else if (dm.type == 'sudoku'){
 			if (dm.difficulty == 'easy'){
 				var wget1 = 'qqwing --generate 1 --difficulty simple --symmetry random --csv';
-				execShell(wget1).then((result) =>{
+				execShellCommand(wget1).then((result) =>{
 					var puzzle = result;
 					console.log('__'+puzzle+'__');
 					var jsonmessage = {'puzzle':puzzle};
