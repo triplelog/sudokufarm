@@ -3,7 +3,7 @@ const { PerformanceObserver, performance } = require('perf_hooks');
 var fs = require("fs");
 const { exec } = require('child_process');
 
-var difficulty = 'mediumDaily';
+var difficulty = 'easyDaily';
 var nMade = 0
 var data = fs.readFileSync("../games/"+difficulty+"Raw.txt", 'utf8');
 var lines = data.split('\n');
@@ -50,7 +50,7 @@ Promise.all([execShellCommand(wget)]).then((values) => {
 			gamesEasy.push(games[i]);
 		}
 		else if (output == 'Intermediate'){
-			gamesEasy.push(games[i]);
+			gamesIntermediate.push(games[i]);
 		}
 		else if (output == 'Expert'){
 			gamesExpert.push(games[i]);
@@ -162,6 +162,23 @@ Promise.all([execShellCommand(wget)]).then((values) => {
 			}
 			else {
 				game=gamesEasy[(i-(i%3))/3]
+			}
+		
+			fs.appendFileSync("../games/"+difficulty+".txt", JSON.stringify(game)+"\n", function (err) {
+				if (err){
+					console.log(err);
+				}
+			});
+		}
+	}
+	else if (difficulty == 'easyDaily'){
+		for (var i=0;i<330;i++){
+			var game = {};
+			if (i%3 == 2){
+				game=gamesEasy[(i-(i%3))/3]
+			}
+			else {
+				game=gamesSimple[(i-(i%3))/3]
 			}
 		
 			fs.appendFileSync("../games/"+difficulty+".txt", JSON.stringify(game)+"\n", function (err) {
