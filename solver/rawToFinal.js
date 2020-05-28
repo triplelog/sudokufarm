@@ -39,10 +39,11 @@ for (var i=0;i<puzzles.length;i++){
 		else if (output == 'Easy'){
 			gamesEasy.push(games[i]);
 		}
+		console.log(gamesSimple.length);
+		console.log(gamesEasy.length);
 	})
 }
-console.log(gamesSimple.length);
-console.log(gamesEasy.length);
+
 /*fs.writeFileSync("../games/medium.txt", "", function (err) {
 	if (err){
 		console.log(err);
