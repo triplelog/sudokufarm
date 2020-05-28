@@ -534,7 +534,7 @@ function checkCells(puzzle, allBlockRows, allBlockCols) {
 					var nFit = -1
 					for (var ii=1;ii<10;ii++) {
 						if (fitSpotFull(puzzle,blockRow*3+Math.floor(i/3),blockCol*3+i%3,blockRow*3+blockCol,ii, allBlockRows, allBlockCols)) {
-							if nFit == -1 {
+							if (nFit == -1) {
 								nFit = ii
 							}
 							else {
