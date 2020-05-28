@@ -8,9 +8,9 @@ var initialPuzzle = "...25..8...8.7.1...6.....9....8139..8.24.9..5.1.........4..
 var solution = "793251684248976153165348297456813972872469315319527468984635721631782549527194836"
 //let initialTotals = [0,30000,10000,10000,10000,10000,10000]
 var difficulty = 'medium'
-let maxUsed = 165 //dont let stock get below 35
+let maxUsed = 160 //dont let stock get below 40
 var needed1 = 10 // increase to require more depletions
-var needed2 = 20 // increase to require more depletions
+var needed2 = 25 // increase to require more depletions
 var sumNeeded = 299 // increase to require more depletions
 var initialTotal = 200
 let initialTotals = [0,initialTotal,initialTotal,initialTotal,initialTotal,initialTotal,initialTotal]
@@ -872,9 +872,9 @@ function execShellCommand(cmd) {
  });
 }
 var allPuzzles = '';
-var wget1 = 'qqwing --generate 100 --difficulty simple --symmetry random --solution --csv'
-var wget2 = 'qqwing --generate 500 --difficulty easy --symmetry random --solution --csv'
-var wget3 = 'qqwing --generate 100 --difficulty intermediate --symmetry random --solution --csv'
+var wget1 = 'qqwing --generate 1000 --difficulty simple --symmetry random --solution --csv'
+var wget2 = 'qqwing --generate 2500 --difficulty easy --symmetry random --solution --csv'
+var wget3 = 'qqwing --generate 2500 --difficulty intermediate --symmetry random --solution --csv'
 
 Promise.all([execShellCommand(wget1),execShellCommand(wget2),execShellCommand(wget3)]).then((values) => {
 	allPuzzles =  values[0].replace("Puzzle,Solution,\n", "");
@@ -882,7 +882,7 @@ Promise.all([execShellCommand(wget1),execShellCommand(wget2),execShellCommand(wg
 	allPuzzles +=  values[2].replace("Puzzle,Solution,\n", "");
 	allPuzzles = allPuzzles.replace(/\n/g, "")
 	let puzzleArray = allPuzzles.split(",")
-	for (var i=0;i<700;i++) {
+	for (var i=0;i<6000;i++) {
 		//console.log(i,performance.now());
 		initialPuzzle = puzzleArray[i*2]
 		solution = puzzleArray[i*2+1]
