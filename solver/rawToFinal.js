@@ -92,11 +92,14 @@ Promise.all([execShellCommand(wget)]).then((values) => {
 			}
 		}
 		else {
-			if (gamesIntermediate.length>(i-3)/4){
-				game=gamesIntermediate[(i-3)/4]
+			if (gamesIntermediate.length>(80-i)/4){
+				game=gamesIntermediate[(80-i)/4]
+			}
+			else if (gamesEasy.length>41+(80-i)/4){
+				game=gamesEasy[41+(80-i)/4]
 			}
 			else {
-				game = gamesSimple[243+(i-3)/4];
+				game = gamesSimple[120+(i-2)/4];
 			}
 		}
 		fs.appendFileSync("../games/medium.txt", JSON.stringify(game)+"\n", function (err) {
