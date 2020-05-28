@@ -53,9 +53,14 @@ wss.on('connection', function connection(ws) {
 		}
 		else if (dm.type == 'sudoku'){
 			if (dm.difficulty == 'easy'){
-				var puzzle = "...39.1.48..74...5.....8....5691.4..18..65.3.9.34.......5..4..1......8......5....";
-				var jsonmessage = {'puzzle':puzzle};
-				ws.send(JSON.stringify(jsonmessage));
+				var wget1 = 'qqwing --generate 1 --difficulty simple --symmetry random --csv';
+				execShell(wget1).then((result) =>{
+					var puzzle = result;
+					console.log('__'+puzzle+'__');
+					var jsonmessage = {'puzzle':puzzle};
+					ws.send(JSON.stringify(jsonmessage));
+				})
+				
 			}
 		}
 		else if (dm.type == 'save'){
@@ -572,3 +577,13 @@ app.get('/create',
 
 
 
+function execShellCommand(cmd) {
+ return new Promise((resolve, reject) => {
+  exec(cmd, (error, stdout, stderr) => {
+   if (error) {
+    console.warn(error);
+   }
+   resolve(stdout? stdout : stderr);
+  });
+ });
+}
