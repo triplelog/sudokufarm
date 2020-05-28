@@ -7,10 +7,10 @@ var initialPuzzle = "...25..8...8.7.1...6.....9....8139..8.24.9..5.1.........4..
 var solution = "793251684248976153165348297456813972872469315319527468984635721631782549527194836"
 //let initialTotals = [0,30000,10000,10000,10000,10000,10000]
 let initialTotals = [0,200,200,200,200,200,200]
-let maxUsed = 150 //dont let stock get below 50
+let maxUsed = 165 //dont let stock get below 35
 var needed1 = 10 // increase to require more depletions
-var needed2 = 25 // increase to require more depletions
-var sumNeeded = 499 // increase to require more depletions
+var needed2 = 20 // increase to require more depletions
+var sumNeeded = 299 // increase to require more depletions
 
 var nMade = 0
 fs.writeFileSync("../games/medium.txt", "", function (err) {
