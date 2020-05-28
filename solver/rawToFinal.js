@@ -3,7 +3,7 @@ const { PerformanceObserver, performance } = require('perf_hooks');
 var fs = require("fs");
 const { exec } = require('child_process');
 
-var difficulty = 'medium';
+var difficulty = 'easy';
 var nMade = 0
 var data = fs.readFileSync("../games/"+difficulty+"Raw.txt", 'utf8');
 var lines = data.split('\n');
