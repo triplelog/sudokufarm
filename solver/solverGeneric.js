@@ -507,7 +507,7 @@ function checkBlockFull(puzzle, allBlockRows, allBlockCols){
 		for (var block=0;block<9;block++) {
 			var numSpots = -1
 			for (var i=0;i<9;i++) {
-				if (fitSpot(puzzle, 3*Math.floor(block/3)+Math.floor(i/3), 3*(block%3)+i%3, block, num, allBlockRows, allBlockCols)) {
+				if (fitSpotFull(puzzle, 3*Math.floor(block/3)+Math.floor(i/3), 3*(block%3)+i%3, block, num, allBlockRows, allBlockCols)) {
 					if (numSpots == -1) {
 						numSpots = i
 					}
