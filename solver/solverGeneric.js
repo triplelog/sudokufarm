@@ -1,7 +1,7 @@
 'use strict';
 const { PerformanceObserver, performance } = require('perf_hooks');
 var fs = require("fs");
-const { execSync } = require('child_process');
+const { exec } = require('child_process');
 //let initialPuzzle = "....15.9...3...4...893.461.39..6..87.2.....3....4.3...4..1.7..9..1...8..7..5.83.1"
 //let solution = "246815793173926458589374612394261587625789134817453926458137269931642875762598341"
 var initialPuzzle = "...25..8...8.7.1...6.....9....8139..8.24.9..5.1.........4...7...317.2.4.5.7...836"
@@ -572,38 +572,42 @@ function runSimulation() {
 	}
 }
 
+function execShellCommand(cmd) {
+ return new Promise((resolve, reject) => {
+  exec(cmd, (error, stdout, stderr) => {
+   if (error) {
+    console.warn(error);
+   }
+   resolve(stdout? stdout : stderr);
+  });
+ });
+}
 var allPuzzles = '';
-var wget = 'qqwing --generate 20 --difficulty simple --symmetry random --solution --csv'
-var child = execSync(wget, function(err, stdout, stderr) {
-	if (err){
-		console.log(err);
-		//send message--likely file size limit
-		return;
-	}
-	else {
-		allPuzzles = stdout.replace("Puzzle,Solution,\n", "");
-		
-	}
+var wget1 = 'qqwing --generate 60 --difficulty simple --symmetry random --solution --csv'
+var wget2 = 'qqwing --generate 60 --difficulty easy --symmetry random --solution --csv'
 
-});
-console.log(child.stdout);
-/*
-allPuzzles = allPuzzles.replace(/\n/g, "")
-let puzzleArray = allPuzzles.split(",")
-for (var i=0;i<200;i++) {
-	//console.log(i,performance.now());
-	initialPuzzle = puzzleArray[i*2]
-	solution = puzzleArray[i*2+1]
-	if (initialPuzzle.length != 81 || solution.length != 81){continue;}
-	addedNumbers = [0,0,0,0,0,0,0,0,0,0]
-	var x = runSimulation();
-	if (x < 2) {
+Promise.all([execShellCommand(wget1),execShellCommand(wget2)]).then((values) => {
+	allPuzzles =  values[0].replace("Puzzle,Solution,\n", "");
+	allPuzzles +=  values[1].replace("Puzzle,Solution,\n", "");
+	allPuzzles = allPuzzles.replace(/\n/g, "")
+	let puzzleArray = allPuzzles.split(",")
+	for (var i=0;i<120;i++) {
+		//console.log(i,performance.now());
+		initialPuzzle = puzzleArray[i*2]
+		solution = puzzleArray[i*2+1]
+		if (initialPuzzle.length != 81 || solution.length != 81){continue;}
 		addedNumbers = [0,0,0,0,0,0,0,0,0,0]
-		runSimulation()
+		var x = runSimulation();
+		if (x < 2) {
+			addedNumbers = [0,0,0,0,0,0,0,0,0,0]
+			runSimulation()
+		}
+		if (i%100==0){
+			console.log(i,elapsedTime, nMade);
+		}	
 	}
-	if (i%100==0){
-		console.log(i,elapsedTime, nMade);
-	}	
-}*/
+})
+
+
 
 
