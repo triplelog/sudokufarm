@@ -60,19 +60,7 @@
 .container {
 	grid-template-rows: calc((var(--height-container) - var(--height-center))) var(--height-center) 0px;
 }
-.title a {
-	text-decoration: none;
-	color: white;
-	font-size: 1.5rem;
-}
-.title a:hover {
-	text-decoration: underline;
-	text-shadow: 0px 0px 10px black 0px 0px 10px black;
-}
-.title label:hover {
-	cursor: pointer;
-	text-shadow: 0px 0px 10px black 0px 0px 10px black;
-}
+
 body {
 	background-image: url("../img/lightbg.png");
 	background-size: cover;
@@ -297,21 +285,21 @@ tr {
 
 {% block title13 %}
 <div class="title">
-	<div class="titleBG">
-		<span class="titleLeft">
-		
-		</span>
-		<span class="titleCenter">
-			<a href="https://gifsaw.com">Dashboard</a>
-		</span>
-		<span class="titleRight">
-			<label for="radio13-3"><i class="fas fa-expand"></i></label>
-			<label for="radio13-2"><i class="fas fa-expand-alt"></i></label>
-			<label for="radio13-1"><i class="fas fa-compress-alt"></i></label>
-		
-		
-		</span>
-	</div>
+
+	<span class="titleLeft">
+	
+	</span>
+	<span class="titleCenter">
+		<a href="https://gifsaw.com">Dashboard</a>
+	</span>
+	<span class="titleRight">
+		<label for="radio13-3"><i class="fas fa-expand"></i></label>
+		<label for="radio13-2"><i class="fas fa-expand-alt"></i></label>
+		<label for="radio13-1"><i class="fas fa-compress-alt"></i></label>
+	
+	
+	</span>
+	
 </div>
 {% endblock %}
 {% block content13 %}
