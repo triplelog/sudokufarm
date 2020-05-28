@@ -189,6 +189,14 @@ app.get('/:userid/:gameid',
 			res.redirect('../create?name='+req.params.gameid);
 			return;
 		}
+		else if (req.isAuthenticated() && req.user.username == req.params.userid && req.query.q && req.query.q == 'fork'){
+			res.redirect('../create?name='+req.params.gameid+'&fork=true');
+			return;
+		}
+		else if (req.isAuthenticated() && req.query.q && req.query.q == 'edit'){
+			res.redirect('../create?name='+req.params.gameid+'&user='+req.params.userid);
+			return;
+		}
 		console.log(req.params);
 		/*var tkey = crypto.randomBytes(100).toString('hex').substr(2, 18);
 		if (req.isAuthenticated()){
@@ -261,8 +269,19 @@ app.get('/create',
 		
 		var tkey = crypto.randomBytes(100).toString('hex').substr(2, 18);
 		var gameid = '';
-		if (req.query.name){
+		var oldid = '';
+		var olduser = '';
+		if (req.query && req.query.name){
 			gameid = req.query.name;
+			if (req.query.fork == 'true'){
+				gameid = parseInt(crypto.randomBytes(50).toString('hex'),16).toString(36).substr(2, 12);
+				oldid = req.query.name;
+			}
+			if (req.query.user){
+				gameid = parseInt(crypto.randomBytes(50).toString('hex'),16).toString(36).substr(2, 12);
+				oldid = req.query.name;
+				olduser = req.query.user;
+			}
 		}
 		else {
 			gameid = parseInt(crypto.randomBytes(50).toString('hex'),16).toString(36).substr(2, 12);
@@ -305,12 +324,20 @@ app.get('/create',
 		var availableIcons = {'farming':['Bees','Cow','Duck','Cow']};
 			
 		if (req.query.name){
-			SudokufarmUser.findOne({username:username},function(err,result){
+			var searchuser = username;
+			var searchid = gameid;
+			if (olduser != ''){
+				searchuser = olduser;
+			}
+			if (oldid != ''){
+				searchid = oldid;
+			}
+			SudokufarmUser.findOne({username:searchuser},function(err,result){
 				var levelJson;
 				var foundMatch = false;
 				if (result && result.games){
 					for (var i=0;i<result.games.length;i++){
-						if (result.games[i].id == req.params.gameid){
+						if (result.games[i].id == searchid){
 							levelJson = result.games[i];
 							foundMatch = true;
 							break;
