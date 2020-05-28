@@ -7,7 +7,10 @@ var initialPuzzle = "...25..8...8.7.1...6.....9....8139..8.24.9..5.1.........4..
 var solution = "793251684248976153165348297456813972872469315319527468984635721631782549527194836"
 //let initialTotals = [0,30000,10000,10000,10000,10000,10000]
 let initialTotals = [0,200,200,200,200,200,200]
-let maxUsed = 135 //dont let stock get below 65?
+let maxUsed = 150 //dont let stock get below 50
+var needed1 = 10 // increase to require more depletions
+var needed2 = 25 // increase to require more depletions
+var sumNeeded = 499 // increase to require more depletions
 
 var nMade = 0
 fs.writeFileSync("../games/medium.txt", "", function (err) {
@@ -405,10 +408,10 @@ function runSimulation() {
 				var num100 = 0
 				for (var i=0;i<7;i++) {
 					neededTotals[i] = initialTotals[i]-minTotals[i]
-					if (neededTotals[i] > 25) {
+					if (neededTotals[i] > needed1) {
 						num50+=1
 					}
-					if (neededTotals[i] > 50) {
+					if (neededTotals[i] > needed2) {
 						num100+=1
 					}
 				}
@@ -536,7 +539,7 @@ function runSimulation() {
 								sumNeededTotals+=(neededTotals[i]-200)
 							}
 						}
-						if (sumNeededTotals > 699) {
+						if (sumNeededTotals > sumNeeded) {
 							var levelJson = {"startPeople":savednPeople,"puzzle":toCSS(savedcurrentPuzzle)};
 							levelJson.initialTotals = initialTotals.slice();
 							levelJson.itemPerThing = itemPerThing.slice(); //only one level of slice, but doesn't change?
