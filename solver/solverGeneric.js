@@ -631,10 +631,20 @@ function runSimulation() {
 	var easyPuzzle = true
 	
 	while (stopSudoku) {
+		
 		var allPlays = []
-		allPlays = allPlays.concat(checkRow( currentPuzzle))
-		allPlays = allPlays.concat(checkColumn( currentPuzzle))
-		allPlays = allPlays.concat(checkBlock( currentPuzzle))
+		/*allPlays = allPlays.concat(checkRow(currentPuzzle))
+		allPlays = allPlays.concat(checkColumn(currentPuzzle))
+		allPlays = allPlays.concat(checkBlock(currentPuzzle))
+		*/
+		
+		let allBlockRows = checkBlockRow(currentPuzzle)
+		let allBlockCols = checkBlockCol(currentPuzzle)
+		allPlays+=checkRowFull(currentPuzzle, allBlockRows, allBlockCols)
+		allPlays+=checkColumnFull(currentPuzzle, allBlockRows, allBlockCols)
+		allPlays+=checkBlockFull(currentPuzzle, allBlockRows, allBlockCols)
+		allPlays+=checkCells(currentPuzzle, allBlockRows, allBlockCols)
+		
 		if (allPlays.length>0) {
 			updateBN()
 			updateSG()
