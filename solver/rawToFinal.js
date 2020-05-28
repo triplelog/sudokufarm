@@ -37,7 +37,7 @@ for (var i=0;i<puzzles.length;i++){
 }
 wget += ' | qqwing --solve --stats --nosolution --csv';
 Promise.all([execShellCommand(wget)]).then((values) => {
-	console.log(values[0])
+	//console.log(values[0])
 	var outputArray = values[0].split('\n')
 	for (var i=0;i<puzzles.length;i++){
 		var output = outputArray[i+1].split(',')[9];
@@ -51,14 +51,35 @@ Promise.all([execShellCommand(wget)]).then((values) => {
 	
 	console.log(gamesSimple.length);
 	console.log(gamesEasy.length);
-})
-/*fs.writeFileSync("../games/medium.txt", "", function (err) {
-	if (err){
-		console.log(err);
+	
+	fs.writeFileSync("../games/medium.txt", "", function (err) {
+		if (err){
+			console.log(err);
+		}
+	});
+	for (var i=0;i<81;i++){
+		var game = {};
+		if (i%2==0){
+			game = gamesSimple[i/2];
+		}
+		else{
+			if (gamesEasy.length>(i-1)/2){
+				game=gamesEasy[(i-1)/2]
+			}
+			else {
+				game = gamesSimple[81+(i-1)/2];
+			}
+		}
+		fs.appendFileSync("../games/medium.txt", JSON.stringify(game)+"\n", function (err) {
+			if (err){
+				console.log(err);
+			}
+		});
 	}
-});
+	
+	
+})
 
-for (var i=0;i<)*/
 
 
 
