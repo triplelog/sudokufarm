@@ -281,10 +281,12 @@ app.get('/game.html',
 			}
 		}
 		else {
+			gametype = 'daily';
 			var d = new Date();
 			var month = d.getMonth()+1;
 			var date = d.getDate();
 			var year = d.getYear()+1900;
+			console.log(Object.keys(defaultGames[gametype]));
 			levelJson = defaultGames[gametype][month+'/'+date+'/'+year];
 			d.setDate(d.getDate()-1);
 			month = d.getMonth()+1;
