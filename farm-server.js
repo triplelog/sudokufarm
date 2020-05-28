@@ -257,7 +257,7 @@ app.get('/game.html',
 			gametype = 'daily';
 			var d = new Date(req.query.d);
 			console.log(d.getDate());
-			if (!isNaN(d.getDate()) && d.getYear >=120 && d.getYear() < 122){
+			if (!isNaN(d.getDate()) && d.getYear() >=120 && d.getYear() < 122){
 				var month = d.getMonth()+1;
 				var date = d.getDate();
 				var year = d.getYear()+1900;
