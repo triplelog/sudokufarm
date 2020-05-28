@@ -1583,6 +1583,6 @@ for (var i=0;i<1000;i++) {
 		runSimulation()
 	}
 	if (i%100==0){
-		console.log(i,elapsedTime);
+		console.log(i,elapsedTime, nMade);
 	}	
 }
