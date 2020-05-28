@@ -583,15 +583,17 @@ function execShellCommand(cmd) {
  });
 }
 var allPuzzles = '';
-var wget1 = 'qqwing --generate 60 --difficulty simple --symmetry random --solution --csv'
-var wget2 = 'qqwing --generate 60 --difficulty easy --symmetry random --solution --csv'
+var wget1 = 'qqwing --generate 1000 --difficulty simple --symmetry random --solution --csv'
+var wget2 = 'qqwing --generate 1000 --difficulty easy --symmetry random --solution --csv'
+var wget3 = 'qqwing --generate 1000 --difficulty intermediate --symmetry random --solution --csv'
 
-Promise.all([execShellCommand(wget1),execShellCommand(wget2)]).then((values) => {
+Promise.all([execShellCommand(wget1),execShellCommand(wget2),execShellCommand(wget3)]).then((values) => {
 	allPuzzles =  values[0].replace("Puzzle,Solution,\n", "");
 	allPuzzles +=  values[1].replace("Puzzle,Solution,\n", "");
+	allPuzzles +=  values[2].replace("Puzzle,Solution,\n", "");
 	allPuzzles = allPuzzles.replace(/\n/g, "")
 	let puzzleArray = allPuzzles.split(",")
-	for (var i=0;i<120;i++) {
+	for (var i=0;i<3000;i++) {
 		//console.log(i,performance.now());
 		initialPuzzle = puzzleArray[i*2]
 		solution = puzzleArray[i*2+1]
