@@ -55,7 +55,7 @@ wss.on('connection', function connection(ws) {
 			if (dm.difficulty == 'easy'){
 				var wget1 = 'qqwing --generate 1 --difficulty simple --symmetry random --csv';
 				execShellCommand(wget1).then((result) =>{
-					var puzzle = result;
+					var puzzle = result.split(',')[1];
 					console.log('__'+puzzle+'__');
 					var jsonmessage = {'puzzle':puzzle};
 					ws.send(JSON.stringify(jsonmessage));
