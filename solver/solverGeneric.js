@@ -10,7 +10,7 @@ var solution = "7932516842489761531653482974568139728724693153195274689846357216
 var difficulty = 'medium'
 difficulty = 'easy'
 difficulty = 'hard'
-difficulty = 'hardDaily'
+difficulty = 'mediumDaily'
 var maxUsed = 160 //dont let stock get below 40
 var needed1 = 10 // increase to require more depletions
 var needed2 = 25 // increase to require more depletions
@@ -37,6 +37,20 @@ else if (difficulty == 'hardDaily'){
 	needed2 = 10 // increase to require more depletions
 	sumNeeded = 299 // increase to require more depletions
 	initialTotal = 100
+}
+else if (difficulty == 'mediumDaily'){
+	maxUsed = 150 //dont let stock get below 25
+	needed1 = 10 // increase to require more depletions
+	needed2 = 25 // increase to require more depletions
+	sumNeeded = 499 // increase to require more depletions
+	initialTotal = 200
+}
+else if (difficulty == 'easyDaily'){
+	maxUsed = 250 //dont let stock get below 25
+	needed1 = 20 // increase to require more depletions
+	needed2 = 40 // increase to require more depletions
+	sumNeeded = 399 // increase to require more depletions
+	initialTotal = 400
 }
 let initialTotals = [0,initialTotal,initialTotal,initialTotal,initialTotal,initialTotal,initialTotal]
 var nMade = 0
@@ -913,6 +927,16 @@ else if (difficulty == 'hardDaily'){
 	wget1 = 'qqwing --generate 4000 --difficulty easy --symmetry random --solution --csv'
 	wget2 = 'qqwing --generate 4000 --difficulty intermediate --symmetry random --solution --csv'
 	wget3 = 'qqwing --generate 4000 --difficulty intermediate --symmetry random --solution --csv'
+}
+else if (difficulty == 'mediumDaily'){
+	wget1 = 'qqwing --generate 2000 --difficulty simple --symmetry random --solution --csv'
+	wget2 = 'qqwing --generate 4000 --difficulty easy --symmetry random --solution --csv'
+	wget3 = 'qqwing --generate 4000 --difficulty intermediate --symmetry random --solution --csv'
+}
+else if (difficulty == 'easyDaily'){
+	wget1 = 'qqwing --generate 2000 --difficulty simple --symmetry random --solution --csv'
+	wget2 = 'qqwing --generate 4000 --difficulty easy --symmetry random --solution --csv'
+	wget3 = 'qqwing --generate 2000 --difficulty intermediate --symmetry random --solution --csv'
 }
 
 Promise.all([execShellCommand(wget1),execShellCommand(wget2),execShellCommand(wget3)]).then((values) => {
