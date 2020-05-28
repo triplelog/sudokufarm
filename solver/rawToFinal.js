@@ -30,7 +30,7 @@ for (var i=0;i<puzzles.length;i++){
 	}
 	var wget = "echo "+rawpuzzle +' | qqwing --solve --stats --nosolution --csv';
 	Promise.all([execShellCommand(wget)]).then((values) => {
-		console.log(values[0]);
+		console.log(JSON.parse(values[0])[9]);
 	})
 }
 
