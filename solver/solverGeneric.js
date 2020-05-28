@@ -349,13 +349,13 @@ function checkBlockRow(puzzle) {
 				}
 				
 				if (row1 && !row2 && !row3) {
-					allBlockRows.append([i,blockRow,blockCol,0])
+					allBlockRows.push([i,blockRow,blockCol,0])
 				}
 				if (!row1 && row2 && !row3) {
-					allBlockRows.append([i,blockRow,blockCol,1])
+					allBlockRows.push([i,blockRow,blockCol,1])
 				}
 				if (!row1 && !row2 && row3) {
-					allBlockRows.append([i,blockRow,blockCol,2])
+					allBlockRows.push([i,blockRow,blockCol,2])
 				}
 			}
 		}
@@ -544,7 +544,7 @@ function checkCells(puzzle, allBlockRows, allBlockCols) {
 						}
 					}
 					if (nFit != -1) {
-						allPlays.append([nFit,blockRow,blockCol,i])
+						allPlays.push([nFit,blockRow,blockCol,i])
 					}
 				}
 			}
