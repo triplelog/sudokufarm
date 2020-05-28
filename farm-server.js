@@ -90,7 +90,7 @@ wss.on('connection', function connection(ws) {
 });
 
 var defaultGames = {};
-var puzzleTypes = ['easy','easy','medium','hard'];
+var puzzleTypes = ['daily','easy','medium','hard'];
 for (var ii=0;ii<4;ii++ ){
 	var daily;
 	if (puzzleTypes[ii] == 'daily'){
@@ -116,13 +116,13 @@ for (var ii=0;ii<4;ii++ ){
 	  }
 	  if (puzzleTypes[ii] == 'daily'){
 	  	var w = 0;
-	  	for (var y=2020;y<2023;y++){
+	  	for (var y=2020;y<2022;y++){
 	  		for (var m=1;m<13;m++){
 	  			for (var d=1;d<32;d++){
 	  				var da = new Date(m+'/'+d+'/'+y);
 	  				if (!isNaN(da.getDate())){
 	  					var day = da.getDay();
-	  					var puzzle = daily[200*day+(w%200)];
+	  					var puzzle = daily[110*day+(w%110)];
 	  					defaultGames['daily'][m+'/'+d+'/'+y]=puzzle;
 	  					if (day == 0){
 	  						w++;
@@ -241,7 +241,7 @@ app.get('/game.html',
 		else if (req.query && req.query.d){
 			gametype = 'daily';
 			var d = new Date(req.query.d);
-			if (!isNaN(d.getDate()) && d.getYear >=120 && d.getYear() < 123){
+			if (!isNaN(d.getDate()) && d.getYear >=120 && d.getYear() < 122){
 				var month = d.getMonth()+1;
 				var date = d.getDate();
 				var year = d.getYear()+1900;
