@@ -17,6 +17,8 @@ for (var i=0;i<lines.length;i++){
 }
 var gamesSimple = [];
 var gamesEasy = [];
+var gamesIntermediate = [];
+var gamesExpert = [];
 var wget = 'echo';
 for (var i=0;i<puzzles.length;i++){
 	var rawpuzzle = '';
@@ -47,10 +49,21 @@ Promise.all([execShellCommand(wget)]).then((values) => {
 		else if (output == 'Easy'){
 			gamesEasy.push(games[i]);
 		}
+		else if (output == 'Intermediate'){
+			gamesIntermediate.push(games[i]);
+		}
+		else if (output == 'Expert'){
+			gamesExpert.push(games[i]);
+		}
+		else {
+			console.log(output)
+		}
 	}
 	
 	console.log(gamesSimple.length);
 	console.log(gamesEasy.length);
+	console.log(gamesIntermediate.length);
+	console.log(gamesExpert.length);
 	
 	fs.writeFileSync("../games/medium.txt", "", function (err) {
 		if (err){
@@ -59,15 +72,31 @@ Promise.all([execShellCommand(wget)]).then((values) => {
 	});
 	for (var i=0;i<81;i++){
 		var game = {};
-		if (i%2==0){
+		if (i%4==0){
 			game = gamesSimple[i/2];
 		}
-		else{
-			if (gamesEasy.length>(i-1)/2){
-				game=gamesEasy[(i-1)/2]
+		else if (i%4 == 1){
+			if (gamesEasy.length>(i-1)/4){
+				game=gamesEasy[(i-1)/4]
 			}
 			else {
-				game = gamesSimple[81+(i-1)/2];
+				game = gamesSimple[81+(i-1)/4];
+			}
+		}
+		else if (i%4 == 2){
+			if (gamesEasy.length>(i-2)/4){
+				game=gamesEasy[(i-2)/4]
+			}
+			else {
+				game = gamesSimple[162+(i-2)/4];
+			}
+		}
+		else {
+			if (gamesIntermediate.length>(i-3)/4){
+				game=gamesIntermediate[(i-3)/4]
+			}
+			else {
+				game = gamesSimple[243+(i-3)/4];
 			}
 		}
 		fs.appendFileSync("../games/medium.txt", JSON.stringify(game)+"\n", function (err) {
