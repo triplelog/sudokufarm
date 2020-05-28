@@ -897,9 +897,9 @@ if (difficulty == 'easy'){
 	wget3 = 'qqwing --generate 1000 --difficulty simple --symmetry random --solution --csv'
 }
 else if (difficulty == 'hard'){
-	wget1 = 'qqwing --generate 500 --difficulty easy --symmetry random --solution --csv'
-	wget2 = 'qqwing --generate 2500 --difficulty intermediate --symmetry random --solution --csv'
-	wget3 = 'qqwing --generate 1000 --difficulty expert --symmetry random --solution --csv'
+	wget1 = 'qqwing --generate 1000 --difficulty easy --symmetry random --solution --csv'
+	wget2 = 'qqwing --generate 5000 --difficulty intermediate --symmetry random --solution --csv'
+	wget3 = 'qqwing --generate 5000 --difficulty intermediate --symmetry random --solution --csv'
 }
 
 Promise.all([execShellCommand(wget1),execShellCommand(wget2),execShellCommand(wget3)]).then((values) => {
@@ -908,7 +908,7 @@ Promise.all([execShellCommand(wget1),execShellCommand(wget2),execShellCommand(wg
 	allPuzzles +=  values[2].replace("Puzzle,Solution,\n", "");
 	allPuzzles = allPuzzles.replace(/\n/g, "")
 	let puzzleArray = allPuzzles.split(",")
-	for (var i=0;i<6000;i++) {
+	for (var i=0;i<11000;i++) {
 		if (i*2+1>puzzleArray.length){break;}
 		//console.log(i,performance.now());
 		initialPuzzle = puzzleArray[i*2]
