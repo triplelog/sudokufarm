@@ -259,6 +259,7 @@ tr {
 {% block content11 %}
 	<table id="dataTable">
 		<tr id="emojiData">
+			<td></td>
 			<td class="firstSix">{{ emojiList[0] }}</td>
 			<td class="firstSix">{{ emojiList[1] }}</td>
 			<td class="firstSix">{{ emojiList[2] }}</td>
@@ -269,6 +270,7 @@ tr {
 		</tr>
 		
 		<tr id="newData">
+			<td>Σ</td>
 			<td class="pointsBoard1 firstSix">{{ totals[1] }}</td>
 			<td class="pointsBoard2 firstSix">{{ totals[2] }}</td>
 			<td class="pointsBoard3 firstSix">{{ totals[3] }}</td>
@@ -279,6 +281,7 @@ tr {
 		</tr>
 
 		<tr id="changeData">
+			<td>Δ</td>
 			<td class="pointsBoard1c firstSix"></td>
 			<td class="pointsBoard2c firstSix"></td>
 			<td class="pointsBoard3c firstSix"></td>
@@ -337,9 +340,7 @@ tr {
 </table>
 
 <div>
-	<label>Births per Year</label>
-	<input type="number" id="births" value="{{ bpy[0] }}" style="width:3rem;"></input>
-	<input type="number" id="perYear" value="{{ bpy[1] }}" style="width:3rem;"></input>
+	<label>{{ bpy[0] }} Birth every {{ bpy[1] }} Years</label>
 </div>
 {% endblock %}	
 
@@ -422,6 +423,6 @@ Download Sudoku Farm for iOS.
 		var nYears = 1;
 		var imgList = {{ imgList | dump | safe }};
 	</script>
-	<script src="../js/game.js"></script>
+	<script src="../js/gamelogic.js"></script>
 {% endblock %}
 

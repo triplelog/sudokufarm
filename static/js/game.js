@@ -1,6 +1,4 @@
-var selectedButton = 0;
-var itemSpends = [0,0,0,0,0,0,0];
-var itemGets = [0,0,0,0,0,0,0];
+
 function updateSGN() {
 	var el = document.getElementById('changeData');
 	var nets = el.querySelectorAll('td');
@@ -65,19 +63,6 @@ function updateTotals(save) {
 			}
 		}
 	}
-}
-updateSGN();	
-		
-var el = document.getElementById('buttonRow');
-var buttons = el.querySelectorAll('span');
-for (var i=0;i<buttons.length;i++){
-	buttons[i].addEventListener('click',chgButton);
-}
-
-var el = document.getElementById('sudokuTable');
-var cells = el.querySelectorAll('span');
-for (var i=0;i<cells.length;i++){
-	cells[i].addEventListener('click',updateCell);
 }
 
 
@@ -156,8 +141,26 @@ function updateCell(evt){
 			nPeople+=bpy[0];
 		}
 		nYears+=1
+		updateSGN();
 		//updateTotals(false);
 		
 	}
 	
+}
+
+var selectedButton = 0;
+var itemSpends = [0,0,0,0,0,0,0];
+var itemGets = [0,0,0,0,0,0,0];
+updateSGN();	
+		
+var el = document.getElementById('buttonRow');
+var buttons = el.querySelectorAll('span');
+for (var i=0;i<buttons.length;i++){
+	buttons[i].addEventListener('click',chgButton);
+}
+
+var el = document.getElementById('sudokuTable');
+var cells = el.querySelectorAll('span');
+for (var i=0;i<cells.length;i++){
+	cells[i].addEventListener('click',updateCell);
 }

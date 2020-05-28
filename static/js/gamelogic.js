@@ -228,6 +228,8 @@ function resetGame() {
 	
 }
 
+
+
 var el = document.getElementById('buttonRow');
 var buttons = el.querySelectorAll('span');
 for (var i=0;i<buttons.length;i++){
@@ -256,5 +258,5 @@ var bpyReset = bpy;
 
 var moves = [];		
 resetGame();
-document.getElementById("resetGame").addEventListener('click',clearGame);
-document.getElementById("undoMove").addEventListener('click',undoMove);
+//document.getElementById("resetGame").addEventListener('click',clearGame);
+//document.getElementById("undoMove").addEventListener('click',undoMove);
