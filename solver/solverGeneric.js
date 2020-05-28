@@ -573,7 +573,7 @@ function runSimulation() {
 }
 
 var allPuzzles = '';
-var wget = 'qqwing --generate 10000 --difficulty simple --symmetry random --solution --csv'
+var wget = 'qqwing --generate 3000 --difficulty simple --symmetry random --solution --csv'
 var child = exec(wget, function(err, stdout, stderr) {
 	if (err){
 		console.log(err);
@@ -584,7 +584,7 @@ var child = exec(wget, function(err, stdout, stderr) {
 		allPuzzles = stdout.replace("Puzzle,Solution,\n", "");
 		allPuzzles = allPuzzles.replace(/\n/g, "")
 		let puzzleArray = allPuzzles.split(",")
-		for (var i=0;i<10000;i++) {
+		for (var i=0;i<3000;i++) {
 			//console.log(i,performance.now());
 			initialPuzzle = puzzleArray[i*2]
 			solution = puzzleArray[i*2+1]
