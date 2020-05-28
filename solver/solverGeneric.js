@@ -571,35 +571,38 @@ function runSimulation() {
 		return 3
 	}
 }
-var allPuzzles = '';
-var wget = 'qqwing --generate 201 --difficulty simple --symmetry random --solution --csv'
-var child = exec(wget, function(err, stdout, stderr) {
-	if (err){
-		console.log(err);
-		//send message--likely file size limit
-		return;
-	}
-	else {
-		allPuzzles = stdout.replace("Puzzle,Solution,\n", "");
-		allPuzzles = allPuzzles.replace(/\n/g, "")
-		let puzzleArray = allPuzzles.split(",")
-		for (var i=0;i<201;i++) {
-			//console.log(i,performance.now());
-			initialPuzzle = puzzleArray[i*2]
-			solution = puzzleArray[i*2+1]
-			if (initialPuzzle.length != 81 || solution.length != 81){continue;}
-			addedNumbers = [0,0,0,0,0,0,0,0,0,0]
-			var x = runSimulation();
-			if (x < 2) {
-				addedNumbers = [0,0,0,0,0,0,0,0,0,0]
-				runSimulation()
-			}
-			if (i%100==0){
-				console.log(i,elapsedTime, nMade);
-			}	
+while (nMade < 81){
+	var allPuzzles = '';
+	var wget = 'qqwing --generate 100 --difficulty simple --symmetry random --solution --csv'
+	var child = exec(wget, function(err, stdout, stderr) {
+		if (err){
+			console.log(err);
+			//send message--likely file size limit
+			return;
 		}
-	}
+		else {
+			allPuzzles = stdout.replace("Puzzle,Solution,\n", "");
+			allPuzzles = allPuzzles.replace(/\n/g, "")
+			let puzzleArray = allPuzzles.split(",")
+			for (var i=0;i<100;i++) {
+				//console.log(i,performance.now());
+				initialPuzzle = puzzleArray[i*2]
+				solution = puzzleArray[i*2+1]
+				if (initialPuzzle.length != 81 || solution.length != 81){continue;}
+				addedNumbers = [0,0,0,0,0,0,0,0,0,0]
+				var x = runSimulation();
+				if (x < 2) {
+					addedNumbers = [0,0,0,0,0,0,0,0,0,0]
+					runSimulation()
+				}
+				if (i%100==99){
+					console.log(elapsedTime, nMade);
+				}	
+			}
+		}
 
-});
+	});
+}
+
 
 
