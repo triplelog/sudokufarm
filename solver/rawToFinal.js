@@ -15,6 +15,8 @@ for (var i=0;i<lines.length;i++){
 		games.push(JSON.parse(lines[i]));
 	}
 }
+var gamesSimple = [];
+var gamesEasy = [];
 for (var i=0;i<puzzles.length;i++){
 	var rawpuzzle = '';
 	for (var ii=0;ii<9;ii++){
@@ -31,9 +33,26 @@ for (var i=0;i<puzzles.length;i++){
 	var wget = "echo "+rawpuzzle +' | qqwing --solve --stats --nosolution --csv';
 	Promise.all([execShellCommand(wget)]).then((values) => {
 		var output = values[0].split('\n')[1].split(',')[9];
-		console.log(output);
+		if (output == 'Simple'){
+			gamesSimple.push(games[i]);
+		}
+		else if (output == 'Easy'){
+			gamesEasy.push(games[i]);
+		}
 	})
 }
+console.log(gamesSimple.length);
+console.log(gamesEasy.length);
+/*fs.writeFileSync("../games/medium.txt", "", function (err) {
+	if (err){
+		console.log(err);
+	}
+});
+
+for (var i=0;i<)*/
+
+
+
 
 function execShellCommand(cmd) {
  return new Promise((resolve, reject) => {
