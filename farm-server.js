@@ -90,7 +90,7 @@ wss.on('connection', function connection(ws) {
 });
 
 var defaultGames = {};
-var puzzleTypes = ['daily','easy','medium','hard'];
+var puzzleTypes = ['easy','easy','medium','hard'];
 for (var ii=0;ii<4;ii++ ){
 	var daily;
 	if (puzzleTypes[ii] == 'daily'){
