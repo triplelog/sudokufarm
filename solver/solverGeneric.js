@@ -593,7 +593,7 @@ Promise.all([execShellCommand(wget1),execShellCommand(wget2),execShellCommand(wg
 	allPuzzles +=  values[2].replace("Puzzle,Solution,\n", "");
 	allPuzzles = allPuzzles.replace(/\n/g, "")
 	let puzzleArray = allPuzzles.split(",")
-	for (var i=0;i<3000;i++) {
+	for (var i=0;i<5200;i++) {
 		//console.log(i,performance.now());
 		initialPuzzle = puzzleArray[i*2]
 		solution = puzzleArray[i*2+1]
