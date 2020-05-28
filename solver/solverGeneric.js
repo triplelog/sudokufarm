@@ -640,10 +640,10 @@ function runSimulation() {
 		
 		let allBlockRows = checkBlockRow(currentPuzzle)
 		let allBlockCols = checkBlockCol(currentPuzzle)
-		allPlays+=checkRowFull(currentPuzzle, allBlockRows, allBlockCols)
-		allPlays+=checkColumnFull(currentPuzzle, allBlockRows, allBlockCols)
-		allPlays+=checkBlockFull(currentPuzzle, allBlockRows, allBlockCols)
-		allPlays+=checkCells(currentPuzzle, allBlockRows, allBlockCols)
+		allPlays = allPlays.concat(checkRowFull(currentPuzzle, allBlockRows, allBlockCols))
+		allPlays = allPlays.concat(checkColumnFull(currentPuzzle, allBlockRows, allBlockCols))
+		allPlays = allPlays.concat(checkBlockFull(currentPuzzle, allBlockRows, allBlockCols))
+		allPlays = allPlays.concat(checkCells(currentPuzzle, allBlockRows, allBlockCols))
 		
 		if (allPlays.length>0) {
 			updateBN()
@@ -791,10 +791,10 @@ function runSimulation() {
 				
 				let allBlockRows = checkBlockRow(currentPuzzle)
 				let allBlockCols = checkBlockCol(currentPuzzle)
-				allPlays+=checkRowFull(currentPuzzle, allBlockRows, allBlockCols)
-				allPlays+=checkColumnFull(currentPuzzle, allBlockRows, allBlockCols)
-				allPlays+=checkBlockFull(currentPuzzle, allBlockRows, allBlockCols)
-				allPlays+=checkCells(currentPuzzle, allBlockRows, allBlockCols)
+				allPlays = allPlays.concat(checkRowFull(currentPuzzle, allBlockRows, allBlockCols))
+				allPlays = allPlays.concat(checkColumnFull(currentPuzzle, allBlockRows, allBlockCols))
+				allPlays = allPlays.concat(checkBlockFull(currentPuzzle, allBlockRows, allBlockCols))
+				allPlays = allPlays.concat(checkCells(currentPuzzle, allBlockRows, allBlockCols))
 				
 				
 				if (allPlays.length>0) {
