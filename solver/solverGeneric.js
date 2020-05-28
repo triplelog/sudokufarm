@@ -1,7 +1,7 @@
 'use strict';
 const { PerformanceObserver, performance } = require('perf_hooks');
 var fs = require("fs");
-const { exec } = require('child_process');
+const { execSync } = require('child_process');
 //let initialPuzzle = "....15.9...3...4...893.461.39..6..87.2.....3....4.3...4..1.7..9..1...8..7..5.83.1"
 //let solution = "246815793173926458589374612394261587625789134817453926458137269931642875762598341"
 var initialPuzzle = "...25..8...8.7.1...6.....9....8139..8.24.9..5.1.........4...7...317.2.4.5.7...836"
@@ -573,8 +573,8 @@ function runSimulation() {
 }
 
 var allPuzzles = '';
-var wget = 'qqwing --generate 2500 --difficulty simple --symmetry random --solution --csv'
-var child = exec(wget, function(err, stdout, stderr) {
+var wget = 'qqwing --generate 200 --difficulty simple --symmetry random --solution --csv'
+var child = execSync(wget, function(err, stdout, stderr) {
 	if (err){
 		console.log(err);
 		//send message--likely file size limit
@@ -584,7 +584,7 @@ var child = exec(wget, function(err, stdout, stderr) {
 		allPuzzles = stdout.replace("Puzzle,Solution,\n", "");
 		allPuzzles = allPuzzles.replace(/\n/g, "")
 		let puzzleArray = allPuzzles.split(",")
-		for (var i=0;i<2500;i++) {
+		for (var i=0;i<200;i++) {
 			//console.log(i,performance.now());
 			initialPuzzle = puzzleArray[i*2]
 			solution = puzzleArray[i*2+1]
