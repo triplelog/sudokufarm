@@ -256,6 +256,7 @@ app.get('/game.html',
 		else if (req.query && req.query.d){
 			gametype = 'daily';
 			var d = new Date(req.query.d);
+			console.log(d.getDate());
 			if (!isNaN(d.getDate()) && d.getYear >=120 && d.getYear() < 122){
 				var month = d.getMonth()+1;
 				var date = d.getDate();
@@ -286,7 +287,6 @@ app.get('/game.html',
 			var month = d.getMonth()+1;
 			var date = d.getDate();
 			var year = d.getYear()+1900;
-			console.log(Object.keys(defaultGames[gametype]));
 			levelJson = defaultGames[gametype][month+'/'+date+'/'+year];
 			d.setDate(d.getDate()-1);
 			month = d.getMonth()+1;
