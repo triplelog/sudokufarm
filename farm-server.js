@@ -105,8 +105,10 @@ for (var ii=0;ii<4;ii++ ){
 	if (puzzleTypes[ii]=='daily'){
 		data = fs.readFileSync('./games/hardDaily.txt', 'utf8');
 		lines = data.split('\n');
+		console.log(lines.length);
 		data = fs.readFileSync('./games/easyDaily.txt', 'utf8');
 		lines = lines.concat(data.split('\n'));
+		console.log(lines.length);
 		data = fs.readFileSync('./games/mediumDaily.txt', 'utf8');
 		lines = lines.concat(data.split('\n'));
 		console.log(lines.length);
