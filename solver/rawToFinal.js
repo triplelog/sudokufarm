@@ -3,9 +3,9 @@ const { PerformanceObserver, performance } = require('perf_hooks');
 var fs = require("fs");
 const { exec } = require('child_process');
 
-
+var difficulty = 'medium';
 var nMade = 0
-var data = fs.readFileSync("../games/mediumRaw.txt", 'utf8');
+var data = fs.readFileSync("../games/"+difficulty+"Raw.txt", 'utf8');
 var lines = data.split('\n');
 var puzzles = [];
 var games = [];
@@ -65,44 +65,71 @@ Promise.all([execShellCommand(wget)]).then((values) => {
 	console.log(gamesIntermediate.length);
 	console.log(gamesExpert.length);
 	
-	fs.writeFileSync("../games/medium.txt", "", function (err) {
+	fs.writeFileSync("../games/"+difficulty+".txt", "", function (err) {
 		if (err){
 			console.log(err);
 		}
 	});
 	for (var i=0;i<81;i++){
 		var game = {};
-		if (i%4==0){
-			game = gamesSimple[i/2];
+		if (difficulty == 'easy'){
+			game = gamesSimple[i];
 		}
-		else if (i%4 == 1){
-			if (gamesEasy.length>(i-1)/4){
-				game=gamesEasy[(i-1)/4]
+		else if (difficulty == 'medium'){
+			if (i%4==0){
+				game = gamesSimple[i/4];
+			}
+			else if (i%4 == 1){
+				if (gamesEasy.length>(i-1)/4){
+					game=gamesEasy[(i-1)/4]
+				}
+				else {
+					game = gamesSimple[81+(i-1)/4];
+				}
+			}
+			else if (i%4 == 2){
+				if (gamesEasy.length>(i-2)/4){
+					game=gamesEasy[(i-2)/4]
+				}
+				else {
+					game = gamesSimple[162+(i-2)/4];
+				}
 			}
 			else {
-				game = gamesSimple[81+(i-1)/4];
-			}
-		}
-		else if (i%4 == 2){
-			if (gamesEasy.length>(i-2)/4){
-				game=gamesEasy[(i-2)/4]
-			}
-			else {
-				game = gamesSimple[162+(i-2)/4];
+				if (gamesIntermediate.length>(80-i)/4){
+					game=gamesIntermediate[(80-i)/4]
+				}
+				else if (gamesEasy.length>41+(80-i)/4){
+					game=gamesEasy[41+(80-i)/4]
+				}
+				else {
+					game = gamesSimple[120+(i-2)/4];
+				}
 			}
 		}
 		else {
-			if (gamesIntermediate.length>(80-i)/4){
-				game=gamesIntermediate[(80-i)/4]
-			}
-			else if (gamesEasy.length>41+(80-i)/4){
-				game=gamesEasy[41+(80-i)/4]
+			if (i%2 == 0){
+				if (gamesEasy.length>(i-0)/2){
+					game=gamesEasy[(i-0)/2]
+				}
+				else {
+					game = gamesSimple[(i-0)/2];
+				}
 			}
 			else {
-				game = gamesSimple[120+(i-2)/4];
+				if (gamesIntermediate.length>(79-i)/2){
+					game=gamesIntermediate[(79-i)/2]
+				}
+				else if (gamesEasy.length>41+(79-i)/2){
+					game=gamesEasy[41+(79-i)/2]
+				}
+				else {
+					game = gamesSimple[41+(79-i)/2];
+				}
 			}
 		}
-		fs.appendFileSync("../games/medium.txt", JSON.stringify(game)+"\n", function (err) {
+		
+		fs.appendFileSync("../games/"+difficulty+".txt", JSON.stringify(game)+"\n", function (err) {
 			if (err){
 				console.log(err);
 			}

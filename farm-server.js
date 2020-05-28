@@ -89,26 +89,30 @@ wss.on('connection', function connection(ws) {
   	});
 });
 
-var defaultGames = {'medium':[]};
-const data = fs.readFileSync('./games/medium.txt', 'utf8');
+var defaultGames = {};
+var puzzleTypes = ['daily','easy','medium','hard'];
+for (var ii=0;ii<4;ii++ ){
+	var daily;
+	if (puzzleTypes[ii] == 'daily'){
+		defaultGames[puzzleTypes[ii]] = {};
+		daily = [];
+	}
+	else {
+		defaultGames[puzzleTypes[ii]] = [];
+	}
+	const data = fs.readFileSync('./games/'+puzzleTypes[ii]+'.txt', 'utf8');
 
 	  var lines = data.split('\n');
 	  for (var i=0;i<lines.length;i++){
-	  	if (lines[i].length>10){
-	  		defaultGames['medium'].push(JSON.parse(lines[i]));
-	  	}
-	  }
-	  	
-		/*var line = lines[i];
-		if (line.length == 81){
-			if (puzzleTypes[ii] == 'daily'){
-				daily.push(line);
+		var line = lines[i];
+		if (line.length>10){
+	  		if (puzzleTypes[ii] == 'daily'){
+				daily.push(JSON.parse(line));
 			}
 			else {
-				puzzles[puzzleTypes[ii]].push(line);
+				defaultGames[puzzleTypes[ii]].push(JSON.parse(line));
 			}
-			
-		}
+	  	}
 	  }
 	  if (puzzleTypes[ii] == 'daily'){
 	  	var w = 0;
@@ -119,7 +123,7 @@ const data = fs.readFileSync('./games/medium.txt', 'utf8');
 	  				if (!isNaN(da.getDate())){
 	  					var day = da.getDay();
 	  					var puzzle = daily[200*day+(w%200)];
-	  					puzzles['daily'][m+'/'+d+'/'+y]=puzzle;
+	  					defaultGames['daily'][m+'/'+d+'/'+y]=puzzle;
 	  					if (day == 0){
 	  						w++;
 	  					}
@@ -127,7 +131,9 @@ const data = fs.readFileSync('./games/medium.txt', 'utf8');
 	  			}
 	  		}
 	  	}
-	  }*/
+	  }
+}
+
 	  
 app.get('/index.html',
 	function(req, res){
@@ -186,11 +192,93 @@ app.get('/tutorial.html',
     
 );
 
-app.get('/game',
+app.get('/game.html',
 	function(req, res){
-		
-		//var levelJson = {"startPeople":10,"puzzle":[["0","0","3","1","0","5","0","0","0"],["6","0","0","0","0","4","0","0","0"],["0","0","9","6","0","0","8","0","3"],["2","0","1","0","0","0","0","3","0"],["0","8","0",4,"0",3,"0","1","7"],["5","0","4",7,"0","0","0","9","0"],["0","0","5","2","0","0","3","0","6"],["3","0","0",9,"0","8","0","0","0"],["0","0","2","5","0","7","0","0",9]],"initialTotals":[0,200,200,200,200,200,200],"itemPerThing":[[0,0,0,0,0,0,0,0,0],[21,16,3,0,0,10,30,15,6],[0,0,0,30,0,0,0,0,0],[0,0,0,0,0,3,0,15,24],[10,10,10,0,0,0,0,0,0],[0,0,0,0,15,2,0,0,0],[5,0,13,0,0,0,0,0,0]],"spendPerThing":[[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[1,1,1,0,0,0,5,5,5],[20,10,10,0,0,0,0,0,0],[0,0,0,0,0,0,10,10,10],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0]],"spendPerPerson":[0,30,3,0,0,5,5],"bpy":[1,3]};
-		var levelJson = defaultGames['medium'][7];
+		var levelJson;
+		var gametype = 'easy';
+		var gameid = 1;
+		if (req.query && req.query.l){
+			if (req.query.l.substring(0,4) == 'easy'){
+				gametype = 'easy';
+				gameid = parseInt(req.query.l.substring(4));
+				if (isNaN(gameid) || gameid<1){
+					res.redirect('../game.html?l=easy1');
+					return;
+				}
+				else if (gameid>81){
+					res.redirect('../game.html?l=easy81');
+					return;
+				}
+				levelJson = defaultGames[gametype][gameid-1];
+			}
+			else if (req.query.l.substring(0,6) == 'medium'){
+				gametype = 'medium';
+				gameid = parseInt(req.query.l.substring(6));
+				if (isNaN(gameid) || gameid<1){
+					res.redirect('../game.html?l=medium1');
+					return;
+				}
+				else if (gameid>81){
+					res.redirect('../game.html?l=medium81');
+					return;
+				}
+				levelJson = defaultGames[gametype][gameid-1];
+			}
+			else if (req.query.l.substring(0,4) == 'hard'){
+				gametype = 'hard';
+				gameid = parseInt(req.query.l.substring(4));
+				if (isNaN(gameid) || gameid<1){
+					res.redirect('../game.html?l=hard1');
+					return;
+				}
+				else if (gameid>81){
+					res.redirect('../game.html?l=hard81');
+					return;
+				}
+				levelJson = defaultGames[gametype][gameid-1];
+			}
+		}
+		else if (req.query && req.query.d){
+			gametype = 'daily';
+			var d = new Date(req.query.d);
+			if (!isNaN(d.getDate()) && d.getYear >=120 && d.getYear() < 123){
+				var month = d.getMonth()+1;
+				var date = d.getDate();
+				var year = d.getYear()+1900;
+				levelJson = defaultGames[gametype][month+'/'+date+'/'+year];
+				d.setDate(d.getDate()-1);
+				month = d.getMonth()+1;
+				date = d.getDate();
+				year = d.getYear()+1900;
+				gameid = month+'/'+date+'/'+year;
+			}
+			else {
+				var d = new Date();
+				var month = d.getMonth()+1;
+				var date = d.getDate();
+				var year = d.getYear()+1900;
+				levelJson = defaultGames[gametype][month+'/'+date+'/'+year];
+				d.setDate(d.getDate()-1);
+				month = d.getMonth()+1;
+				date = d.getDate();
+				year = d.getYear()+1900;
+				gameid = month+'/'+date+'/'+year;
+			}
+		}
+		else {
+			var d = new Date();
+			var month = d.getMonth()+1;
+			var date = d.getDate();
+			var year = d.getYear()+1900;
+			levelJson = defaultGames[gametype][month+'/'+date+'/'+year];
+			d.setDate(d.getDate()-1);
+			month = d.getMonth()+1;
+			date = d.getDate();
+			year = d.getYear()+1900;
+			gameid = month+'/'+date+'/'+year;
+		}
+
+
 		var imgList = [0,1,2,3,4,5,6,7,8,9];
 		var emojiList = ['🍕','💦','🍚','💩','🔥','👕','👤'];
 		levelJson.existingPlots = [0,0,0,0,0,0,0,0,0];
