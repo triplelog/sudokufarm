@@ -899,7 +899,7 @@ if (difficulty == 'easy'){
 else if (difficulty == 'hard'){
 	wget1 = 'qqwing --generate 500 --difficulty easy --symmetry random --solution --csv'
 	wget2 = 'qqwing --generate 2500 --difficulty intermediate --symmetry random --solution --csv'
-	wget3 = 'qqwing --generate 1500 --difficulty expert --symmetry random --solution --csv'
+	wget3 = 'qqwing --generate 1000 --difficulty expert --symmetry random --solution --csv'
 }
 
 Promise.all([execShellCommand(wget1),execShellCommand(wget2),execShellCommand(wget3)]).then((values) => {
