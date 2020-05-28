@@ -337,13 +337,13 @@ function checkBlockRow(puzzle) {
 				var row2 = false
 				var row3 = false
 				for (var ii=0;ii<3;ii++) {
-					if fitSpotBasic(puzzle, blockRow*3,3*blockCol+ii,blockRow*3+blockCol, i) {
+					if (fitSpotBasic(puzzle, blockRow*3,3*blockCol+ii,blockRow*3+blockCol, i)) {
 						row1 = true
 					}
-					if fitSpotBasic(puzzle, blockRow*3+1,3*blockCol+ii,blockRow*3+blockCol, i) {
+					if (fitSpotBasic(puzzle, blockRow*3+1,3*blockCol+ii,blockRow*3+blockCol, i)) {
 						row2 = true
 					}
-					if fitSpotBasic(puzzle, blockRow*3+2,3*blockCol+ii,blockRow*3+blockCol, i) {
+					if (fitSpotBasic(puzzle, blockRow*3+2,3*blockCol+ii,blockRow*3+blockCol, i)) {
 						row3 = true
 					}
 				}
@@ -391,13 +391,13 @@ function checkBlockCol(puzzle) {
 				var col2 = false
 				var col3 = false
 				for (var ii=0;ii<3;ii++) {
-					if fitSpotBasic(puzzle, blockRow*3+ii,3*blockCol,blockRow*3+blockCol,i) {
+					if (fitSpotBasic(puzzle, blockRow*3+ii,3*blockCol,blockRow*3+blockCol,i)) {
 						col1 = true
 					}
-					if fitSpotBasic(puzzle, blockRow*3+ii,3*blockCol+1,blockRow*3+blockCol,i) {
+					if (fitSpotBasic(puzzle, blockRow*3+ii,3*blockCol+1,blockRow*3+blockCol,i)) {
 						col2 = true
 					}
-					if fitSpotBasic(puzzle, blockRow*3+ii,3*blockCol+2,blockRow*3+blockCol,i) {
+					if (fitSpotBasic(puzzle, blockRow*3+ii,3*blockCol+2,blockRow*3+blockCol,i)) {
 						col3 = true
 					}
 				}
