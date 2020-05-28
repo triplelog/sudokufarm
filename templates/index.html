@@ -77,7 +77,7 @@ body {
 		
 	</span>
 	<span class="titleCenter">
-		<a href="https://sudokufarm.com">Play Now</a>
+		<a href="../game.html">Play Now</a>
 	</span>
 	<span class="titleRight">
 		<label for="radio11-1"><i class="fas fa-compress-alt"></i></label>
@@ -87,11 +87,11 @@ body {
 </div>
 {% endblock %}
 {% block content11 %}
-Play our game of the day.<br />
+Play our <a href="../game.html">game of the day</a>.<br />
 Or play a random game:<br />
-<button class="basic">Easy</button>
-<button class="basic">Medium</button>
-<button class="basic">Hard</button>
+<button class="basic" onclick="window.location.href='../game.html?l=easy{{ range(1,82) | random }}';">Easy</button>
+<button class="basic" onclick="window.location.href='../game.html?l=medium1';">Medium</button>
+<button class="basic" onclick="window.location.href='../game.html?l=hard1';">Hard</button>
 <br />
 Or play a user generated game.
 {% endblock %}	
