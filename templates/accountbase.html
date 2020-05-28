@@ -9,22 +9,57 @@
 {% endblock %}
 	
 {% block centerSize %}
-	--height-center: 6rem;
-	--width-center: 8rem;
+	--height-container: calc(25rem);
+	--width-container: calc(54rem);
+	--height-center: 10rem;
+	--width-center: calc(12rem);
+	
 {% endblock %}
 
 {% block titleCSS %}
+
 
 
 {% endblock %}
 
 
 {% block moreCSS %}
+.container {
+	grid-template-columns: 1fr 1fr 1fr;
+  	grid-template-rows: 1fr;
+  	column-gap: 1rem;
+	position: relative;
+	top: calc((100vh - var(--height-container)) / 2);
+}
+.content-22 {
+	overflow: visible;
+	grid-row: 1;
+}
+.content-31 {
+	display: none;
+}
+.content-33 {
+	display: none;
+}
+.content-11 {
+	grid-column: 1;
+	grid-row: 1;
+}
+.content-13 {
+	grid-column: 3;
+	grid-row: 1;
+}
 
 body {
 	background-image: url("../img/lightbg.png");
 	background-size: cover;
 	
+}
+.content-31 {
+	display: none;
+}
+.content-33 {
+	display: none;
 }
 {% endblock %}
 
@@ -35,7 +70,7 @@ body {
 		
 	</span>
 	<span class="titleCenter">
-		<a href="https://sudokufarm.com">Stats</a>
+		<a href="https://sudokufarm.com">Settings</a>
 	</span>
 	<span class="titleRight">
 		<label for="radio11-1"><i class="fas fa-compress-alt"></i></label>
@@ -45,6 +80,7 @@ body {
 </div>
 {% endblock %}
 {% block content11 %}
+Email: <input type="text"/>
 <ul>
 	<li>Easy</li>
 	<li>Medium</li>
