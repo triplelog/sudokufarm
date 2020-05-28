@@ -72,21 +72,41 @@
 	text-shadow: 0px 0px 10px black 0px 0px 10px black;
 }
 
-.container div .title .titleLeft {
-	float: left;
-	margin-left: calc(var(--border-radius) / 3);
-	width: 4rem;
-	min-height: 1px;
-}
-.container div .title .titleCenter {
+div.container div .title {
+	display: grid;
+	grid-template-columns: 1fr auto 1fr;
+  	grid-template-rows: max-content;
+  	justify-content: stretch;
 
 }
-.container div .title .titleRight {
-	float: right;
-	width: 4rem;
+div.container div .title .titleLeft {
+	grid-column: 1;
+	margin-left: 4px;
 	min-height: 1px;
-	font-size:1rem;
+	position: relative;
+	line-height: calc(2 * var(--border-radius));
+	height: calc(2 * var(--border-radius));
 }
+div.container div .title .titleCenter {
+	grid-column: 2;
+	position: relative;
+	line-height: calc(2 * var(--border-radius));
+	height: calc(2 * var(--border-radius));
+}
+div.container div .title .titleRight {
+	grid-column: 3;
+	min-height: 1px;
+	position: relative;
+	line-height: calc(2 * var(--border-radius));
+	height: calc(2 * var(--border-radius));
+}
+div.container div .title .titleRight label{
+	margin-right: calc(var(--border-radius) / 3);
+	height: calc(2 * var(--border-radius));
+	line-height: calc(2 * var(--border-radius));
+	float: right;
+}
+
 .container div .title .titleRight label{
 	margin-right: calc(var(--border-radius) / 3);
 	float: right;
