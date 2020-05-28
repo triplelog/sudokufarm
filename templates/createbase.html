@@ -15,17 +15,7 @@
 
 {% block titleCSS %}
 
-.titleBG {
-	background-image: url("../img/ftractor-40.png");
-  	background-size: auto 100%;
-  	background-repeat: no-repeat;
-  	background-position: 0px 0px;
-  	transition: background-position 1s linear;
-}
-.titleBG:hover {
-  	background-position: 350px 0px;
-  	transition: all 2s linear;
-}
+
 
 {% endblock %}
 
@@ -39,19 +29,7 @@
 	height: 2rem;
 	line-height: 2rem;
 }
-.title a {
-	text-decoration: none;
-	color: white;
-	font-size: 1.2rem;
-}
-.title a:hover {
-	text-decoration: underline;
-	text-shadow: 0px 0px 10px black 0px 0px 10px black;
-}
-.title label:hover {
-	cursor: pointer;
-	text-shadow: 0px 0px 10px black 0px 0px 10px black;
-}
+
 body {
 	background-image: url("../img/lightbg.png");
 	background-size: cover;
@@ -324,21 +302,19 @@ tr {
 
 {% block title13 %}
 <div class="title">
-	<div class="titleBG">
-		<span class="titleLeft">
-		
-		</span>
-		<span class="titleCenter">
-			<a href="https://gifsaw.com">Crops</a>
-		</span>
-		<span class="titleRight">
-			<label for="radio13-3"><i class="fas fa-expand"></i></label>
-			<label for="radio13-2"><i class="fas fa-expand-alt"></i></label>
-			<label for="radio13-1"><i class="fas fa-compress-alt"></i></label>
-		
-		
-		</span>
-	</div>
+	<span class="titleLeft">
+	
+	</span>
+	<span class="titleCenter">
+		<a href="https://gifsaw.com">Crops</a>
+	</span>
+	<span class="titleRight">
+		<label for="radio13-3"><i class="fas fa-expand"></i></label>
+		<label for="radio13-2"><i class="fas fa-expand-alt"></i></label>
+		<label for="radio13-1"><i class="fas fa-compress-alt"></i></label>
+	
+	
+	</span>
 </div>
 {% endblock %}
 {% block content13 %}
