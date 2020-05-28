@@ -573,7 +573,7 @@ function runSimulation() {
 }
 
 var allPuzzles = '';
-var wget = 'qqwing --generate 200 --difficulty simple --symmetry random --solution --csv'
+var wget = 'qqwing --generate 20 --difficulty simple --symmetry random --solution --csv'
 var child = execSync(wget, function(err, stdout, stderr) {
 	if (err){
 		console.log(err);
@@ -582,25 +582,29 @@ var child = execSync(wget, function(err, stdout, stderr) {
 	}
 	else {
 		allPuzzles = stdout.replace("Puzzle,Solution,\n", "");
-		allPuzzles = allPuzzles.replace(/\n/g, "")
-		let puzzleArray = allPuzzles.split(",")
-		for (var i=0;i<200;i++) {
-			//console.log(i,performance.now());
-			initialPuzzle = puzzleArray[i*2]
-			solution = puzzleArray[i*2+1]
-			if (initialPuzzle.length != 81 || solution.length != 81){continue;}
-			addedNumbers = [0,0,0,0,0,0,0,0,0,0]
-			var x = runSimulation();
-			if (x < 2) {
-				addedNumbers = [0,0,0,0,0,0,0,0,0,0]
-				runSimulation()
-			}
-			if (i%100==0){
-				console.log(i,elapsedTime, nMade);
-			}	
-		}
+		
 	}
 
 });
+console.log(child);
+console.log(Object.keys(child));
+/*
+allPuzzles = allPuzzles.replace(/\n/g, "")
+let puzzleArray = allPuzzles.split(",")
+for (var i=0;i<200;i++) {
+	//console.log(i,performance.now());
+	initialPuzzle = puzzleArray[i*2]
+	solution = puzzleArray[i*2+1]
+	if (initialPuzzle.length != 81 || solution.length != 81){continue;}
+	addedNumbers = [0,0,0,0,0,0,0,0,0,0]
+	var x = runSimulation();
+	if (x < 2) {
+		addedNumbers = [0,0,0,0,0,0,0,0,0,0]
+		runSimulation()
+	}
+	if (i%100==0){
+		console.log(i,elapsedTime, nMade);
+	}	
+}*/
 
 
