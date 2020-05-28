@@ -214,6 +214,10 @@ app.get('/:userid/:gameid',
 		SudokufarmUser.findOne({username:req.params.userid},function(err,result){
 			var levelJson;
 			var foundMatch = false;
+			if (!result || !result.games){
+				res.redirect('../account');
+				return;
+			}
 			for (var i=0;i<result.games.length;i++){
 				if (result.games[i].id == req.params.gameid){
 					levelJson = result.games[i];

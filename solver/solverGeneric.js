@@ -1,5 +1,6 @@
 'use strict';
 const { PerformanceObserver, performance } = require('perf_hooks');
+var fs = require("fs");
 //let initialPuzzle = "....15.9...3...4...893.461.39..6..87.2.....3....4.3...4..1.7..9..1...8..7..5.83.1"
 //let solution = "246815793173926458589374612394261587625789134817453926458137269931642875762598341"
 var initialPuzzle = "...25..8...8.7.1...6.....9....8139..8.24.9..5.1.........4...7...317.2.4.5.7...836"
@@ -8,6 +9,12 @@ var solution = "7932516842489761531653482974568139728724693153195274689846357216
 let initialTotals = [0,200,200,200,200,200,200]
 let maxUsed = 135 //dont let stock get below 65?
 
+var nMade = 0
+fs.writeFileSync("../games/medium.txt", "", function (err) {
+	if (err){
+		console.log(err);
+	}
+});
 var currentPuzzle = [[[0]]]
 var buttonNumbers = [0]
 var itemTotals = [0]
@@ -537,9 +544,13 @@ function runSimulation() {
 							levelJson.spendPerPerson = spendPerPerson.slice();
 							levelJson.bpy = [1,3]; //solver does not use this and nYear might not be 1 mod year
 							
-							console.log(JSON.stringify(levelJson))
-							
-							//console.log(JSON.stringify({'people':savednPeople,'puzzle':savedcurrentPuzzle,'year':savednYear}))
+							//console.log(JSON.stringify(levelJson))
+							fs.appendFileSync("../games/medium.txt", JSON.stringify(levelJson), function (err) {
+								if (err){
+									console.log(err);
+								}
+							});
+							nMade++
 							
 						}
 						else {
