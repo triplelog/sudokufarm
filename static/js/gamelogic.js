@@ -15,15 +15,15 @@ function updateSGN() {
 		}
 		
 		if (i>0){
-			nets[i-1].textContent = itemGets[i] - itemSpends[i];
+			nets[i].textContent = itemGets[i] - itemSpends[i];
 		}
 		
 	}
-	if (nYears%bpy[1] == 0){
-		nets[6].textContent = bpy[0];
+	if (nYears%bpy[1] == 1 && nYears > 1){
+		nets[7].textContent = bpy[0];
 	}
 	else {
-		nets[6].textContent = 0;
+		nets[7].textContent = 0;
 	}
 	
 	
@@ -37,19 +37,19 @@ function updateTotals(save) {
 		var minel = document.getElementById('minimum-'+i);
 		if (!save && selectedButton >0){
 			if (i>0){
-				ts[i-1].textContent = totals[i] + itemGets[i] - itemSpends[i];
+				ts[i].textContent = totals[i] + itemGets[i] - itemSpends[i];
 			}
 		}
 		else if (!save){
 			if (i>0){
-				ts[i-1].textContent = totals[i];
+				ts[i].textContent = totals[i];
 			}
 		}
 		else {
 			totals[i] += itemGets[i];
 			totals[i] -= itemSpends[i];
 			if (i>0){
-				ts[i-1].textContent = totals[i];
+				ts[i].textContent = totals[i];
 			}
 			if (i>0 && totals[i]<minTotals[i]){
 				minTotals[i]=totals[i];
@@ -58,7 +58,7 @@ function updateTotals(save) {
 		}
 		
 	}
-	ts[6].textContent = nPeople;
+	ts[7].textContent = nPeople;
 	for (var ii=0;ii<9;ii++) {
 		if (existingPlots[ii] == 9){
 			var el = document.getElementById('buttonRow').querySelectorAll('span')[ii];
@@ -261,5 +261,7 @@ var bpyReset = bpy;
 
 var moves = [];		
 resetGame();
-//document.getElementById("resetGame").addEventListener('click',clearGame);
-//document.getElementById("undoMove").addEventListener('click',undoMove);
+if (document.getElementById("resetGame")){
+	document.getElementById("resetGame").addEventListener('click',clearGame);
+}
+document.getElementById("undoMove").addEventListener('click',undoMove);
