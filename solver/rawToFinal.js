@@ -5,7 +5,7 @@ const { exec } = require('child_process');
 
 
 var nMade = 0
-var data = fs.readFileSync("../games/mediumRaw.txt");
+var data = fs.readFileSync("../games/mediumRaw.txt", 'utf8');
 var lines = data.split('\n');
 var puzzles = [];
 var games = [];
