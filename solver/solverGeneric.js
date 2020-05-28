@@ -7,14 +7,15 @@ const { exec } = require('child_process');
 var initialPuzzle = "...25..8...8.7.1...6.....9....8139..8.24.9..5.1.........4...7...317.2.4.5.7...836"
 var solution = "793251684248976153165348297456813972872469315319527468984635721631782549527194836"
 //let initialTotals = [0,30000,10000,10000,10000,10000,10000]
-let initialTotals = [0,200,200,200,200,200,200]
+var difficulty = 'medium'
 let maxUsed = 165 //dont let stock get below 35
 var needed1 = 10 // increase to require more depletions
 var needed2 = 20 // increase to require more depletions
 var sumNeeded = 299 // increase to require more depletions
-
+var initialTotal = 200
+let initialTotals = [0,initialTotal,initialTotal,initialTotal,initialTotal,initialTotal,initialTotal]
 var nMade = 0
-fs.writeFileSync("../games/mediumRaw.txt", "", function (err) {
+fs.writeFileSync("../games/"+difficulty+"Raw.txt", "", function (err) {
 	if (err){
 		console.log(err);
 	}
@@ -188,7 +189,7 @@ function updatePop() {
 	}
 	nYear+=1
 }
-
+/*
 function fitSpot(puzzle, row, col, block, num) {
 	if (puzzle[Math.floor(block/3)][block%3][3*(row%3)+col%3] != 0) {
 		return false
@@ -280,6 +281,272 @@ function checkBlock(puzzle){
 			}
 			if (numSpots != -1) {
 				allPlays.push([num,Math.floor((block)/3),(block)%3,3*((3*Math.floor(block/3)+Math.floor(numSpots/3))%3)+(3*(block%3)+numSpots%3)%3])
+			}
+		}
+	}
+	return allPlays
+}
+*/
+function fitSpotBasic(puzzle, row, col, block, num) {
+	if (puzzle[Math.floor(block/3)][block%3][3*(row%3)+col%3] != 0) {
+		return false
+	}
+	for (var ii=0;ii<9;ii++) {
+		if (puzzle[Math.floor(row/3)][Math.floor(ii/3)][ii%3+3*(row%3)] == num) {
+			return false
+		}
+	}
+	for (var ii=0;ii<9;ii++) {
+		if (puzzle[Math.floor(ii/3)][Math.floor(col/3)][3*(ii%3)+col%3] == num) {
+			return false
+		}
+	}
+	for (var ii=0;ii<9;ii++) {
+		if (puzzle[Math.floor(block/3)][block%3][ii] == num) {
+			return false
+		}
+	}
+	return true
+}
+
+function checkBlockRow(puzzle) {
+	var allBlockRows = []
+	for (var blockRow=0;blockRow<3;blockRow++) {
+		for (var blockCol=0;blockCol<3;blockCol++) {
+			var madeNums = [0]
+			for (var i=0;i<9;i++) {
+				if (puzzle[blockRow][blockCol][i] != 0) {
+					madeNums.push(puzzle[blockRow][blockCol][i])
+				}
+			}
+			var missingNums = []
+			for (var i=1;i<10;i++) {
+				var foundMatch = false;
+				for (var iii=0;iii<madeNums.length;iii++) {
+					if (madeNums[iii]==i){foundMatch = true; break;}
+				}
+				if (foundMatch) {
+				}
+				else {
+					missingNums.push(i)
+				}
+			}
+			for (var iii=0;iii<missingNums.length;iii++) {
+				var i = missingNums[iii]
+				var row1 = false
+				var row2 = false
+				var row3 = false
+				for (var ii=0;ii<3;ii++) {
+					if fitSpotBasic(puzzle, blockRow*3,3*blockCol+ii,blockRow*3+blockCol, i) {
+						row1 = true
+					}
+					if fitSpotBasic(puzzle, blockRow*3+1,3*blockCol+ii,blockRow*3+blockCol, i) {
+						row2 = true
+					}
+					if fitSpotBasic(puzzle, blockRow*3+2,3*blockCol+ii,blockRow*3+blockCol, i) {
+						row3 = true
+					}
+				}
+				
+				if (row1 && !row2 && !row3) {
+					allBlockRows.append([i,blockRow,blockCol,0])
+				}
+				if (!row1 && row2 && !row3) {
+					allBlockRows.append([i,blockRow,blockCol,1])
+				}
+				if (!row1 && !row2 && row3) {
+					allBlockRows.append([i,blockRow,blockCol,2])
+				}
+			}
+		}
+	}
+	return allBlockRows
+} 
+
+function checkBlockCol(puzzle) {
+	var allBlockCols = []
+	for (var blockRow=0;blockRow<3;blockRow++) {
+		for (var blockCol=0;blockCol<3;blockCol++) {
+			var madeNums = [0]
+			for (var i=0;i<9;i++) {
+				if (puzzle[blockRow][blockCol][i] != 0) {
+					madeNums.push(puzzle[blockRow][blockCol][i])
+				}
+			}
+			var missingNums = []
+			for (var i=1;i<10;i++) {
+				var foundMatch = false;
+				for (var iii=0;iii<madeNums.length;iii++) {
+					if (madeNums[iii]==i){foundMatch = true; break;}
+				}
+				if (foundMatch) {
+				}
+				else {
+					missingNums.push(i)
+				}
+			}
+			for (var iii=0;iii<missingNums.length;iii++) {
+				var i = missingNums[iii]
+				var col1 = false
+				var col2 = false
+				var col3 = false
+				for (var ii=0;ii<3;ii++) {
+					if fitSpotBasic(puzzle, blockRow*3+ii,3*blockCol,blockRow*3+blockCol,i) {
+						col1 = true
+					}
+					if fitSpotBasic(puzzle, blockRow*3+ii,3*blockCol+1,blockRow*3+blockCol,i) {
+						col2 = true
+					}
+					if fitSpotBasic(puzzle, blockRow*3+ii,3*blockCol+2,blockRow*3+blockCol,i) {
+						col3 = true
+					}
+				}
+				if (col1 && !col2 && !col3) {
+					allBlockCols.push([i,blockRow,blockCol,0])
+				}
+				if (!col1 && col2 && !col3) {
+					allBlockCols.push([i,blockRow,blockCol,1])
+				}
+				if (!col1 && !col2 && col3) {
+					allBlockCols.push([i,blockRow,blockCol,2])
+				}
+			}
+		}
+	}
+	return allBlockCols
+}  
+
+function fitSpotFull(puzzle, row, col, block, num, allBlockRows, allBlockCols) {
+	if (puzzle[Math.floor(block/3)][block%3][3*(row%3)+col%3] != 0) {
+		return false
+	}
+	for (var ii=0;ii<9;ii++) {
+		if (puzzle[Math.floor(row/3)][Math.floor(ii/3)][ii%3+3*(row%3)] == num) {
+			return false
+		}
+	}
+	for (var ii=0;ii<allBlockRows.length;ii++) {
+		var iii = allBlockRows[ii];
+		if (num == iii[0] && Math.floor(row/3) == iii[1] && Math.floor(col/3) != iii[2] && row%3 == iii[3]) {
+			return false
+		}
+	}
+	for (var ii=0;ii<9;ii++) {
+		if (puzzle[Math.floor(ii/3)][Math.floor(col/3)][3*(ii%3)+col%3] == num) {
+			return false
+		}
+	}
+	for (var ii=0;ii<allBlockCols.length;ii++) {
+		var iii = allBlockCols[ii];
+		if (num == iii[0] && Math.floor(row/3) != iii[1] && Math.floor(col/3) == iii[2] && col%3 == iii[3]) {
+			return false
+		}
+	}
+	for (var ii=0;ii<9;ii++) {
+		if (puzzle[Math.floor(block/3)][block%3][ii] == num) {
+			return false
+		}
+	}
+	return true
+}
+
+function checkRowFull(puzzle, allBlockRows, allBlockCols){
+	var startTime = performance.now();
+	var allPlays = []
+	for (var num=1;num<10;num++){
+		for (var rowi in possibleRows[num]) {
+			var row = possibleRows[num][rowi];
+			var numSpots = -1
+			for (var i=0;i<9;i++) {
+				if (fitSpotFull(puzzle, row, i, Math.floor(i/3)+3*Math.floor(row/3), num, allBlockRows, allBlockCols)) {
+					if (numSpots == -1) {
+						numSpots = i
+					}
+					else {
+						numSpots = -1
+						break
+					}
+				}
+			}
+			if (numSpots != -1) {
+				allPlays.push([num,Math.floor( (Math.floor(numSpots/3)+3*Math.floor(row/3))/3 ),(Math.floor(numSpots/3)+3*Math.floor(row/3))%3,3*(row%3)+numSpots%3])
+			}
+		}
+	}
+	elapsedTime += performance.now()-startTime;
+	return allPlays
+}
+
+function checkColumnFull(puzzle, allBlockRows, allBlockCols) {
+	var allPlays = []
+	for (var num=1;num<10;num++){
+		for (var col=0;col<9;col++) {
+			var numSpots = -1
+			for (var i=0;i<9;i++) {
+				if (fitSpotFull(puzzle, i, col, Math.floor(col/3)+3*Math.floor(i/3), num, allBlockRows, allBlockCols)) {
+					if (numSpots == -1) {
+						numSpots = i
+					}
+					else {
+						numSpots = -1
+						break
+					}
+				}
+			}
+			if (numSpots != -1) {
+				allPlays.push([num,Math.floor( (Math.floor(col/3)+3*Math.floor(numSpots/3))/3 ),(Math.floor(col/3)+3*Math.floor(numSpots/3))%3,3*(numSpots%3)+col%3])
+			}
+		}
+	}
+	return allPlays
+}
+
+function checkBlockFull(puzzle, allBlockRows, allBlockCols){
+	var allPlays = []
+	for (var num=1;num<10;num++){
+		for (var block=0;block<9;block++) {
+			var numSpots = -1
+			for (var i=0;i<9;i++) {
+				if (fitSpot(puzzle, 3*Math.floor(block/3)+Math.floor(i/3), 3*(block%3)+i%3, block, num, allBlockRows, allBlockCols)) {
+					if (numSpots == -1) {
+						numSpots = i
+					}
+					else {
+						numSpots = -1
+						break
+					}
+				}
+			}
+			if (numSpots != -1) {
+				allPlays.push([num,Math.floor((block)/3),(block)%3,3*((3*Math.floor(block/3)+Math.floor(numSpots/3))%3)+(3*(block%3)+numSpots%3)%3])
+			}
+		}
+	}
+	return allPlays
+}
+
+function checkCells(puzzle, allBlockRows, allBlockCols) {
+	var allPlays = []
+	for (var blockRow=0;blockRow<3;blockRow++) {
+		for (var blockCol=0;blockCol<3;blockCol++) {
+			for (var i=0;i<9;i++) {
+				if (puzzle[blockRow][blockCol][i] == 0) {
+					var nFit = -1
+					for (var ii=1;ii<10;ii++) {
+						if fitSpotFull(puzzle,blockRow*3+Math.floor(i/3),blockCol*3+i%3,blockRow*3+blockCol,ii, allBlockRows, allBlockCols) {
+							if nFit == -1 {
+								nFit = ii
+							}
+							else {
+								nFit = -1
+								break
+							}
+						}
+					}
+					if (nFit != -1) {
+						allPlays.append([nFit,blockRow,blockCol,i])
+					}
+				}
 			}
 		}
 	}
@@ -504,10 +771,22 @@ function runSimulation() {
 		for (var nRuns=1;nRuns<maxRuns+1;nRuns++) {	
 			resetPuzzle()
 			while (stopSudoku) {
+			
+			
 				var allPlays = []
-				allPlays = allPlays.concat(checkRow(currentPuzzle))
+				/*allPlays = allPlays.concat(checkRow(currentPuzzle))
 				allPlays = allPlays.concat(checkColumn(currentPuzzle))
 				allPlays = allPlays.concat(checkBlock(currentPuzzle))
+				*/
+				
+				let allBlockRows = checkBlockRow(currentPuzzle)
+				let allBlockCols = checkBlockCol(currentPuzzle)
+				allPlays+=checkRowFull(currentPuzzle, allBlockRows, allBlockCols)
+				allPlays+=checkColumnFull(currentPuzzle, allBlockRows, allBlockCols)
+				allPlays+=checkBlockFull(currentPuzzle, allBlockRows, allBlockCols)
+				allPlays+=checkCells(currentPuzzle, allBlockRows, allBlockCols)
+				
+				
 				if (allPlays.length>0) {
 					updateBN()
 					updateSG()
@@ -536,8 +815,8 @@ function runSimulation() {
 					if (nRuns == maxRuns){
 						var sumNeededTotals = 0
 						for (var i=0;i<7;i++) {
-							if (neededTotals[i] > 199) {
-								sumNeededTotals+=(neededTotals[i]-200)
+							if (neededTotals[i] > initialTotal-1) {
+								sumNeededTotals+=(neededTotals[i]-initialTotal)
 							}
 						}
 						if (sumNeededTotals > sumNeeded) {
@@ -549,7 +828,7 @@ function runSimulation() {
 							levelJson.bpy = [1,3]; //solver does not use this and nYear might not be 1 mod year
 							
 							//console.log(JSON.stringify(levelJson))
-							fs.appendFileSync("../games/mediumRaw.txt", JSON.stringify(levelJson)+"\n", function (err) {
+							fs.appendFileSync("../games/"+difficulty+"Raw.txt", JSON.stringify(levelJson)+"\n", function (err) {
 								if (err){
 									console.log(err);
 								}
@@ -584,7 +863,7 @@ function execShellCommand(cmd) {
 }
 var allPuzzles = '';
 var wget1 = 'qqwing --generate 100 --difficulty simple --symmetry random --solution --csv'
-var wget2 = 'qqwing --generate 5000 --difficulty easy --symmetry random --solution --csv'
+var wget2 = 'qqwing --generate 500 --difficulty easy --symmetry random --solution --csv'
 var wget3 = 'qqwing --generate 100 --difficulty intermediate --symmetry random --solution --csv'
 
 Promise.all([execShellCommand(wget1),execShellCommand(wget2),execShellCommand(wget3)]).then((values) => {
@@ -593,7 +872,7 @@ Promise.all([execShellCommand(wget1),execShellCommand(wget2),execShellCommand(wg
 	allPuzzles +=  values[2].replace("Puzzle,Solution,\n", "");
 	allPuzzles = allPuzzles.replace(/\n/g, "")
 	let puzzleArray = allPuzzles.split(",")
-	for (var i=0;i<5200;i++) {
+	for (var i=0;i<700;i++) {
 		//console.log(i,performance.now());
 		initialPuzzle = puzzleArray[i*2]
 		solution = puzzleArray[i*2+1]
