@@ -8,11 +8,21 @@ var initialPuzzle = "...25..8...8.7.1...6.....9....8139..8.24.9..5.1.........4..
 var solution = "793251684248976153165348297456813972872469315319527468984635721631782549527194836"
 //let initialTotals = [0,30000,10000,10000,10000,10000,10000]
 var difficulty = 'medium'
-let maxUsed = 160 //dont let stock get below 40
+difficulty = 'easy'
+//difficulty = 'hard'
+var maxUsed = 160 //dont let stock get below 40
 var needed1 = 10 // increase to require more depletions
 var needed2 = 25 // increase to require more depletions
 var sumNeeded = 299 // increase to require more depletions
 var initialTotal = 200
+
+if (difficulty == 'easy'){
+	maxUsed = 250 //dont let stock get below 150
+	needed1 = 20 // increase to require more depletions
+	needed2 = 40 // increase to require more depletions
+	sumNeeded = 299 // increase to require more depletions
+	initialTotal = 400
+}
 let initialTotals = [0,initialTotal,initialTotal,initialTotal,initialTotal,initialTotal,initialTotal]
 var nMade = 0
 fs.writeFileSync("../games/"+difficulty+"Raw.txt", "", function (err) {
@@ -875,6 +885,10 @@ var allPuzzles = '';
 var wget1 = 'qqwing --generate 1000 --difficulty simple --symmetry random --solution --csv'
 var wget2 = 'qqwing --generate 2500 --difficulty easy --symmetry random --solution --csv'
 var wget3 = 'qqwing --generate 2500 --difficulty intermediate --symmetry random --solution --csv'
+if (difficulty == 'easy'){
+	wget2 = 'qqwing --generate 1000 --difficulty simple --symmetry random --solution --csv'
+	wget3 = 'qqwing --generate 1000 --difficulty simple --symmetry random --solution --csv'
+}
 
 Promise.all([execShellCommand(wget1),execShellCommand(wget2),execShellCommand(wget3)]).then((values) => {
 	allPuzzles =  values[0].replace("Puzzle,Solution,\n", "");
