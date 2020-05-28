@@ -17,6 +17,7 @@ for (var i=0;i<lines.length;i++){
 }
 var gamesSimple = [];
 var gamesEasy = [];
+var wget = 'echo';
 for (var i=0;i<puzzles.length;i++){
 	var rawpuzzle = '';
 	for (var ii=0;ii<9;ii++){
@@ -30,20 +31,27 @@ for (var i=0;i<puzzles.length;i++){
 			
 		}
 	}
-	var wget = "echo "+rawpuzzle +' | qqwing --solve --stats --nosolution --csv';
-	Promise.all([execShellCommand(wget)]).then((values) => {
-		var output = values[0].split('\n')[1].split(',')[9];
+	wget += ' '+rawpuzzle;
+	
+	
+}
+wget += ' | qqwing --solve --stats --nosolution --csv';
+Promise.all([execShellCommand(wget)]).then((values) => {
+	console.log(values[0])
+	var outputArray = values[0].split('\n')
+	for (var i=0;i<puzzles.length;i++){
+		var output = outputArray[i+1].split(',')[9];
 		if (output == 'Simple'){
 			gamesSimple.push(games[i]);
 		}
 		else if (output == 'Easy'){
 			gamesEasy.push(games[i]);
 		}
-		console.log(gamesSimple.length);
-		console.log(gamesEasy.length);
-	})
-}
-
+	}
+	
+	console.log(gamesSimple.length);
+	console.log(gamesEasy.length);
+})
 /*fs.writeFileSync("../games/medium.txt", "", function (err) {
 	if (err){
 		console.log(err);
