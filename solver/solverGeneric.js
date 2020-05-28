@@ -10,6 +10,7 @@ var solution = "7932516842489761531653482974568139728724693153195274689846357216
 var difficulty = 'medium'
 difficulty = 'easy'
 difficulty = 'hard'
+difficulty = 'hardDaily'
 var maxUsed = 160 //dont let stock get below 40
 var needed1 = 10 // increase to require more depletions
 var needed2 = 25 // increase to require more depletions
@@ -28,6 +29,13 @@ else if (difficulty == 'hard'){
 	needed1 = 10 // increase to require more depletions
 	needed2 = 20 // increase to require more depletions
 	sumNeeded = 399 // increase to require more depletions
+	initialTotal = 100
+}
+else if (difficulty == 'hardDaily'){
+	maxUsed = 80 //dont let stock get below 25
+	needed1 = 0 // increase to require more depletions
+	needed2 = 10 // increase to require more depletions
+	sumNeeded = 299 // increase to require more depletions
 	initialTotal = 100
 }
 let initialTotals = [0,initialTotal,initialTotal,initialTotal,initialTotal,initialTotal,initialTotal]
@@ -901,6 +909,11 @@ else if (difficulty == 'hard'){
 	wget2 = 'qqwing --generate 5000 --difficulty intermediate --symmetry random --solution --csv'
 	wget3 = 'qqwing --generate 5000 --difficulty intermediate --symmetry random --solution --csv'
 }
+else if (difficulty == 'hardDaily'){
+	wget1 = 'qqwing --generate 5000 --difficulty easy --symmetry random --solution --csv'
+	wget2 = 'qqwing --generate 5000 --difficulty intermediate --symmetry random --solution --csv'
+	wget3 = 'qqwing --generate 5000 --difficulty intermediate --symmetry random --solution --csv'
+}
 
 Promise.all([execShellCommand(wget1),execShellCommand(wget2),execShellCommand(wget3)]).then((values) => {
 	allPuzzles =  values[0].replace("Puzzle,Solution,\n", "");
@@ -908,7 +921,7 @@ Promise.all([execShellCommand(wget1),execShellCommand(wget2),execShellCommand(wg
 	allPuzzles +=  values[2].replace("Puzzle,Solution,\n", "");
 	allPuzzles = allPuzzles.replace(/\n/g, "")
 	let puzzleArray = allPuzzles.split(",")
-	for (var i=0;i<11000;i++) {
+	for (var i=0;i<15000;i++) {
 		if (i*2+1>puzzleArray.length){break;}
 		//console.log(i,performance.now());
 		initialPuzzle = puzzleArray[i*2]
