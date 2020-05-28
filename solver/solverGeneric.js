@@ -582,23 +582,24 @@ var child = exec(wget, function(err, stdout, stderr) {
 	else {
 		allPuzzles = stdout;
 		console.log(allPuzzles);
+		allPuzzles = allPuzzles.replace(/\n/g, "")
+		let puzzleArray = allPuzzles.split(",")
+		for (var i=0;i<2;i++) {
+			//console.log(i,performance.now());
+			initialPuzzle = puzzleArray[i*2]
+			solution = puzzleArray[i*2+1]
+			addedNumbers = [0,0,0,0,0,0,0,0,0,0]
+			var x = runSimulation();
+			if (x < 2) {
+				addedNumbers = [0,0,0,0,0,0,0,0,0,0]
+				runSimulation()
+			}
+			if (i%100==0){
+				console.log(i,elapsedTime, nMade);
+			}	
+		}
 	}
 
 });
 
-allPuzzles = allPuzzles.replace(/\n/g, "")
-let puzzleArray = allPuzzles.split(",")
-for (var i=0;i<2;i++) {
-	//console.log(i,performance.now());
-	initialPuzzle = puzzleArray[i*2]
-	solution = puzzleArray[i*2+1]
-	addedNumbers = [0,0,0,0,0,0,0,0,0,0]
-	var x = runSimulation();
-	if (x < 2) {
-		addedNumbers = [0,0,0,0,0,0,0,0,0,0]
-		runSimulation()
-	}
-	if (i%100==0){
-		console.log(i,elapsedTime, nMade);
-	}	
-}
+
