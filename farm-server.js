@@ -100,9 +100,22 @@ for (var ii=0;ii<4;ii++ ){
 	else {
 		defaultGames[puzzleTypes[ii]] = [];
 	}
-	const data = fs.readFileSync('./games/'+puzzleTypes[ii]+'.txt', 'utf8');
+	var data;
+	var lines;
+	if (puzzleTypes[ii]=='daily'){
+		data = fs.readFileSync('./games/hardDaily.txt', 'utf8');
+		lines = data.split('\n');
+		data = fs.readFileSync('./games/easyDaily.txt', 'utf8');
+		lines = lines.concat(data.split('\n'));
+		data = fs.readFileSync('./games/mediumDaily.txt', 'utf8');
+		lines = lines.concat(data.split('\n'));
+		console.log(lines.length);
+	}
+	else {
+		data = fs.readFileSync('./games/'+puzzleTypes[ii]+'.txt', 'utf8');
+		lines = data.split('\n');
+	}
 
-	  var lines = data.split('\n');
 	  for (var i=0;i<lines.length;i++){
 		var line = lines[i];
 		if (line.length>10){

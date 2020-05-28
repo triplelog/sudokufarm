@@ -50,7 +50,7 @@ Promise.all([execShellCommand(wget)]).then((values) => {
 			gamesEasy.push(games[i]);
 		}
 		else if (output == 'Intermediate'){
-			gamesEasy.push(games[i]);
+			gamesIntermediate.push(games[i]);
 		}
 		else if (output == 'Expert'){
 			gamesExpert.push(games[i]);
