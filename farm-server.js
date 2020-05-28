@@ -56,7 +56,6 @@ wss.on('connection', function connection(ws) {
 				var wget1 = 'qqwing --generate 1 --difficulty simple --symmetry random --csv';
 				execShellCommand(wget1).then((result) =>{
 					var puzzle = result.replace(/\n/g,"").split(',')[1];
-					console.log('__'+puzzle+'__');
 					var jsonmessage = {'puzzle':puzzle};
 					ws.send(JSON.stringify(jsonmessage));
 				})
@@ -66,7 +65,6 @@ wss.on('connection', function connection(ws) {
 				var wget1 = 'qqwing --generate 1 --difficulty easy --symmetry random --csv';
 				execShellCommand(wget1).then((result) =>{
 					var puzzle = result.replace(/\n/g,"").split(',')[1];
-					console.log('__'+puzzle+'__');
 					var jsonmessage = {'puzzle':puzzle};
 					ws.send(JSON.stringify(jsonmessage));
 				})
@@ -76,7 +74,6 @@ wss.on('connection', function connection(ws) {
 				var wget1 = 'qqwing --generate 1 --difficulty intermediate --symmetry random --csv';
 				execShellCommand(wget1).then((result) =>{
 					var puzzle = result.replace(/\n/g,"").split(',')[1];
-					console.log('__'+puzzle+'__');
 					var jsonmessage = {'puzzle':puzzle};
 					ws.send(JSON.stringify(jsonmessage));
 				})
@@ -468,6 +465,7 @@ app.get('/create',
 			username = req.user.username;
 		}
 		else {
+			res.redirect('../account');
 			//Add a redirect to account page
 		}
 		//startPeople as int
