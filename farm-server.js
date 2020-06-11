@@ -190,6 +190,24 @@ app.get('/',
 	
     }
 );
+app.get('/about.html',
+	function(req, res){
+		res.write(nunjucks.render('templates/aboutbase.html',{
+			
+		}));
+		res.end();
+	
+    }
+);
+app.get('/about',
+	function(req, res){
+		res.write(nunjucks.render('templates/aboutbase.html',{
+			
+		}));
+		res.end();
+	
+    }
+);
 
 app.get('/tutorial.html',
 	function(req, res){
