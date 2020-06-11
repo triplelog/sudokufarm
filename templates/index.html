@@ -137,7 +137,8 @@ body {
 {% endblock %}
 {% block content31 %}
 Each day brings a new game of the day.<br />
-<a href="../game.html" class="basic">Play Now</a>.
+<div><span style="margin:auto;">Date: <input type="text" id="date"></input></span></div>
+<div><span style="margin:auto;"><button onclick="dailyGame()" class="basic">Play Now</button></span></div>
 
 
 {% endblock %}
@@ -192,6 +193,10 @@ Each day brings a new game of the day.<br />
 <script>
 	function randomGame(difficulty){
 		window.location.href='../game.html?l='+difficulty+Math.floor(Math.random()*81 + 1);
+	}
+	function dailyGame(){
+		var d = document.getElementById('date').value;
+		window.location.href='../game.html?d='+d;
 	}
 </script>
 {% endblock %}
