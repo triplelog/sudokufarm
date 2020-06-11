@@ -35,9 +35,7 @@
 
 
 {% block moreCSS %}
-div.content-31 > div.content {
-	text-align: left;
-}
+
 div.content-13 > div.content {
 	text-align: left;
 }
@@ -136,8 +134,8 @@ body {
 </div>
 {% endblock %}
 {% block content31 %}
-Each day brings a new game of the day.<br />
-<div><span style="margin:auto;">Date: <input type="text" id="date"></input></span></div>
+
+<div><span style="margin:auto;">Set Date: <input type="text" id="date"></input></span></div>
 <div><span style="margin:auto;"><button onclick="dailyGame()" class="basic">Play Now</button></span></div>
 
 
@@ -191,6 +189,7 @@ Each day brings a new game of the day.<br />
 
 {% block scripts %}
 <script>
+	document.getElementById('date').value = "6/11/20";
 	function randomGame(difficulty){
 		window.location.href='../game.html?l='+difficulty+Math.floor(Math.random()*81 + 1);
 	}
