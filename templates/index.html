@@ -58,15 +58,18 @@ body {
 		
 	</span>
 	<span class="titleCenter">
-		<a href="../game.html">Play Now</a>
+		Random Game
 	</span>
 	<span class="titleRight">
 	</span>
 </div>
 {% endblock %}
 {% block content11 %}
-Play our <a href="../game.html" class="basic">game of the day</a>.
-
+<span style="margin:auto;">
+	<button class="basic" onclick="randomGame('easy')">Easy</button>
+	<button class="basic" onclick="randomGame('medium')">Medium</button>
+	<button class="basic" onclick="randomGame('hard')">Hard</button>
+</span>
 {% endblock %}	
 
 {% block title13 %}
@@ -126,16 +129,17 @@ Play our <a href="../game.html" class="basic">game of the day</a>.
 		
 	</span>
 	<span class="titleCenter">
-		Choose Game
+		<a href="../game.html">Today's Game</a>
 	</span>
 	<span class="titleRight">
 	</span>
 </div>
 {% endblock %}
 {% block content31 %}
-<button class="basic" onclick="randomGame('easy')">Easy</button>
-<button class="basic" onclick="randomGame('medium')">Medium</button>
-<button class="basic" onclick="randomGame('hard')">Hard</button>
+Each day brings a new game of the day.<br />
+<a href="../game.html" class="basic">Play Now</a>.
+
+
 {% endblock %}
 
 {% block title33 %}
