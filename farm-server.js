@@ -208,7 +208,13 @@ app.get('/about',
 	
     }
 );
-
+app.post('/suggestion',
+	function(req, res){
+		//save suggestion somewhere
+		res.redirect('../about?q=thanks');
+	
+    }
+);
 app.get('/tutorial.html',
 	function(req, res){
 		
