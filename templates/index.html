@@ -65,11 +65,7 @@ body {
 </div>
 {% endblock %}
 {% block content11 %}
-Play our <a href="../game.html">game of the day</a>.<br />
-Or play a random game:<br />
-<button class="basic" onclick="randomGame('easy')">Easy</button>
-<button class="basic" onclick="randomGame('medium')">Medium</button>
-<button class="basic" onclick="randomGame('hard')">Hard</button>
+Play our <a href="../game.html" class="basic">game of the day</a>.
 
 {% endblock %}	
 
@@ -99,7 +95,7 @@ Or play a random game:<br />
 
 {% endblock %}	
 
-{% block title31 %}
+{% block title31future %}
 <div class="title">
 	<div class="titleBG">
 	</div>
@@ -113,13 +109,33 @@ Or play a random game:<br />
 	</span>
 </div>
 {% endblock %}
-{% block content31 %}
+{% block content31future %}
 <ol>
 	<li>Choose your crops, animals, and resources</li>
 	<li>Set how many resources they produce and use</li>
 	<li>Pick a Sudoku puzzle</li>
 	<li>Share <a href="../create">your game</a> with the world!</li>
 </ol>
+{% endblock %}
+
+{% block title31 %}
+<div class="title">
+	<div class="titleBG">
+	</div>
+	<span class="titleLeft">
+		
+	</span>
+	<span class="titleCenter">
+		Choose Game
+	</span>
+	<span class="titleRight">
+	</span>
+</div>
+{% endblock %}
+{% block content31 %}
+<button class="basic" onclick="randomGame('easy')">Easy</button>
+<button class="basic" onclick="randomGame('medium')">Medium</button>
+<button class="basic" onclick="randomGame('hard')">Hard</button>
 {% endblock %}
 
 {% block title33 %}
