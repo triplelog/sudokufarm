@@ -225,6 +225,9 @@ tr {
 	background: red;
 	color: white;
 }
+#sudokuTable > div > span {
+	background: rgba(0,0,0,.5);
+}
 @media screen and (max-width: 959px) {
 	.content-22 {
 		overflow: visible;
@@ -359,9 +362,9 @@ tr {
 	}
 	
 	div.container {
-		grid-template-rows: 12rem var(--height-center) 40rem;
+		grid-template-rows: 10rem var(--height-center) 25rem;
 		grid-template-columns: auto;
-		--height-container: calc(var(--height-center) + 55rem);
+		--height-container: calc(var(--height-center) + 36rem);
 	}
 }
 {% endblock %}
