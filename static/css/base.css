@@ -14,6 +14,14 @@
 	grid-template-rows: calc((var(--height-container) - var(--height-center)) / 2) var(--height-center) calc((var(--height-container) - var(--height-center)) / 2);
 }
 
+body {
+	background-image: url("../sepiabg.jpg");
+	/* Background pattern from Toptal Subtle Patterns by Tomislava Babić (https://behance.net/antitomi)*/
+	background-size: auto;
+	background-repeat: repeat;
+	
+}
+
 .title {
 	border-radius: var(--border-radius);
 	line-height: calc(2 * var(--border-radius));
