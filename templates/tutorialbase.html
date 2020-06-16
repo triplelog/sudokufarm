@@ -545,13 +545,42 @@ Complete the Sudoku puzzle without running out of any resource.
 		var imgList = {{ imgList | dump | safe }};
 		var emojiList = {{ emojiList | dump | safe }};
 		const driver = new Driver();
-		driver.highlight({
-		  element: '.content-11 .content',
-		  popover: {
-			title: 'Your resources',
-			description: 'Totals and changes',
-		  }
-		});
+		driver.defineSteps([
+		  {
+		  	element: '.content-11 .content',
+			popover: {
+				title: 'This box tracks the current state of your resources',
+				description: 'Totals and changes',
+			}
+		  },
+		  {
+			element: '#dataTable',
+			popover: {
+			  title: 'Title on Popover',
+			  description: 'Body of the popover',
+			  position: 'top'
+			},
+			onNext: () => {
+			  // Prevent moving to the next step
+			  driver.preventMove();
+	  
+			  // Perform some action or create the element to move to
+			  // And then move to that element
+			  setTimeout(() => {
+				driver.moveNext();
+			  }, 4000);
+			}
+		  },
+		  {
+			element: '.content-13 .content',
+			popover: {
+			  title: 'Title on Popover',
+			  description: 'Body of the popover',
+			  position: 'right'
+			}
+		  },
+		]);
+		driver.start();
 	</script>
 	<script src="../js/gamelogic.js"></script>
 {% endblock %}
