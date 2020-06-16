@@ -32,7 +32,7 @@ function updateSGN() {
 function updateTotals(save) {
 	var el = document.getElementById('newData');
 	var ts = el.querySelectorAll('td');
-
+	var wonGame = 0;
 	for (var i=0;i<7;i++) {
 		var minel = document.getElementById('minimum-'+i);
 		if (!save && selectedButton >0){
@@ -48,6 +48,10 @@ function updateTotals(save) {
 		else {
 			totals[i] += itemGets[i];
 			totals[i] -= itemSpends[i];
+			if (totals[i] < 0){
+				outOfResource(i);
+				wonGame = -1;
+			}
 			if (i>0){
 				ts[i].textContent = totals[i];
 			}
@@ -59,6 +63,7 @@ function updateTotals(save) {
 		
 	}
 	ts[7].textContent = nPeople;
+	
 	for (var ii=0;ii<9;ii++) {
 		if (existingPlots[ii] == 9){
 			var el = document.getElementById('buttonRow').querySelectorAll('span')[ii];
@@ -67,11 +72,20 @@ function updateTotals(save) {
 			if (selectedButton == ii+1){
 				selectedButton = 0;
 			}
+			wonGame++;
 		}
+	}
+	if (wonGame == 9){
+		wonGame();
 	}
 }
 
-
+function wonGame() {
+	alert('Congrats, you win!');
+}
+function outOfResource(i){
+	alert('You ran out of '+emojiList[i]);
+}
 
 
 function chgButton(evt) {

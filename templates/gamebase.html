@@ -270,6 +270,8 @@ tr {
 	div.container {
 		grid-template-rows: calc((var(--height-container) - var(--height-center))) var(--height-center) 0px;
 		grid-template-columns: 20rem var(--width-center) auto;
+		grid-row-gap: .5rem;
+		grid-column-gap: .5rem;
 		
 	}
 }
@@ -549,6 +551,7 @@ Download Sudoku Farm for iOS.
 		var spendPerPerson = {{ spendPerPerson | dump | safe if spendPerPerson else '[]'}};
 		var nYears = 1;
 		var imgList = {{ imgList | dump | safe }};
+		var emojiList = {{ emojiList | dump | safe }};
 	</script>
 	<script src="../js/gamelogic.js"></script>
 {% endblock %}
