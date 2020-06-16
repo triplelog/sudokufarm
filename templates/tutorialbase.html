@@ -544,7 +544,10 @@ Complete the Sudoku puzzle without running out of any resource.
 		var nYears = 1;
 		var imgList = {{ imgList | dump | safe }};
 		var emojiList = {{ emojiList | dump | safe }};
-		const driver = new Driver();
+		const driver = new Driver({
+			opacity: 0.9,
+  			padding: 5,
+		});
 		driver.defineSteps([
 		  {
 		  	element: '.content-11 .content',
@@ -575,7 +578,7 @@ Complete the Sudoku puzzle without running out of any resource.
 			}
 		  },
 		  {
-		  	element: '#cell-6-5',
+		  	element: '#cell-6-4',
 			popover: {
 				title: "Here's a spot",
 				description: 'This 3x3 block only has one open spot and needs a well. Click on this cell to place your well.',
