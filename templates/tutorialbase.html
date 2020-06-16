@@ -549,11 +549,88 @@ Complete the Sudoku puzzle without running out of any resource.
 		  {
 		  	element: '.content-11 .content',
 			popover: {
-				title: 'This box tracks the current state of your resources',
-				description: 'Totals and changes',
+				title: 'This box tracks the current state of your resources.',
+				description: 'The top row (Σ) shows your current totals. The bottom row (Δ) shows the change in resources for your next turn. Never let any of the totals drop below 0!',
 			}
 		  },
 		  {
+		  	element: '#changeData td.pointsBoard2c',
+			popover: {
+				title: 'You need more water.',
+				description: 'You are currently consuming more water each turn than you are producing. You probably want to drill a well.',
+			}
+		  },
+		  {
+		  	element: '#buttonRow span.button4',
+			popover: {
+				title: 'Click the water droplets.',
+				description: 'To add a well, select the button with water droplets.',
+			}
+		  },
+		  {
+		  	element: '#changeData td.pointsBoard2c',
+			popover: {
+				title: "That's better",
+				description: 'Once you find a place for the well, you will see your water totals increase each turn.',
+			}
+		  },
+		  {
+		  	element: '#cell-6-5',
+			popover: {
+				title: "Here's a spot",
+				description: 'This 3x3 block only has one open spot and needs a well. Click on this cell to place your well.',
+			}
+		  },
+		  {
+		  	element: '#newData td.pointsBoard2',
+			popover: {
+				title: "Plenty of water",
+				description: "You have more water than you had before!",
+			}
+		  },
+		  {
+		  	element: '#changeData td.pointsBoard3c',
+			popover: {
+				title: "You need more animal feed",
+				description: "You are consuming more animal feed each turn than you are producing. You need to consult the dashboard to determine which crops will produce lots of feed.",
+			}
+		  },
+		  {
+		  	element: '.content-13 .content',
+			popover: {
+				title: "What produces animal feed?",
+				description: "The dashboard tells you how much each crop or animal produces and consumes of each resource per turn. The feed column shows that cows eat 20 units of feed each turn while chickens and sheep only consume 10 units. Since you are running low on feed, your best bet is to plant corn. Corn produces 24 units each turn!",
+			}
+		  },
+		  {
+		  	element: '#buttonRow span.button9',
+			popover: {
+				title: 'Click the corn.',
+				description: 'To plant corn, select the button corn.',
+			}
+		  },
+		  {
+		  	element: '#changeData td.pointsBoard3c',
+			popover: {
+				title: "That's better",
+				description: 'Once you find a place for the corn, your feed situation will improve.',
+			}
+		  },
+		  {
+		  	element: '#cell-4-0',
+			popover: {
+				title: "Here's a spot",
+				description: 'This 3x3 block only has one open spot where corn can be planted. Grow corn here.',
+			}
+		  },
+		  {
+		  	element: '.content-11',
+			popover: {
+				title: "Great job",
+				description: 'Now continue monitoring your resources and try to avoid running large deficits for any resource. Good luck and have fun!',
+			}
+		  },
+		  /*{
 			element: '#dataTable',
 			popover: {
 			  title: 'Title on Popover',
@@ -570,15 +647,7 @@ Complete the Sudoku puzzle without running out of any resource.
 				driver.moveNext();
 			  }, 4000);
 			}
-		  },
-		  {
-			element: '.content-13 .content',
-			popover: {
-			  title: 'Title on Popover',
-			  description: 'Body of the popover',
-			  position: 'right'
-			}
-		  },
+		  },*/
 		]);
 		driver.start();
 	</script>
