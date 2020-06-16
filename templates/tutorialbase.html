@@ -575,9 +575,6 @@ Complete the Sudoku puzzle without running out of any resource.
 			  	driver.preventMove();
 			  	alert('You must click on the water droplets before you can continue.');
 			  }
-			  
-	  
-			  
 			}
 		  },
 		  {
@@ -592,6 +589,13 @@ Complete the Sudoku puzzle without running out of any resource.
 			popover: {
 				title: "Here's a spot",
 				description: 'This 3x3 block only has one open spot and needs a well. Click on this cell to place your well.',
+			},
+			onNext: () => {
+			  // Prevent moving to the next step
+			  if (puzzle[6][4] == '0'){
+			  	driver.preventMove();
+			  	alert('You must click on the cell before you can continue.');
+			  }
 			}
 		  },
 		  {
@@ -620,6 +624,13 @@ Complete the Sudoku puzzle without running out of any resource.
 			popover: {
 				title: 'Click the corn.',
 				description: 'To plant corn, select the button corn.',
+			},
+			onNext: () => {
+			  // Prevent moving to the next step
+			  if (selectedButton != 9){
+			  	driver.preventMove();
+			  	alert('You must click on the water droplets before you can continue.');
+			  }
 			}
 		  },
 		  {
@@ -634,6 +645,13 @@ Complete the Sudoku puzzle without running out of any resource.
 			popover: {
 				title: "Here's a spot",
 				description: 'This 3x3 block only has one open spot where corn can be planted. Grow corn here.',
+			},
+			onNext: () => {
+			  // Prevent moving to the next step
+			  if (puzzle[4][0] == '0'){
+			  	driver.preventMove();
+			  	alert('You must click on the cell before you can continue.');
+			  }
 			}
 		  },
 		  {
