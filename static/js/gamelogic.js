@@ -76,11 +76,11 @@ function updateTotals(save) {
 		}
 	}
 	if (wonGame == 9){
-		wonGame();
+		beatGame();
 	}
 }
 
-function wonGame() {
+function beatGame() {
 	alert('Congrats, you win!');
 }
 function outOfResource(i){
