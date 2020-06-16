@@ -1,5 +1,8 @@
 {% extends "templates/base.html" %}
 
+{% block stylesheets %}
+<link rel="stylesheet" href="https://unpkg.com/driver.js/dist/driver.min.css">
+{% endblock %}
 {% block borderRadius %}
 	--border-radius: 1rem;
 {% endblock %}
@@ -528,6 +531,7 @@ Complete the Sudoku puzzle without running out of any resource.
 
 
 {% block scripts %}
+	<script src="https://unpkg.com/driver.js/dist/driver.min.js"></script>
 	<script>
 		var puzzle = {{ puzzle | dump | safe if puzzle else '[]'}};
 		var totals = {{ totals | dump | safe if totals else '[]'}};
@@ -540,6 +544,8 @@ Complete the Sudoku puzzle without running out of any resource.
 		var nYears = 1;
 		var imgList = {{ imgList | dump | safe }};
 		var emojiList = {{ emojiList | dump | safe }};
+		const driver = new Driver();
+		driver.highlight('#dataTable');
 	</script>
 	<script src="../js/gamelogic.js"></script>
 {% endblock %}
