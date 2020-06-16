@@ -545,7 +545,13 @@ Complete the Sudoku puzzle without running out of any resource.
 		var imgList = {{ imgList | dump | safe }};
 		var emojiList = {{ emojiList | dump | safe }};
 		const driver = new Driver();
-		driver.highlight('#dataTable');
+		driver.highlight({
+		  element: '.content-11 .content',
+		  popover: {
+			title: 'Your resources',
+			description: 'Totals and changes',
+		  }
+		});
 	</script>
 	<script src="../js/gamelogic.js"></script>
 {% endblock %}
