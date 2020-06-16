@@ -568,6 +568,16 @@ Complete the Sudoku puzzle without running out of any resource.
 			popover: {
 				title: 'Click the water droplets.',
 				description: 'To add a well, select the button with water droplets.',
+			},
+			onNext: () => {
+			  // Prevent moving to the next step
+			  if (selectedButton != 3){
+			  	driver.preventMove();
+			  	alert('Click on the water droplets.');
+			  }
+			  
+	  
+			  
 			}
 		  },
 		  {
