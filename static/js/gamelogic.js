@@ -84,7 +84,7 @@ function wonGame() {
 	alert('Congrats, you win!');
 }
 function outOfResource(i){
-	alert('You ran out of '+emojiList[i]);
+	alert('You ran out of '+emojiList[i-1]);
 }
 
 
