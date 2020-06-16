@@ -23,7 +23,9 @@
 .content-22 {
 	overflow: visible;
 }
-
+.content-31 {
+	display: none;
+}
 .content-33 {
 	display: none;
 }
@@ -51,30 +53,6 @@
 	grid-column:  1 / 4;
 	z-index: 3;
 }
-.content-31 {
-	grid-column: 3;
-	grid-row: 1 / 3;
-}
-#radio31-1:checked ~ .content-31 {
-	grid-column:  3;
-	grid-row:  1;
-	z-index: 1;
-	border: 0px solid black;
-	background: transparent;
-}
-#radio31-1:checked ~ .content-31 .content {
-	display: none;
-}
-#radio31-2:checked ~ .content-31 {
-	grid-row:  1 / 3;
-	grid-column:  3;
-	z-index: 2;
-}
-#radio31-3:checked ~ .content-31 {
-	grid-row:  1 / 4;
-	grid-column:  1 / 4;
-	z-index: 3;
-}
 .content-11 {
 	grid-column: 2;
 	grid-row: 1;
@@ -82,24 +60,8 @@
 .container {
 	grid-template-rows: calc((var(--height-container) - var(--height-center))) var(--height-center) 0px;
 }
-.title a {
-	text-decoration: none;
-	color: white;
-	font-size: 1.5rem;
-}
-.title a:hover {
-	text-decoration: underline;
-	text-shadow: 0px 0px 10px black 0px 0px 10px black;
-}
-.title label:hover {
-	cursor: pointer;
-	text-shadow: 0px 0px 10px black 0px 0px 10px black;
-}
-body {
-	background-image: url("../img/lightbg.png");
-	background-size: cover;
-	
-}
+
+
 
 :root {
 	--width-block: 10px;
@@ -182,7 +144,7 @@ tr {
 }
 #buttonRow span.selected {
 	border: 1px solid green;
-	background: rgba(0,255,0,.2);
+	background: rgba(0,255,0,.25);
 	height: calc(1 * var(--width-block));
 	display: inline-block;
 }
@@ -263,7 +225,153 @@ tr {
 	background: red;
 	color: white;
 }
-
+#sudokuTable > div > span {
+	background: rgba(250,250,250,.67);
+}
+div.container {
+	grid-row-gap: .5rem;
+	grid-column-gap: .5rem;
+	
+}
+@media screen and (max-width: 959px) {
+	.content-22 {
+		overflow: visible;
+	}
+	.content-31 {
+		display: none;
+	}
+	.content-33 {
+		display: none;
+	}
+	.content-13 {
+		grid-column: 1;
+		grid-row: 1 / 3;
+	}
+	.content-11 {
+		grid-column: 2;
+		grid-row: 1;
+	}
+	#radio13-1:checked ~ .content-13 {
+		grid-column:  1;
+		grid-row:  1;
+		z-index: 1;
+		border: 0px solid black;
+		background: transparent;
+	}
+	#radio13-1:checked ~ .content-13 .content {
+		display: none;
+	}
+	#radio13-2:checked ~ .content-13 {
+		grid-row:  1 / 3;
+		grid-column:  1;
+		z-index: 2;
+	}
+	#radio13-3:checked ~ .content-13 {
+		grid-row:  1 / 4;
+		grid-column:  1 / 4;
+		z-index: 3;
+	}
+	
+	div.container {
+		grid-template-rows: calc((var(--height-container) - var(--height-center))) var(--height-center) 0px;
+		grid-template-columns: 20rem var(--width-center) auto;
+		
+	}
+}
+@media screen and (max-width: 720px) {
+	.content-22 {
+		overflow: visible;
+	}
+	.content-31 {
+		display: none;
+	}
+	.content-33 {
+		display: none;
+	}
+	.content-13 {
+		grid-column: 1;
+		grid-row: 1 / 3;
+	}
+	.content-11 {
+		grid-column: 2;
+		grid-row: 1;
+	}
+	#radio13-1:checked ~ .content-13 {
+		grid-column:  1;
+		grid-row:  1;
+		z-index: 1;
+		border: 0px solid black;
+		background: transparent;
+	}
+	#radio13-1:checked ~ .content-13 .content {
+		display: none;
+	}
+	#radio13-2:checked ~ .content-13 {
+		grid-row:  1 / 3;
+		grid-column:  1;
+		z-index: 2;
+	}
+	#radio13-3:checked ~ .content-13 {
+		grid-row:  1 / 4;
+		grid-column:  1 / 4;
+		z-index: 3;
+	}
+	
+	div.container {
+		grid-template-rows: calc((var(--height-container) - var(--height-center))) var(--height-center) 0px;
+		grid-template-columns: calc((var(--width-container) - var(--width-center))) var(--width-center);
+		
+	}
+}
+@media screen and (max-width: 600px) {
+	.content-22 {
+		overflow: visible;
+	}
+	.content-31 {
+		display: none;
+	}
+	.content-33 {
+		display: none;
+	}
+	.content-13 {
+		grid-column: 1;
+		grid-row: 3;
+	}
+	.content-11 {
+		grid-column: 1;
+		grid-row: 1;
+	}
+	.content-22 {
+		grid-column: 1;
+		grid-row: 2;
+	}
+	#radio13-1:checked ~ .content-13 {
+		grid-column:  1;
+		grid-row:  1;
+		z-index: 1;
+		border: 0px solid black;
+		background: transparent;
+	}
+	#radio13-1:checked ~ .content-13 .content {
+		display: none;
+	}
+	#radio13-2:checked ~ .content-13 {
+		grid-row:  1 / 3;
+		grid-column:  1;
+		z-index: 2;
+	}
+	#radio13-3:checked ~ .content-13 {
+		grid-row:  1 / 4;
+		grid-column:  1 / 4;
+		z-index: 3;
+	}
+	
+	div.container {
+		grid-template-rows: 10rem var(--height-center) 25rem;
+		grid-template-columns: auto;
+		--height-container: calc(var(--height-center) + 36rem);
+	}
+}
 {% endblock %}
 
 
@@ -319,6 +427,7 @@ tr {
 
 {% block title13 %}
 <div class="title">
+
 	<span class="titleLeft">
 	
 	</span>
@@ -332,6 +441,7 @@ tr {
 	
 	
 	</span>
+	
 </div>
 {% endblock %}
 {% block content13 %}
@@ -371,7 +481,7 @@ tr {
 		
 	</span>
 	<span class="titleCenter">
-		<a href="https://csshole.com">Help</a>
+		Help
 	</span>
 	<span class="titleRight">
 		<label for="radio31-1"><i class="fas fa-compress-alt"></i></label>
@@ -381,27 +491,13 @@ tr {
 </div>
 {% endblock %}
 {% block content31 %}
-<span id="helpSpan"></span>
-
+Complete the Sudoku puzzle without running out of any resource.
 {% endblock %}
 
 {% block title33 %}
-<div class="title">
-	<span class="titleLeft">
-		
-	</span>
-	<span class="titleCenter">
-		<a href="https://qblur.com">Download</a>
-	</span>
-	<span class="titleRight">
-		<label for="radio33-1"><i class="fas fa-compress-alt"></i></label>
-		<label for="radio33-2"><i class="fas fa-expand-alt"></i></label>
-		<label for="radio33-3"><i class="fas fa-expand"></i></label>
-	</span>
-</div>
+
 {% endblock %}
 {% block content33 %}
-Download Sudoku Farm for iOS.
 {% endblock %}
 
 
@@ -443,7 +539,8 @@ Download Sudoku Farm for iOS.
 		var spendPerPerson = {{ spendPerPerson | dump | safe if spendPerPerson else '[]'}};
 		var nYears = 1;
 		var imgList = {{ imgList | dump | safe }};
+		var emojiList = {{ emojiList | dump | safe }};
 	</script>
-	<script src="../js/game.js"></script>
+	<script src="../js/gamelogic.js"></script>
 {% endblock %}
 
