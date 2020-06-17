@@ -285,6 +285,8 @@ div.container {
 @media screen and (max-width: 719px) {
 	.content-22 {
 		overflow: visible;
+		grid-row: 2;
+		grid-column: 2;
 	}
 	.content-31 {
 		display: none;
@@ -324,6 +326,7 @@ div.container {
 	div.container {
 		grid-template-rows: calc((var(--height-container) - var(--height-center))) var(--height-center) 0px;
 		grid-template-columns: calc((var(--width-container) - var(--width-center))) var(--width-center);
+		width: var(--width-center);
 		
 	}
 }
@@ -478,7 +481,7 @@ div.container {
 	<label>{{ bpy[0] }} Birth every {{ bpy[1] }} Years</label>
 </div>
 <div>
-	<a href="../tutorial.html" class="basic">Tutorial</a><a href="../" class="basic">Home</a>
+	<a href="../tutorial.html" class="basic">Tutorial</a> <a href="../" class="basic">Home</a>
 </div>
 {% endblock %}	
 
