@@ -374,9 +374,11 @@ div.container {
 	}
 	
 	div.container {
+		--height-center: calc(--width-center * 1.2);
 		grid-template-rows: 10rem var(--height-center) 25rem;
 		grid-template-columns: auto;
 		--height-container: calc(var(--height-center) + 36rem);
+		width: var(--width-container);
 	}
 }
 {% endblock %}
