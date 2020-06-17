@@ -41,9 +41,9 @@
 	 letter-spacing: 1px;
 }
 
-.container {
-	{% block centerSize %}
-	{% endblock %}
+div.container {
+	--height-center: 9rem;
+	--width-center: 9rem;
 	{% block borderRadius %}
 	{% endblock %}
 }
@@ -57,17 +57,24 @@
 {% block moreCSS %}
 {% endblock %}
 
-span.logoText {
-	width:calc(2 * var(--width-center));
-	left:calc(50% - var(--width-center));
-	top:3rem;
-	text-align: center;
-}
-div.logoDiv img {
-	width:var(--width-center);
-	left:calc((100% - var(--width-center)) / 2);
-	top:0rem;
-	position:absolute;
+
+@media screen and (max-width: 959px) {
+	span.logoText {
+		width:calc(2 * var(--width-center));
+		left:calc(50% - var(--width-center));
+		top:3rem;
+		text-align: center;
+	}
+	div.logoDiv img {
+		width:var(--width-center);
+		left:calc((100% - var(--width-center)) / 2);
+		top:0rem;
+		position:absolute;
+	}
+	div.container {
+		--height-center: 7rem;
+		--width-center: 7rem;
+	}
 }
 @media screen and (max-width: 719px) {
 	span.logoText {
