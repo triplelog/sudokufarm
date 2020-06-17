@@ -8,10 +8,7 @@
 	/*border: 1px solid black;*/
 {% endblock %}
 	
-{% block centerSize %}
-	--height-center: 70vh;
-	--width-center: calc(9 * var(--width-block) + 3rem);
-{% endblock %}
+
 
 {% block titleCSS %}
 
@@ -20,6 +17,10 @@
 
 
 {% block moreCSS %}
+div.container {
+	--height-center: 70vh;
+	--width-center: calc(9 * var(--width-block) + 3rem);
+}
 .content-22 {
 	overflow: visible;
 }
@@ -278,7 +279,7 @@ div.container {
 		
 	}
 }
-@media screen and (max-width: 720px) {
+@media screen and (max-width: 719px) {
 	.content-22 {
 		overflow: visible;
 	}
@@ -323,7 +324,7 @@ div.container {
 		
 	}
 }
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 599px) {
 	.content-22 {
 		overflow: visible;
 	}
