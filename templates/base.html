@@ -57,6 +57,9 @@
 {% block moreCSS %}
 {% endblock %}
 
+#footer {
+	display: none;
+}
 @media screen and (max-width: 600px) {
 
 	span.logoText {
@@ -73,6 +76,12 @@
 	}
 	.title label i {
 		font-size: .8rem;
+	}
+	#footer {
+		display: block;
+	}
+	.centerLink {
+		display: none;
 	}
 }
 
@@ -163,7 +172,10 @@
 		</div>
 	</div>
 </div>
-
+<div id="footer">
+	{% block footer %}
+	{% endblock %}
+</div>
 {% block scripts %}
 {% endblock %}
 
