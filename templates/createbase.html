@@ -8,10 +8,7 @@
 	/*border: 1px solid black;*/
 {% endblock %}
 	
-{% block centerSize %}
-	--height-center: 70vh;
-	--width-center: calc(9 * var(--width-block) + 22px);
-{% endblock %}
+
 
 {% block titleCSS %}
 
@@ -21,6 +18,10 @@
 
 
 {% block moreCSS %}
+div.container {
+	--height-center: 70vh;
+	--width-center: calc(9 * var(--width-block) + 22px);
+}
 .awesomplete-thumbnail {
 	height: 2rem;
 	float: right;
@@ -36,7 +37,7 @@ body {
 	
 }
 
-.container {
+div.container {
 	grid-template-rows: calc((var(--height-container) - var(--height-center)) / 2) calc(var(--height-center) / 2) calc(var(--height-center) / 2) calc((var(--height-container) - var(--height-center)) / 2);
 }
 
@@ -258,7 +259,9 @@ tr {
 	background: rgba(255,255,255,.05);
 	color: black;
 }
-
+.content-22 .content {
+	text-align: center;
+}
 {% endblock %}
 
 
