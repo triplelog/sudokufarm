@@ -16,11 +16,20 @@ const options = {
 };
 
 
-const mongoose = require('mongoose');
+/*const mongoose = require('mongoose');
 mongoose.connect('mongodb://triplelog:kZGWGda3A@45.32.213.227:27017/triplelog', {useNewUrlParser: true});
 const SudokufarmUser = require('./models/sudokufarmuser');
 var fromLogin = require('./login-server.js');
-var app = fromLogin.loginApp;
+var app = fromLogin.loginApp;*/
+var express = require('express');
+
+
+
+var app = express();
+const session = require("express-session");
+app.use(session({ secret: "sudokufarm314" }));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: false}));
 
 var tempKeys = fromLogin.tempKeys;
 
