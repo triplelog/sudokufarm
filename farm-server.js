@@ -30,7 +30,7 @@ app.use(session({ secret: "sudokufarm314" }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
-var tempKeys = fromLogin.tempKeys;
+
 
 
 var express = require('express');
@@ -46,6 +46,8 @@ const server = https.createServer(options, (req, res) => {
   res.end('\n');
 }).listen(8080);
 
+/*
+var tempKeys = fromLogin.tempKeys;
 const WebSocket = require('ws');
 const wss = new WebSocket.Server({ server });
 wss.on('connection', function connection(ws) {
@@ -118,7 +120,7 @@ wss.on('connection', function connection(ws) {
 		
   	});
 });
-
+*/
 var defaultGames = {};
 var puzzleTypes = ['daily','easy','medium','hard'];
 for (var ii=0;ii<4;ii++ ){
@@ -384,6 +386,7 @@ app.get('/game.html',
     }
     
 );
+/*
 app.get('/:userid/:gameid',
 	function(req, res){
 		if (req.isAuthenticated() && req.user.username == req.params.userid && req.query.q && req.query.q == 'edit'){
@@ -399,10 +402,10 @@ app.get('/:userid/:gameid',
 			return;
 		}
 		console.log(req.params);
-		/*var tkey = crypto.randomBytes(100).toString('hex').substr(2, 18);
-		if (req.isAuthenticated()){
-			tempKeys[tkey] = {username:req.user.username};
-		}*/
+		//var tkey = crypto.randomBytes(100).toString('hex').substr(2, 18);
+		//if (req.isAuthenticated()){
+		//	tempKeys[tkey] = {username:req.user.username};
+		//}
 		
 		//startPeople as int
 		//bpy as [births,years]
@@ -468,6 +471,7 @@ app.get('/:userid/:gameid',
     }
     
 );
+
 
 app.get('/create',
 	function(req, res){
@@ -626,7 +630,7 @@ app.get('/create',
     }
     
 );
-
+*/
 
 
 function execShellCommand(cmd) {
